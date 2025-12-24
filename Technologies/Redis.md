@@ -14,8 +14,8 @@ client eviction is essentially a safety mechanism that will disconnect clients o
 
 It is possible to flag a specific client connection to be excluded from the client eviction mechanism. 
 - If, for example, you have an application that monitors the server via the INFO command and alerts you in case of a problem, you might want to make sure this connection isn't evicted.
-- ou can do so using the following command (from the relevant client's connection):
-    CLIENT NO-EVICT on
-- And you can revert that with:
-    CLIENT NO-EVICT off
+- You can do so using the following command (from the relevant client's connection): CLIENT NO-EVICT on
+- And you can revert that with: CLIENT NO-EVICT off
+
+
 
