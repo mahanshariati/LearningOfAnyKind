@@ -18,7 +18,7 @@ If, for example, you have an application that monitors the server via the INFO c
 - And you can revert that with: CLIENT NO-EVICT off
 
 ## Client Timeouts
-By default recent versions of Redis don't close the connection with the client if the client is idle for many seconds: the connection will remain open forever. \\
+By default recent versions of Redis don't close the connection with the client if the client is idle for many seconds: the connection will remain open forever. <br>
 However if you don't like this behavior, you can configure a timeout, so that if the client is idle for more than the specified number of seconds, the client connection will be closed.
 
 
