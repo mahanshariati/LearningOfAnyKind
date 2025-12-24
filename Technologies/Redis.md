@@ -12,7 +12,7 @@ client eviction is essentially a safety mechanism that will disconnect clients o
 - This setting can either be 0 (meaning no limit), a size in bytes (possibly with mb/gb suffix), or a percentage of maxmemory by using the % suffix (e.g. setting it to 10% would mean 10% of the maxmemory configuration).
 - The default setting is 0, meaning client eviction is turned off by default.
 
-It is possible to flag a specific client connection to be excluded from the client eviction mechanism. 
+It is possible to flag a specific client connection to be excluded from the client eviction mechanism. <br>
 If, for example, you have an application that monitors the server via the INFO command and alerts you in case of a problem, you might want to make sure this connection isn't evicted.
 - You can do so using the following command (from the relevant client's connection): CLIENT NO-EVICT on
 - And you can revert that with: CLIENT NO-EVICT off
@@ -20,6 +20,11 @@ If, for example, you have an application that monitors the server via the INFO c
 ## Client Timeouts
 By default recent versions of Redis don't close the connection with the client if the client is idle for many seconds: the connection will remain open forever. <br>
 However if you don't like this behavior, you can configure a timeout, so that if the client is idle for more than the specified number of seconds, the client connection will be closed.
+- You can configure this limit via redis.conf or simply using CONFIG SET timeout <value>.
+- Note that the timeout only applies to normal clients and it does not apply to Pub/Sub clients, since a Pub/Sub connection is a push style connection so a client that is idle is the norm.
+<br>
+Timeouts are not to be considered very precise: Redis avoids setting timer events or running O(N) algorithms in order to check idle clients, so the check is performed incrementally from time to time. This means that it is possible that while the timeout is set to 10 seconds, the client connection will be closed, for instance, after 12 seconds if many clients are connected at the same time.
+
 
 
 
