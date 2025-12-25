@@ -1,6 +1,21 @@
 # Redis – Caching, Persistence, and Messaging
+- [Redis – Caching, Persistence, and Messaging](#redis--caching-persistence-and-messaging)
+  - [Client Handling](#client-handling)
+    - [Client Eviction](#client-eviction)
+    - [Client Timeouts](#client-timeouts)
+    - [The CLIENT Command](#the-client-command)
+    - [TCP Keepalive](#tcp-keepalive)
+  - [go-redis](#go-redis)
+    - [Production usage](#production-usage)
+      - [Error Handling](#error-handling)
+        - [Applying error handling patterns](#applying-error-handling-patterns)
+      - [Health Check](#health-check)
+      - [Retries](#retries)
+      - [Timeouts](#timeouts)
+      - [Example of configuring Client](#example-of-configuring-client)
 
-## Client Eviction
+## Client Handling
+### Client Eviction
 Redis is built to handle a very large number of client connections. Client connections tend to consume memory, and when there are many of them, the aggregate memory consumption can be extremely high, leading to data eviction or out-of-memory errors.
 client eviction is essentially a safety mechanism that will disconnect clients once the aggregate memory usage of all clients is above a threshold. 
 - The mechanism first attempts to disconnect clients that use the most memory. 
@@ -17,7 +32,7 @@ If, for example, you have an application that monitors the server via the INFO c
 - You can do so using the following command (from the relevant client's connection): CLIENT NO-EVICT on
 - And you can revert that with: CLIENT NO-EVICT off
 
-## Client Timeouts
+### Client Timeouts
 By default recent versions of Redis don't close the connection with the client if the client is idle for many seconds: the connection will remain open forever. <br>
 However if you don't like this behavior, you can configure a timeout, so that if the client is idle for more than the specified number of seconds, the client connection will be closed.
 - You can configure this limit via redis.conf or simply using CONFIG SET timeout <value>.
@@ -25,7 +40,7 @@ However if you don't like this behavior, you can configure a timeout, so that if
 <br>
 Timeouts are not to be considered very precise: Redis avoids setting timer events or running O(N) algorithms in order to check idle clients, so the check is performed incrementally from time to time. This means that it is possible that while the timeout is set to 10 seconds, the client connection will be closed, for instance, after 12 seconds if many clients are connected at the same time.
 
-## The CLIENT Command 
+### The CLIENT Command 
 The Redis CLIENT command allows you to inspect the state of every connected client, to kill a specific client, and to name connections. It is a very powerful debugging tool if you use Redis at scale.<br>
 CLIENT LIST is used in order to obtain a list of connected clients and their state:
 ```bash
@@ -43,6 +58,145 @@ addr=127.0.0.1:52787 fd=6 name= age=6 idle=5 flags=N db=0 sub=0 psub=0 multi=-1 
 - flags: The kind of client (N means normal client, check the full list of flags).
 - omem: The amount of memory used by the client for the output buffer.
 - cmd: The last executed command.
+
+### TCP Keepalive
+From version 3.2 onwards, Redis has TCP keepalive (SO_KEEPALIVE socket option) enabled by default and set to about 300 seconds. This option is useful in order to detect dead peers (clients that cannot be reached even if they look connected). Moreover, if there is network equipment between clients and servers that need to see some traffic in order to take the connection open, the option will prevent unexpected connection closed events.
+
+
+## go-redis
+This guide summarizes the [go-redis](https://redis.io/docs/latest/develop/clients/go/) section in Redis docs, explains how to install go-redis and connect your application to a Redis database. It also offers recommendations to get the best reliability and performance in your production environment.
+
+### Production usage
+The sections below offer recommendations for your production environment.
+
+#### Error Handling
+go-redis uses explicit error returns following Go's idiomatic error handling pattern.
+
+```Go
+result, err := rdb.Get(ctx, key).Result()
+if err != nil {
+    // Handle the error
+}
+```
+
+| Error | When it occurs | Recommended action |
+|-------|----------------|--------------------|
+| redis.Nil | Key does not exist | Return default value or fetch from source |
+| context.DeadlineExceeded | Operation timeout | Retry with backoff |
+| net.OpError | Network error | Retry with backoff or fall back to alternative |
+| redis.ResponseError | Redis error response | [NOT RECOVERABLE] Fix the command or arguments |
+
+
+##### Applying error handling patterns
+- Pattern 1: Fail fast (return the error): <br>
+   - Use this when the error is unrecoverable or indicates a bug in your code.
+
+- Pattern 2: Graceful degradation (Check for specific errors and fall back to an alternative database): <br>
+    - Use this when you have an alternative way to get the data you need, so you can fall back to using the alternative instead of the preferred code. for example: <br> 
+      - Cache reads (fallback to database)
+      - Session reads (fallback to default values)
+      - Optional data (skip if unavailable)
+
+- Pattern 3: Retry with backoff (Retry on temporary errors such as timeouts): <br>
+    - Use this when the error could be due to network load or other temporary conditions. for example:
+        - Connection timeouts
+        - Temporary network issues
+        - Redis loading data
+    
+    ```Go
+    import time
+
+    max_retries = 3
+    retry_delay = 0.1
+
+    for attempt in range(max_retries):
+        try:
+            return r.get(key)
+        except redis.TimeoutError:
+            if attempt < max_retries - 1:
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise
+    ```
+
+    - Note that client libraries often implement retry logic for you.
+
+- Pattern 4: Log and continue (Log non-critical errors and continue): <br>
+    - Use this when the operation is not critical to your application. for example:
+        - Cache writes (data loss is acceptable)
+        - Non-critical updates
+        - Metrics collection
+
+#### Health Check
+If your code doesn't access the Redis server continuously then it might be useful to make a "health check" periodically (perhaps once every few seconds). You can do this using a simple PING command:
+```Go
+err := rdb.Ping(ctx).Err()
+
+if err != nil {
+  // Report failed health check.
+}
+```
+
+#### Retries
+- go-redis will automatically retry failed connections and commands. 
+- By default, the number of attempts is set to three, but you can change this using the MaxRetries field of Options when you connect. 
+- The retry strategy starts with a short delay between the first and second attempts, and increases the delay with each attempt.
+
+#### Timeouts
+- go-redis supports timeouts for connections and commands to avoid stalling your app if the server does not respond within a reasonable time.
+- The DialTimeout field of Options sets the timeout for connections, and the ReadTimeout and WriteTimeout fields set the timeouts for reading and writing data, respectively.
+
+#### Example of configuring Client
+client:
+```Go
+func New(cfg *config.RedisConfig, logger logger.Logger) (*redis.Client, error) {
+    var tlsConfig *tls.Config
+    opts := &redis.Options{
+        Addr:            cfg.Hosts[0],
+        Username:        cfg.Username,
+        Password:        cfg.Password,
+        Protocol:        cfg.Protocol,
+        MaxRetries:      cfg.MaxRetries,
+        MinRetryBackoff: cfg.MinRetryBackoff,
+        MaxRetryBackoff: cfg.MaxRetryBackoff,
+        DialTimeout:     cfg.DialTimeout,
+        ReadTimeout:     cfg.ReadTimeout,
+        WriteTimeout:    cfg.WriteTimeout,
+    }
+    if tlsConfig != nil {
+        opts.TLSConfig = tlsConfig
+    }
+    rcc := redis.NewClient(opts)
+    return rcc, nil
+}
+```
+
+client for cluster:
+```Go
+func New(cfg *config.RedisConfig, logger logger.Logger) (*redis.ClusterClient, error) {
+    var tlsConfig *tls.Config
+    opts := &redis.Cluster{
+        Addrs:           cfg.Hosts,
+        Username:        cfg.Username,
+        Password:        cfg.Password,
+        Protocol:        cfg.Protocol,
+        MaxRetries:      cfg.MaxRetries,
+        MinRetryBackoff: cfg.MinRetryBackoff,
+        MaxRetryBackoff: cfg.MaxRetryBackoff,
+        DialTimeout:     cfg.DialTimeout,
+        ReadTimeout:     cfg.ReadTimeout,
+        WriteTimeout:    cfg.WriteTimeout,
+    }
+    if tlsConfig != nil {
+        opts.TLSConfig = tlsConfig
+    }
+    rcc := redis.NewClusterClient(opts)
+    return rcc, nil
+}
+```
+
+
 
 
 
