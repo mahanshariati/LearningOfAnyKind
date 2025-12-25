@@ -25,6 +25,25 @@ However if you don't like this behavior, you can configure a timeout, so that if
 <br>
 Timeouts are not to be considered very precise: Redis avoids setting timer events or running O(N) algorithms in order to check idle clients, so the check is performed incrementally from time to time. This means that it is possible that while the timeout is set to 10 seconds, the client connection will be closed, for instance, after 12 seconds if many clients are connected at the same time.
 
+## The CLIENT Command 
+The Redis CLIENT command allows you to inspect the state of every connected client, to kill a specific client, and to name connections. It is a very powerful debugging tool if you use Redis at scale.<br>
+CLIENT LIST is used in order to obtain a list of connected clients and their state:
+```bash
+redis 127.0.0.1:6379> client list
+addr=127.0.0.1:52555 fd=5 name= age=855 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=client
+addr=127.0.0.1:52787 fd=6 name= age=6 idle=5 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
+```
+
+
+- addr: The client address, that is, the client IP and the remote port number it used to connect with the Redis server.
+- fd: The client socket file descriptor number.
+- name: The client name as set by CLIENT SETNAME.
+- age: The number of seconds the connection existed for.
+- idle: The number of seconds the connection is idle.
+- flags: The kind of client (N means normal client, check the full list of flags).
+- omem: The amount of memory used by the client for the output buffer.
+- cmd: The last executed command.
+
 
 
 
