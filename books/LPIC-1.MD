@@ -101,6 +101,8 @@
 | `modprobe` | The downside to using the insmod program is that you may run into modules that depend on other modules.The modprobe command helps resolve module dependencies for you. it also understands module names and there is no need for exact nested path to the module. I has many command option. Check it out (`modprobe --help`) |
 | `rmmode` | removes a module by specifying the module name. |
 | `modprobe -r` | the modprobe command can also remove modules for us, so you don’t need to memorize another command Instead, just use the –r option with the modprobe command |
+
+
 <br>
 <br>
 <br>
@@ -228,13 +230,28 @@
 ## 103 GNU and Unix Commands
 ### 103.1 Work on the command line
 
-| Path | Description | Note |
+| Special characters | Description | Note |
 |---|---|---|
-| `` |  |  |
+| `* ? [ ] ' " \ $ ; & ( ) \| ^ < >` | these are the special characters in Linux shell. | if you want to use them exactly as they are you should add a \ before them. |
 
 | Command | Description | Note |
 |---|---|---|
-| `` |  |  |
+| `echo [OPTION]… [STRING]…` | In the echo command’s syntax structure, [OPTION] means there are various options (also called switches) you can add to modify the display. The [STRING] argument allows you to designate a string to display.  | The brackets indicate that switches are optional. |
+| `type NAME_OF_COMMAND` | this command shows that the command written in front of it is a builtin shell command or it is a /usr/bin/NAME_OF_COMMAND |  |
+| `cd PATH` | jumps to the directory that we need. |  |
+| `uname [OPTION]...` | give data about the system. | it has many options (use --help to see the options). most practical one is -a which shows the whole information about the system. |
+| `man NAME_OF_COMMAND` | man is the system's manual pager | you can see what that command does and different options and how to use it...x |
+<br>
+
+- **echo TIP**: if you put $ behind a variable you can see the value of that. for example echo $SHELL shows what shell we have in our Linux distro. <br>
+  
+```bash
+echo $SHELL
+```
+- **cd TIP**: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br>
+- **man TIP**: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br>
+
+
 
 <br>
 <br>
