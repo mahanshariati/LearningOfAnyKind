@@ -1,7 +1,12 @@
 # LPIC 1
 
 - [LPIC 1](#lpic-1)
-  - [useful tips:](#useful-tips)
+  - [useful tips](#useful-tips)
+  - [vim Editor](#vim-editor)
+    - [Command Mode](#command-mode)
+    - [Insert Mode](#insert-mode)
+    - [Ex Mode](#ex-mode)
+    - [vim TIPS](#vim-tips)
   - [101 System Architecture](#101-system-architecture)
     - [101.1 Determine and configure hardware settings](#1011-determine-and-configure-hardware-settings)
     - [101.2 Boot the System](#1012-boot-the-system)
@@ -14,14 +19,6 @@
     - [102.5 Use RPM and YUM package management](#1025-use-rpm-and-yum-package-management)
     - [102.6 Linux as a virtualization guest](#1026-linux-as-a-virtualization-guest)
   - [103 GNU and Unix Commands](#103-gnu-and-unix-commands)
-    - [103.1 Work on the command line](#1031-work-on-the-command-line)
-    - [103.2 Process text streams using filters](#1032-process-text-streams-using-filters)
-    - [103.3 Perform basic file management](#1033-perform-basic-file-management)
-    - [103.4 Use streams, pipes and redirects](#1034-use-streams-pipes-and-redirects)
-    - [103.5 Create, monitor and kill processes](#1035-create-monitor-and-kill-processes)
-    - [103.6 Modify process execution priorities](#1036-modify-process-execution-priorities)
-    - [103.7 Search text files using regular expressions](#1037-search-text-files-using-regular-expressions)
-    - [103.8 Basic file editing](#1038-basic-file-editing)
   - [104 Devices, Linux Filesystems, Filesystem Hierarchy Standard](#104-devices-linux-filesystems-filesystem-hierarchy-standard)
     - [104.1 Create partitions and filesystems](#1041-create-partitions-and-filesystems)
     - [104.2 Maintain the integrity of filesystems](#1042-maintain-the-integrity-of-filesystems)
@@ -32,7 +29,7 @@
     - [104.7 Find system files and place files in the correct location](#1047-find-system-files-and-place-files-in-the-correct-location)
 
 
-## useful tips:
+## useful tips
 | Terminal Shortcuts | Description |
 |---|---|
 | CTRL + C | Kill command |
@@ -62,8 +59,83 @@
 | `rm -rf project` | force delete | |
 | `tmux` | run tmux | |
 
+<br>
+<br>
+
+## vim Editor
+
+editing files with vim can make you much much faster.<br>
+
+### Command Mode
+
+This is the mode vim uses when you first enter the buffer area; it is sometimes called normal mode. Here you enter keystrokes to enact commands. For example, pressing the J key will move your cursor down one line. Command is the best mode to use for quickly moving around the buffer area.<br>
+| Command | Description | Note |
+|---|---|---|
+| `h` | Move cursor left one character. |  |
+| `l` | Move cursor right one character. |  |
+| `j` | Move cursor down one line (the next line in the text). |  |
+| `k` | Move cursor up one line (the previous line in the text). |  |
+| `w` | Move cursor forward one word to front of next word. |  |
+| `e` | Move cursor to end of current word. |  |
+| `b` | Move cursor backward one word. |  |
+| `^` | Move cursor to beginning of line. |  |
+| `$` | Move cursor to end of line. |  |
+| `gg` | Move cursor to the file’s first line. |  |
+| `G` | Move cursor to the file’s last line. |  |
+| `ctrl + B` | Scroll up almost one full screen. |  |
+| `ctrl + F` | Scroll down almost one full screen. |  |
+| `` |  |  |
+| `a` | Insert text after cursor. |  |
+| `A` | Insert text at end of text line. |  |
+| `dd` | Delete current line. |  |
+| `dw` | Delete current word. |  |
+| `o` | Open a new text line below cursor, and move to insert mode. |  |
+| `p` | Paste copied text after cursor. |  |
+| `yw` | Yank (copy) current word. |  |
+| `yy` | Yank (copy) current line. |  |
+| `x` | to delete the character under the cursor. |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
 
 
+
+
+<br>
+
+
+### Insert Mode
+
+Insert Mode Insert mode is also called edit or entry mode. This is the mode where you can perform simple editing. There are not many commands or special mode keystrokes. You enter this mode from command mode by pressing the I key. At this point, the message --Insert-- will display in the message area. You leave this mode by pressing the Esc key.
+
+<br>
+
+### Ex Mode
+
+This mode is sometimes also called colon commands because every command entered here is preceded with a colon (\:). For example, to leave the vim editor and not save any changes you type :q and press the Enter key. <br>
+
+| Command | Description | Note |
+|---|---|---|
+| `:wq` | Write(Save) and Quit |  |
+| `:q` | Quit without Write(Save) |  |
+| `:w` | Write buffer to file and stay in editor. |  |
+
+<br>
+
+### vim TIPS
+
+- **Search in vim editor**: If you have a large text file and need to search for something, there are keystrokes in command mode to do that as well. Type ? to start a forward search or / to start a backward search. The keystroke will display at the vim editor’s bottom and allow you to type the text to find. If the first item found is not what you need, press Enter, and then keep pressing the n key to move to the next matching text pattern.
 
 <br>
 <br>
@@ -228,11 +300,10 @@
 
 
 ## 103 GNU and Unix Commands
-### 103.1 Work on the command line
 
 | Special characters | Description | Note |
 |---|---|---|
-| `* ? [ ] ' " \ $ ; & ( ) \| ^ < >` | these are the special characters in Linux shell. | if you want to use them exactly as they are you should add a \ before them. |
+| `*?[]'"\$;&()\|^<> ` | these are the special characters in Linux shell. | if you want to use them exactly as they are you should add a \ before them. SPACE is also a special character. Also there is possible to put the word containing a special character or the whole sentence inside two double quotation.  |
 
 | Command | Description | Note |
 |---|---|---|
@@ -241,6 +312,36 @@
 | `cd PATH` | jumps to the directory that we need. |  |
 | `uname [OPTION]...` | give data about the system. | it has many options (use --help to see the options). most practical one is -a which shows the whole information about the system. |
 | `man NAME_OF_COMMAND` | man is the system's manual pager | you can see what that command does and different options and how to use it...x |
+| `VARIABLE_NAME="VALUE"` | we can set variables with a = and then the value for it | example: `PS1="INSERT NEW PROMPT: "` then we can see what each variable value is using the echo command. |
+| `history` | keeps track of the history of the prompts we have recently used in command shell. It assignes a number to each of these prompts we used. | using the number assigned to each word, we can reexecute them like this: `!954` |
+| ‍‍‍‍`which` |||
+| `cat NAME_OF_FILE` OR `batcat NAME_OF_FILE` | view file. |  |
+| `paste FILE_1 FILE_2` | view two files side by side. |  |
+| `od [OPTION]... FILE` | The od utility can help you to display a file’s contents in octal (base 8), hexadecimal (base 16), decimal (base 10), and ASCII. | By default od displays a fi le’s text in octal. |
+| `split [OPTION]... [INPUT [PREFIX]]` | This utility allows you to divide a large file into smaller chunks, which is handy when you want to quickly create a smaller text fi le for testing purposes. | You can divide up a file using size, bytes, lines, and so on. The original file ( INPUT) remains unchanged, and additional new files are created, depending on the command options chosen. |
+| `sort [OPTION]... [FILE]...` | it sorts the file alphabetically but doesn't change the input file | use -n option for sorting files containing numbers. |
+| `nl [OPTION]... [FILE]...` | This little command allows you to number lines in a text file in powerful ways. | If you do not use any options with the nl utility, it will number only non-blank text lines. If you would like all file’s lines to be numbered, including blank ones, then you’ll need to employ the -ba switch. |
+| `more [OPTION] FILE [...]` | One way to read through a large text fi le is by using a pager. a pager option is more.  | With more, you can move forward through a text file by pressing the spacebar (one page down) or the Enter key (one line down). However, you cannot move backward through a file. | 
+| `more [OPTION] FILE [...]` | A more flexible pager is the less utility. |  you can move backward and it has more options than more command. |
+| `head [OPTION]... [FILE]...` | By default, the head command displays the fi rst 10 lines of a text file. |  |
+| `tail [OPTION]... [FILE]...` | By default, the tail command will show a file’s last 10 text lines. |  |
+| `wc [OPTION]... [FILE]...` | When you issue the wc command with no options and pass it a filename, the utility will display the file’s number of lines, words, and bytes in that order. |  |
+| `md5sum FILE` | The md5sum utility is based on the MD5 message-digest algorithm. it is  excellent for checking a file’s integrity. |  |
+| `ls -1 /usr/bin/sha???sum` | shows several utilities thatn implement The Secure Hash Algorithms (SHA) on Linux. These utilities are used in a similar manner to the md5sum command. | for example, `sha256sum FILE` |
+| `grep` | A wonderful tool for sifting text |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+| `` |  |  |
+
+
+
+
 <br>
 
 - **echo TIP**: if you put $ behind a variable you can see the value of that. for example echo $SHELL shows what shell we have in our Linux distro. <br>
@@ -250,106 +351,8 @@ echo $SHELL
 ```
 - **cd TIP**: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br>
 - **man TIP**: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br>
-
-
-
-<br>
-<br>
-<br>
-
-### 103.2 Process text streams using filters
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.3 Perform basic file management
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.4 Use streams, pipes and redirects
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.5 Create, monitor and kill processes
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.6 Modify process execution priorities
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.7 Search text files using regular expressions
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-<br>
-<br>
-<br>
-
-### 103.8 Basic file editing
-
-| Path | Description | Note |
-|---|---|---|
-| `` |  |  |
-
-| Command | Description | Note |
-|---|---|---|
-| `` |  |  |
+- **Basic regular expressions (BREs)**: include characters, such as a dot followed by an asterisk (.*) to represent multiple characters and a single dot (.) to represent one character. They also may use brackets to represent multiple characters, such as [a,e,i,o,u] (you do not have to include the commas) or a range of characters, such as [A-z]. When brackets are employed, it is called a bracket expression. To find text file records that begin with particular characters, you can precede them with a caret (^) symbol. For finding text file records where particular characters are at the record’s end, append them with a dollar sign ($) symbol. <br>\
+- **Extended regular expressions (EREs)**: allow more complex patterns. For example, a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. Use the -E option to indicate the pattern is an extended regular expression.
 
 
 <br>
