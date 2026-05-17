@@ -329,7 +329,7 @@ This mode is sometimes also called colon commands because every command entered 
 | `md5sum FILE` | The md5sum utility is based on the MD5 message-digest algorithm. it is  excellent for checking a file’s integrity. |  |
 | `ls -1 /usr/bin/sha???sum` | shows several utilities thatn implement The Secure Hash Algorithms (SHA) on Linux. These utilities are used in a similar manner to the md5sum command. | for example, `sha256sum FILE` |
 | `grep` | A wonderful tool for sifting text |  |
-| `` |  |  |
+| `tee` | In cases where you want to keep a copy of the command pipeline’s output as well as view it, the tee command will help. The tee command allows you to both save the output to a file and display it to STDOUT. | Similar to a tee pipe fitting in plumbing, where the water flow is sent in multiple directions. |
 | `` |  |  |
 | `` |  |  |
 | `` |  |  |
@@ -349,10 +349,32 @@ This mode is sometimes also called colon commands because every command entered 
 ```bash
 echo $SHELL
 ```
-- **cd TIP**: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br>
-- **man TIP**: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br>
-- **Basic regular expressions (BREs)**: include characters, such as a dot followed by an asterisk (.*) to represent multiple characters and a single dot (.) to represent one character. They also may use brackets to represent multiple characters, such as [a,e,i,o,u] (you do not have to include the commas) or a range of characters, such as [A-z]. When brackets are employed, it is called a bracket expression. To find text file records that begin with particular characters, you can precede them with a caret (^) symbol. For finding text file records where particular characters are at the record’s end, append them with a dollar sign ($) symbol. <br>\
-- **Extended regular expressions (EREs)**: allow more complex patterns. For example, a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. Use the -E option to indicate the pattern is an extended regular expression.
+- **cd TIP**: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br> <br> <br>
+- **man TIP**: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br> <br> <br>
+- **Basic regular expressions (BREs)**: include characters, such as a dot followed by an asterisk (.*) to represent multiple characters and a single dot (.) to represent one character. They also may use brackets to represent multiple characters, such as [a,e,i,o,u] (you do not have to include the commas) or a range of characters, such as [A-z]. When brackets are employed, it is called a bracket expression. To find text file records that begin with particular characters, you can precede them with a caret (^) symbol. For finding text file records where particular characters are at the record’s end, append them with a dollar sign ($) symbol. <br> <br> <br>
+- **Extended regular expressions (EREs)**: allow more complex patterns. For example, a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. Use the -E option to indicate the pattern is an extended regular expression. <br> a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. <br> Use the **-E option** to indicate the pattern is an extended regular expression. If you did not employ the -E option, unpredictable results would occur. for example, `grep -E "^root|^dbus" /etc/passwd` command greps those expressions starting with root OR dbus in /etc/passwd. <br> <br> <br>
+
+- **STDOUT** and **>** and **>>**: The file descriptor that identifies output from a command or script file is 1. It is also identified by the abbreviation STDOUT, which describes standard output. By default, STDOUT directs output to your current terminal. Your process’s current terminal is represented by the /dev/tty file. <br> A redirection operator allows you to change the default behavior of where input and output are sent. For STDOUT, you redirect the output using the > redirection operator. <br> For example, `grep nologin$ /etc/passwd > NologinAccts.txt` command puts the output of the grep to a file named NologinAccts.txt. <br>To append data to a preexisting file, you need to use a slightly different redirection operator. The >> operator will append data to a preexisting file. If the file does not exist, it is created, and the outputted data is added to it. <br> <br> <br> 
+
+- **STDERR** and **2>** and **2>>**: Another handy item to redirect is standard error. The fi le descriptor that identifies a command or script file error is 2. It is also identified by the abbreviation STDERR, which describes standard error. STDERR, like STDOUT, is by default sent to your terminal (/dev/tty).
+The basic redirection operator to send STDERR to a file is the 2> operator. If you need to append the file, use the 2>> operator. <br> <br> <br> 
+
+- **/dev/null**: If you don’t care to keep a copy of the error messages, you can always throw them away. This is done by redirecting STDERR to the /dev/null file. The /dev/null file is sometimes called the black hole. This name comes from the fact that anything you put into it, you cannot retrieve. <br> <br> <br> 
+
+- **STDIN** and **\<** and **tr**: Standard input, by default, comes into your Linux system via the keyboard and/or other input devices. The file descriptor that identifies an input into a command or script file is 0. It is also identified by the abbreviation STDIN, which describes standard input. <br> As with STDOUT and STDERR, you can redirect STDIN. The basic redirection operator is the < symbol. The tr command is one of the few utilities that require you to redirect standard input. For example: <br>
+
+```bash
+$ cat Grades.txt
+89 76 100 92 68 84 73
+$
+$ tr " " "," < Grades.txt
+89,76,100,92,68,84,73
+$
+```
+
+
+- **&>** and **&>>**: &> Redirect STDOUT and STDERR to specified file. If file exists, overwrite it. If it does not exist, create it. &>> Redirect STDOUT and STDERR to specified file. If file exists, append to it. If it does not exist, create it. <br> <br> <br>
+- **Piping Data**:The pipe is a simple redirection operator represented by the ASCII character 124 (|), which is called the vertical bar, vertical slash, or vertical line. `COMMAND1 | COMMAND2 [| COMMANDN]…` <br> The syntax for pipe redirection shows that the first command, COMMAND1, is executed. Its STDOUT is redirected as STDIN into the second command, COMMAND2. And so on. <br> <br> <br>
 
 
 <br>
