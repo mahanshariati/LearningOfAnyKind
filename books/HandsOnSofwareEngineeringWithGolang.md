@@ -49,7 +49,7 @@ mechanism to get the metrics out (while ingress traffic is blocked, egress traff
 allowed). <br>
 
 ### The Prometheus architecture
-![alt text](image.png)
+![alt text](images/image.png)
 
 - The **Prometheus server** is the core component of Prometheus. Its primary responsibility is to periodically scrape the configured set of targets and persist any collected metrics into a time-series database. As a secondary task, the server evaluates an operator-defined list of alert rules and emits alert events each time any of those rules are satisfied. 
 - The **Alertmanager component** ingests any alerts emitted by the Prometheus server and sends notifications through one or more communication channels (for example, email, Slack, or a third-party pager service).
