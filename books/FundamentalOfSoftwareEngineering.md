@@ -74,3 +74,6 @@ A large percentage of serious application development includes external data sto
 - Why is more important than how.
 
 <br><br><br><br><br>
+
+## Architectural Thinking
+
