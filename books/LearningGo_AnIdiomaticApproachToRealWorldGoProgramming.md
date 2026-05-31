@@ -34,6 +34,16 @@
     - [Structs](#structs)
       - [Anonymous Structs](#anonymous-structs)
       - [Comparing and Converting Structs](#comparing-and-converting-structs)
+  - [Chapter 4 - Blocks, Shadows, and Control Structures](#chapter-4---blocks-shadows-and-control-structures)
+    - [Blocks](#blocks)
+    - [Shadowing Variables](#shadowing-variables)
+    - [if](#if)
+    - [for, Four Ways](#for-four-ways)
+      - [The Complete for Statement](#the-complete-for-statement)
+      - [The Condition-Only for Statement](#the-condition-only-for-statement)
+      - [The Infinite for Statement](#the-infinite-for-statement)
+      - [break and continue](#break-and-continue)
+      - [The for-range Statement](#the-for-range-statement)
 
 
 
@@ -418,4 +428,125 @@ Go doesn’t allow comparisons between variables that represent structs of diffe
 
 
 
+<br><br><br>
 
+## Chapter 4 - Blocks, Shadows, and Control Structures
+### Blocks
+Each place where a declaration occurs is called a block. Variables, constants, types, and functions declared outside of any functions are placed in the package block.
+ 
+
+### Shadowing Variables 
+A shadowing variable is a variable that has the same name as a variable in a containing block. For as long as the shadowing variable exists, you cannot access a shadowed variable.
+
+### if
+```go
+n := rand.Intn(10)
+if n == 0 {
+    fmt.Println("That's too low")
+} else if n > 5 {
+    fmt.Println("That's too big:", n)
+} else {
+    fmt.Println("That's a good number:", n)
+}
+```
+
+Scoping a variable to the if statement:
+```go
+if n := rand.Intn(10); n == 0 {
+    fmt.Println("That's too low")
+} else if n > 5 {
+    fmt.Println("That's too big:", n)
+} else {
+f   mt.Println("That's a good number:", n)
+}
+```
+
+### for, Four Ways
+- A complete, C-style for
+- A condition-only for
+- An infinite for
+- for-range
+
+#### The Complete for Statement
+```go
+for i := 0; i < 10; i++ {
+    fmt.Println(i)
+}
+
+i := 0
+for ; i < 10; i++ {
+    fmt.Println(i)
+}
+
+for i := 0; i < 10; {
+    fmt.Println(i)
+    if i % 2 == 0 {
+        i++
+    } else {
+        i+=2
+    }
+}
+```
+
+#### The Condition-Only for Statement
+```go
+i := 1
+for i < 100 {
+    fmt.Println(i)
+    i = i * 2
+}
+```
+
+
+
+#### The Infinite for Statement
+```go
+for {
+    fmt.Println("Hello")
+}
+```
+
+
+#### break and continue 
+How do you get out of an infinite for loop without using the keyboard or turning off your computer? That’s the job of the **break** statement. It exits the loop immediately, just like the break statement in other languages.
+
+If you want to iterate at least once, the cleanest way is to use an infinite for loop that ends with an if statement:
+```go
+for {
+// things to do in the loop
+    if !CONDITION {
+        break
+    }
+}   
+```
+
+Go also includes the **continue** keyword, which skips over the rest of the for loop’s body and proceeds directly to the next iteration.
+
+Go encourages short if statement bodies, as left-aligned as possible. Nested code is more difficult to follow. Using a continue statement makes it easier to understand what’s going on:
+```go 
+for i := 1; i <= 100; i++ {
+    if i%3 == 0 && i%5 == 0 {
+        fmt.Println("FizzBuzz")
+        continue
+    }
+    if i%3 == 0 {
+        fmt.Println("Fizz")
+        continue
+    }
+    if i%5 == 0 {
+        fmt.Println("Buzz")
+        continue
+    }
+    fmt.Println(i)
+}
+```
+
+#### The for-range Statement
+The fourth for statement format is for iterating over elements in some of Go’s built-in types. It is called a for-range loop and resembles the iterators found in other languages. The first variable is the position in the data structure being iterated, while the second is the value at that position.
+
+```go
+evenVals := []int{2, 4, 6, 8, 10, 12}
+for i, v := range evenVals {
+    fmt.Println(i, v)
+}
+```
