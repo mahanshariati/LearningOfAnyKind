@@ -33,6 +33,7 @@
       - [Using Maps as Sets](#using-maps-as-sets)
     - [Structs](#structs)
       - [Anonymous Structs](#anonymous-structs)
+      - [Comparing and Converting Structs](#comparing-and-converting-structs)
 
 
 
@@ -409,3 +410,12 @@ pet := struct {
 }
 ```
 Anonymous structs are handy in two common situations. The first is when you translate external data into a struct or a struct into external data (like JSON or Protocol Buffers). This is called unmarshaling and marshaling data, respectively.
+
+#### Comparing and Converting Structs
+Structs that are entirely composed of comparable types are comparable; those with slice or map fields are not. 
+
+Go doesn’t allow comparisons between variables that represent structs of different types. Go does allow you to perform a type conversion from one struct type to another if the fields of both structs have the same names, order, and types.
+
+
+
+
