@@ -49,7 +49,7 @@ mechanism to get the metrics out (while ingress traffic is blocked, egress traff
 allowed). <br>
 
 ### The Prometheus architecture
-![alt text](image.png)
+![alt text](images/image.png)
 
 - The **Prometheus server** is the core component of Prometheus. Its primary responsibility is to periodically scrape the configured set of targets and persist any collected metrics into a time-series database. As a secondary task, the server evaluates an operator-defined list of alert rules and emits alert events each time any of those rules are satisfied. 
 - The **Alertmanager component** ingests any alerts emitted by the Prometheus server and sends notifications through one or more communication channels (for example, email, Slack, or a third-party pager service).
@@ -70,8 +70,25 @@ A **static scrape configuration** is considered the canonical way of providing s
 Prometheus. The operator includes one or more static configuration blocks in the
 Prometheus configuration file that define the list of target hosts to be scraped and the set of
 labels to apply to the scraped metrics. <br>
+```bash
+static_configs:
+    - targets:
+    - "host1"
+    - "host2"
+labels:
+    service: "my-service"
+```
+An issue with the static config approach is that after updating the Prometheus configuration files, we need to restart Prometheus so it can pick up the changes.
+<br>
 
-A better alternative is to extract the static configuration blocks to an external file and then reference that file from within the Prometheus configuration. When file-based discovery is enabled, Prometheus will watch the specified set of files for changes and automatically reload their contents once a change has been detected.
+A better alternative is to **extract the static configuration blocks to an external file** and then reference that file from within the Prometheus configuration. and then reference that file from within the Prometheus configuration via the file_sd_config option:
+```bash
+file_sd_configs:
+    - files:
+        - config.yaml
+    refresh_interval: "5m"
+```
+When file-based discovery is enabled, Prometheus will watch the specified set of files for changes and automatically reload their contents once a change has been detected. 
 
 
 ### Instrumenting Go code 
@@ -80,4 +97,104 @@ In order for Prometheus to be able to scrape metrics from our deployed services,
 2. Instrument our code base so that it updates the values of the aforementioned metrics at the appropriate locations.
 3. Collect the metric data and make it available for scraping over HTTP. 
 
+the official Go client package for Prometheus:
+```bash
+go get github.com/prometheus/client_golang/prometheus
+go get github.com/prometheus/client_golang/prometheus/promauto
+go get github.com/prometheus/client_golang/prometheus/promhttp
+```
+
 **promauto** is a subpackage of the Prometheus client that defines a set of convenience helpers for creating and registering metrics with the minimum possible amount of code. Each of the constructor functions from the promauto package returns a Prometheus metric instance that we can immediately use in our code.
+
+```bash
+numReqs := promauto.NewCounter(prometheus.CounterOpts{
+    Name: "app_reqs_total",
+    Help: "The total number of incoming requests",
+})
+// Increment the counter.
+numReqs.Inc()
+// Add a value to the counter.
+numReqs.Add(42)
+```
+
+Each Prometheus metric must be assigned a unique name. If we attempt to register a metric with the same name twice, we will get an **error**. What's more, when registering a new metric, we can optionally specify a help message that provides additional information about the metric's purpose.<br>
+
+The next type of metric that we will be instantiating is a **gauge**. Gauges are quite similar to counters with the exception that their value can go either up or down.
+
+```bash
+queueLen := promauto.NewGauge(prometheus.GaugeOpts{
+    Name: "app_queue_len_total",
+    Help: "Total number of items in the queue.",
+})
+// Add items to the queue
+queueLen.Inc()
+queueLen.Add(42)
+// Remove items from the queue
+queueLen.Sub(42)
+queueLen.Dec()
+```
+
+The **NewHistorgram** constructor expects the caller to specify a strictly ascending list of float64 values that describe the width of each bucket that's used by the histogram. <br>
+
+```bash
+reqTimes := promauto.NewHistogram(prometheus.HistogramOpts{
+    Name: "app_response_times",
+    Help: "Distribution of application response times.",
+    Buckets: prometheus.LinearBuckets(0, 100, 20),
+})
+// Record a response time of 100ms
+reqTimes.Observe(100)
+```
+
+Adding values to a histogram instance is quite trivial. All we need to do is simply invoke its Observe method and pass the value we wish to track as an argument. <br>
+
+One of the more interesting Prometheus features is its support for partitioning collected samples across one or more dimensions (labels, in Prometheus terminology). If we opt to use this feature, instead of having a single metric instance, we can work with a vector of metric values.
+
+```bash
+regCountVec := promauto.NewCounterVec(
+prometheus.CounterOpts{
+    Name: "app_registrations_total",
+    Help: "Total number of registrations by A/B test layout.",
+},
+[]string{"layout"},
+)
+regCountVec.WithLabelValues("a").Inc()
+```
+
+This time, instead of a single counter, we will be creating a vector of counters where every sampled value will be automatically tagged with a label named layout. To increment or add value to this metric, we need to obtain the correct counter by invoking the variadic WithLabelValues method on the regCountVec variable. his method expects a string value for each defined dimension and returns the counter instance that corresponds to the provided label values. <br>
+
+**Exposing metrics for scraping** <br>
+After registering our metrics with Prometheus and instrumenting our code to update them where needed, the only additional thing that we need to do is expose the collected values over HTTP so that Prometheus can scrape them. <br> The promhttp subpackage from the Prometheus client package provides a convenience helper function called Handler that returns an http.Handler instance that encapsulates all the required logic for exporting collected metrics in the format expected by Prometheus. <br>
+The exported data will not only include the metrics that have been registered by the developer but it will also contain an extensive list of metrics that pertain to the Go runtime. Some examples of such metrics are as follows:
+- The number of active goroutines
+- Information about stack and heap allocation
+- Performance statistics for the Go garbage collector
+
+```bash 
+func main() {
+    // Create a prometheus counter to keep track of ping requests.
+    numPings := promauto.NewCounter(prometheus.CounterOpts{
+        Name: "pingapp_pings_total",
+        Help: "The total number of incoming ping requests",
+    })
+    http.Handle("/metrics", promhttp.Handler())
+    http.Handle("/ping", http.HandlerFunc(func(w http.ResponseWriter, _
+  *http.Request) {
+        numPings.Inc()
+        w.Write([]byte("pong!\n"))
+    }))
+    log.Fatal(http.ListenAndServe(":8080", nil))
+}
+```
+
+### Visualizing collected metrics using Grafana
+Grafana offers a convenient, end-to-end solution that can be used to retrieve metrics from a variety of different data sources and construct dashboards for visualizingu them. <br>
+In terms of supported visualization widgets, the standard Grafana installation supports the following widget types:
+- **Graph**: A flexible visualization component that can plot single- and multi-series line charts or bar charts. Furthermore, graph widgets can be configured to display multiple series in overlapping or stacked mode. 
+- **Logs panel**: A list of log entries that are obtained by a compatible data source (for example, Elasticsearch) whose contents are correlated with the information displayed by another widget.
+- **Singlestat**: A component that condenses a series into a single value by applying an aggregation function (for example, min, max, avg, and so on). This component may optionally be configured to display a sparkline chart or to be rendered as a gauge.
+- **Heatmap**: A specialized component that renders the changes in a histogram's set of values over time. As shown in the following screenshot, heatmaps comprise a set of vertical slices where each slice depicts the histogram values at a particular point in time. Contrary to a typical histogram plot, where bar heights represent the count of items in a particular bucket, heatmaps apply a color map to visualize the frequency of items within each vertical slice.
+- **Table**: A component that is best suited for rendering series in tabular format.
+
+### Using Prometheus as an end-to-end solution for alerting
+

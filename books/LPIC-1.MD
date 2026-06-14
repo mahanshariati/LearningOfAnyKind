@@ -7,6 +7,7 @@
     - [Insert Mode](#insert-mode)
     - [Ex Mode](#ex-mode)
     - [vim TIPS](#vim-tips)
+  - [Sed Tips](#sed-tips)
   - [101 System Architecture](#101-system-architecture)
     - [101.1 Determine and configure hardware settings](#1011-determine-and-configure-hardware-settings)
     - [101.2 Boot the System](#1012-boot-the-system)
@@ -136,6 +137,21 @@ This mode is sometimes also called colon commands because every command entered 
 ### vim TIPS
 
 - **Search in vim editor**: If you have a large text file and need to search for something, there are keystrokes in command mode to do that as well. Type ? to start a forward search or / to start a backward search. The keystroke will display at the vim editor’s bottom and allow you to type the text to find. If the first item found is not what you need, press Enter, and then keep pressing the n key to move to the next matching text pattern.
+
+
+<br>
+<br>
+
+## Sed Tips
+
+| Command | Description | Example | Output of the Example
+|---|---|---|---|
+| `s` | subtitute word | `echo "I love cake and more cake." \| sed 's/cake/donuts/'` | I love donuts and more cake. |
+| `g` | global | `echo "I love cake and more cake." \| sed 's/cake/donuts/g'` | I love donuts and more donuts. |
+| `s` | delete line | `sed '/Christine/d' cake.txt` | removes the line containing the word Christine. |
+| `'ADDRESScNEWTEXT'` | replace a line with a new text | `sed '4cI am a new line' cake.txt` | this would replace the fourth line with "I am a new line" |
+| `-e option` and `;` | multiple scripts | `sed -e 's/cake/donuts/ ; s/like/love/' cake.txt` | replaces the cake with donuuts and the like with love |
+
 
 <br>
 <br>
@@ -330,8 +346,8 @@ This mode is sometimes also called colon commands because every command entered 
 | `ls -1 /usr/bin/sha???sum` | shows several utilities thatn implement The Secure Hash Algorithms (SHA) on Linux. These utilities are used in a similar manner to the md5sum command. | for example, `sha256sum FILE` |
 | `grep` | A wonderful tool for sifting text |  |
 | `tee` | In cases where you want to keep a copy of the command pipeline’s output as well as view it, the tee command will help. The tee command allows you to both save the output to a file and display it to STDOUT. | Similar to a tee pipe fitting in plumbing, where the water flow is sent in multiple directions. |
-| `` |  |  |
-| `` |  |  |
+| `sed [OPTIONS] [SCRIPT]… [FILENAME]` | The command to invoke the stream editor is sed. | more describtion below. |
+| `$()` | to run a command on mutiple files | for example, `rm -i $(ls EmptyFile?.txt)` removes all files that have EmptyFile as the name followed by a single character. asks permission before each deletion because of the -i option. |
 | `` |  |  |
 | `` |  |  |
 | `` |  |  |
@@ -375,6 +391,20 @@ $
 
 - **&>** and **&>>**: &> Redirect STDOUT and STDERR to specified file. If file exists, overwrite it. If it does not exist, create it. &>> Redirect STDOUT and STDERR to specified file. If file exists, append to it. If it does not exist, create it. <br> <br> <br>
 - **Piping Data**:The pipe is a simple redirection operator represented by the ASCII character 124 (|), which is called the vertical bar, vertical slash, or vertical line. `COMMAND1 | COMMAND2 [| COMMANDN]…` <br> The syntax for pipe redirection shows that the first command, COMMAND1, is executed. Its STDOUT is redirected as STDIN into the second command, COMMAND2. And so on. <br> <br> <br>
+
+- **sed**: A stream editor modifies text that is passed to it via a file or output from a pipeline. The command to invoke the stream editor is sed. The sed utility edits a stream of text data based on a set of commands you supply ahead of time. <br> The process the editor goes through is as follows:
+  1. Reads one text line at a time from the input stream
+  2. Matches that text with the supplied editor commands
+  3. Modifies the text as specified in the commands
+  4. Displays the modified text
+  5. After the sed editor matches all the specified commands against a text line, it reads the next text line and repeats the editorial process.
+  6. Once sed reaches the end of the text lines, it stops.
+
+  The stream editor only displays the modified text to STDOUT. You could save the modified text to another fi le name via a STDOUT redirection operator, if desired.
+
+
+
+
 
 
 <br>
