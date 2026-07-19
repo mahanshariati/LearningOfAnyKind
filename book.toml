@@ -1,0 +1,15 @@
+[book]
+title = "Learning of Any Kind"
+src = "books"
+language = "en"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+site-url = "/LearningOfAnyKind/"
+no-section-label = true
+git-repository-url = "https://github.com/atrovan/LearningOfAnyKind"
+edit-url-template = "https://github.com/atrovan/LearningOfAnyKind/edit/main/books/{path}"
+theme = "theme"

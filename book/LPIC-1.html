@@ -1,0 +1,928 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>LPIC-1 - Learning of Any Kind</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-24f5cce7.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d154ffda.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-afc71aae.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Learning of Any Kind</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/atrovan/LearningOfAnyKind" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/atrovan/LearningOfAnyKind/edit/main/books/books/LPIC-1.MD" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lpic-1"><a class="header" href="#lpic-1">LPIC 1</a></h1>
+<ul>
+<li><a href="#lpic-1">LPIC 1</a>
+<ul>
+<li><a href="#useful-tips">useful tips</a></li>
+<li><a href="#vim-editor">vim Editor</a>
+<ul>
+<li><a href="#command-mode">Command Mode</a></li>
+<li><a href="#insert-mode">Insert Mode</a></li>
+<li><a href="#ex-mode">Ex Mode</a></li>
+<li><a href="#vim-tips">vim TIPS</a></li>
+</ul>
+</li>
+<li><a href="#sed-tips">Sed Tips</a></li>
+<li><a href="#101-system-architecture">101 System Architecture</a>
+<ul>
+<li><a href="#1011-determine-and-configure-hardware-settings">101.1 Determine and configure hardware settings</a></li>
+<li><a href="#1012-boot-the-system">101.2 Boot the System</a></li>
+<li><a href="#1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system">101.3 Change runlevels/boot targets and shutdown or reboot system</a></li>
+</ul>
+</li>
+<li><a href="#102-linux-installation-and-package-management">102 Linux Installation and Package Management</a>
+<ul>
+<li><a href="#1021-design-hard-disk-layout">102.1 Design hard disk layout</a></li>
+<li><a href="#1022-install-a-boot-manager">102.2 Install a boot manager</a></li>
+<li><a href="#1023-manage-shared-libraries">102.3 Manage shared libraries</a></li>
+<li><a href="#1024-use-debian-package-management">102.4 Use Debian package management</a></li>
+<li><a href="#1025-use-rpm-and-yum-package-management">102.5 Use RPM and YUM package management</a></li>
+<li><a href="#1026-linux-as-a-virtualization-guest">102.6 Linux as a virtualization guest</a></li>
+</ul>
+</li>
+<li><a href="#103-gnu-and-unix-commands">103 GNU and Unix Commands</a></li>
+<li><a href="#104-devices-linux-filesystems-filesystem-hierarchy-standard">104 Devices, Linux Filesystems, Filesystem Hierarchy Standard</a>
+<ul>
+<li><a href="#1041-create-partitions-and-filesystems">104.1 Create partitions and filesystems</a></li>
+<li><a href="#1042-maintain-the-integrity-of-filesystems">104.2 Maintain the integrity of filesystems</a></li>
+<li><a href="#1043-control-mounting-and-unmounting-of-filesystems">104.3 Control mounting and unmounting of filesystems</a></li>
+<li><a href="#1034-removed">103.4 Removed</a></li>
+<li><a href="#1045-manage-file-permissions-and-ownership">104.5 Manage file permissions and ownership</a></li>
+<li><a href="#1046-create-and-change-hard-and-symbolic-links">104.6 Create and change hard and symbolic links</a></li>
+<li><a href="#1047-find-system-files-and-place-files-in-the-correct-location">104.7 Find system files and place files in the correct location</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-tips"><a class="header" href="#useful-tips">useful tips</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Terminal Shortcuts</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>CTRL + C</td><td>Kill command</td></tr>
+<tr><td>CTRL + L</td><td>Clear screen</td></tr>
+<tr><td>CTRL + A</td><td>Start of line</td></tr>
+<tr><td>CTRL + E</td><td>End of line</td></tr>
+<tr><td>!!</td><td>Previous command</td></tr>
+<tr><td>!git</td><td>Last command starting with git</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command / Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/tmp</code></td><td>Temporary files</td><td></td></tr>
+<tr><td><code>/etc</code></td><td>System configs</td><td></td></tr>
+<tr><td><code>pwd</code></td><td>shows current directory</td><td></td></tr>
+<tr><td><code>cd -</code></td><td>jumps to previous directory.</td><td></td></tr>
+<tr><td><code>mkdir myproject</code></td><td>create folder</td><td></td></tr>
+<tr><td><code>mkdir -p project/new/v1</code></td><td>create nested folder</td><td></td></tr>
+<tr><td><code>touch main.go</code></td><td>create file</td><td></td></tr>
+<tr><td><code>cat file.txt</code> OR <code>batcat file.txt</code></td><td>view file</td><td></td></tr>
+<tr><td><code>vim file.txt </code></td><td>edit file</td><td>i → insert mode <br> ESC → command mode <br> :wq → save and quit <br> :q! → quit without save</td></tr>
+<tr><td><code>xdg-open file.pdf</code></td><td>open PDF files</td><td></td></tr>
+<tr><td><code>rm file.txt</code></td><td>remove file</td><td></td></tr>
+<tr><td><code>rm -r project</code></td><td>delete folder recursively</td><td></td></tr>
+<tr><td><code>rm -rf project</code></td><td>force delete</td><td></td></tr>
+<tr><td><code>tmux</code></td><td>run tmux</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<h2 id="vim-editor"><a class="header" href="#vim-editor">vim Editor</a></h2>
+<p>editing files with vim can make you much much faster.<br></p>
+<h3 id="command-mode"><a class="header" href="#command-mode">Command Mode</a></h3>
+<p>This is the mode vim uses when you first enter the buffer area; it is sometimes called normal mode. Here you enter keystrokes to enact commands. For example, pressing the J key will move your cursor down one line. Command is the best mode to use for quickly moving around the buffer area.<br></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>h</code></td><td>Move cursor left one character.</td><td></td></tr>
+<tr><td><code>l</code></td><td>Move cursor right one character.</td><td></td></tr>
+<tr><td><code>j</code></td><td>Move cursor down one line (the next line in the text).</td><td></td></tr>
+<tr><td><code>k</code></td><td>Move cursor up one line (the previous line in the text).</td><td></td></tr>
+<tr><td><code>w</code></td><td>Move cursor forward one word to front of next word.</td><td></td></tr>
+<tr><td><code>e</code></td><td>Move cursor to end of current word.</td><td></td></tr>
+<tr><td><code>b</code></td><td>Move cursor backward one word.</td><td></td></tr>
+<tr><td><code>^</code></td><td>Move cursor to beginning of line.</td><td></td></tr>
+<tr><td><code>$</code></td><td>Move cursor to end of line.</td><td></td></tr>
+<tr><td><code>gg</code></td><td>Move cursor to the file’s first line.</td><td></td></tr>
+<tr><td><code>G</code></td><td>Move cursor to the file’s last line.</td><td></td></tr>
+<tr><td><code>ctrl + B</code></td><td>Scroll up almost one full screen.</td><td></td></tr>
+<tr><td><code>ctrl + F</code></td><td>Scroll down almost one full screen.</td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td><code>a</code></td><td>Insert text after cursor.</td><td></td></tr>
+<tr><td><code>A</code></td><td>Insert text at end of text line.</td><td></td></tr>
+<tr><td><code>dd</code></td><td>Delete current line.</td><td></td></tr>
+<tr><td><code>dw</code></td><td>Delete current word.</td><td></td></tr>
+<tr><td><code>o</code></td><td>Open a new text line below cursor, and move to insert mode.</td><td></td></tr>
+<tr><td><code>p</code></td><td>Paste copied text after cursor.</td><td></td></tr>
+<tr><td><code>yw</code></td><td>Yank (copy) current word.</td><td></td></tr>
+<tr><td><code>yy</code></td><td>Yank (copy) current line.</td><td></td></tr>
+<tr><td><code>x</code></td><td>to delete the character under the cursor.</td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<h3 id="insert-mode"><a class="header" href="#insert-mode">Insert Mode</a></h3>
+<p>Insert Mode Insert mode is also called edit or entry mode. This is the mode where you can perform simple editing. There are not many commands or special mode keystrokes. You enter this mode from command mode by pressing the I key. At this point, the message –Insert– will display in the message area. You leave this mode by pressing the Esc key.</p>
+<br>
+<h3 id="ex-mode"><a class="header" href="#ex-mode">Ex Mode</a></h3>
+<p>This mode is sometimes also called colon commands because every command entered here is preceded with a colon (:). For example, to leave the vim editor and not save any changes you type :q and press the Enter key. <br></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>:wq</code></td><td>Write(Save) and Quit</td><td></td></tr>
+<tr><td><code>:q</code></td><td>Quit without Write(Save)</td><td></td></tr>
+<tr><td><code>:w</code></td><td>Write buffer to file and stay in editor.</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<h3 id="vim-tips"><a class="header" href="#vim-tips">vim TIPS</a></h3>
+<ul>
+<li><strong>Search in vim editor</strong>: If you have a large text file and need to search for something, there are keystrokes in command mode to do that as well. Type ? to start a forward search or / to start a backward search. The keystroke will display at the vim editor’s bottom and allow you to type the text to find. If the first item found is not what you need, press Enter, and then keep pressing the n key to move to the next matching text pattern.</li>
+</ul>
+<br>
+<br>
+<h2 id="sed-tips"><a class="header" href="#sed-tips">Sed Tips</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Example</th><th>Output of the Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>s</code></td><td>subtitute word</td><td><code>echo "I love cake and more cake." | sed 's/cake/donuts/'</code></td><td>I love donuts and more cake.</td></tr>
+<tr><td><code>g</code></td><td>global</td><td><code>echo "I love cake and more cake." | sed 's/cake/donuts/g'</code></td><td>I love donuts and more donuts.</td></tr>
+<tr><td><code>s</code></td><td>delete line</td><td><code>sed '/Christine/d' cake.txt</code></td><td>removes the line containing the word Christine.</td></tr>
+<tr><td><code>'ADDRESScNEWTEXT'</code></td><td>replace a line with a new text</td><td><code>sed '4cI am a new line' cake.txt</code></td><td>this would replace the fourth line with “I am a new line”</td></tr>
+<tr><td><code>-e option</code> and <code>;</code></td><td>multiple scripts</td><td><code>sed -e 's/cake/donuts/ ; s/like/love/' cake.txt</code></td><td>replaces the cake with donuuts and the like with love</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="101-system-architecture"><a class="header" href="#101-system-architecture">101 System Architecture</a></h2>
+<h3 id="1011-determine-and-configure-hardware-settings"><a class="header" href="#1011-determine-and-configure-hardware-settings">101.1 Determine and configure hardware settings</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/dev</code></td><td>Devices</td><td>After the Linux kernel communicates with a device on an interface, it must be able to transfer data to and from the device. This is done using device files. Device files are files that the Linux kernel creates in the special /dev directory to interface with hardware devices. <br> As you add hardware devices such as USB drives, network cards, or hard drives to your system, Linux creates a fi le in the /dev directory representing that hardware device.</td></tr>
+<tr><td><code>/proc</code></td><td>Kernel/process info</td><td>The /proc directory is one of the most important tools you can use when troubleshooting hardware issues on a Linux system. It’s not a physical directory on the fi lesystem, but instead a virtual directory that the kernel dynamically populates to provide access to information about the system hardware settings and status.</td></tr>
+<tr><td><code>/sys</code></td><td>similer to proc</td><td>The /sys directory is another virtual directory, similar to the /proc directory. It is created by the kernel in the sysfs filesystem format, and it provides additional information about hardware devices that any user on the system can access.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>lsblk</code></td><td>The lsblk command displays information about the block devices installed on the Linux system. By default, the lsblk command displays all block devices.</td></tr>
+<tr><td><code>lspci</code></td><td>The lspci command allows you to view the currently installed and recognized PCI and PCIe cards on the Linux system.</td></tr>
+<tr><td><code>lsusb</code></td><td>You can view the basic information about USB devices connected to your Linux system by using the lsusb command.</td></tr>
+<tr><td><code>lsmod</code></td><td>lists all modules installed on your system. <br> The Linux kernel needs device drivers to communicate with the hardware devices installed on your Linux system. However, compiling device drivers for all known hardware devices into the kernel would make for an extremely large kernel binary file. To avoid that situation, the Linux kernel uses kernel modules, which are individual hardware driver fi les that can be linked into the kernel at runtime</td></tr>
+<tr><td><code>insmod</code></td><td>The insmod command is the most basic install command, requiring you to specify the exact module file to load. As you’ve seen, the kernel module files are stored in the /lib/modules directory structure, with each kernel version having its own directory. <br> Each file with the .ko extension is a separate module file for each device driver that you can install. To install the module, specify the filename on the insmod command line.</td></tr>
+<tr><td><code>modprobe</code></td><td>The downside to using the insmod program is that you may run into modules that depend on other modules.The modprobe command helps resolve module dependencies for you. it also understands module names and there is no need for exact nested path to the module. I has many command option. Check it out (<code>modprobe --help</code>)</td></tr>
+<tr><td><code>rmmode</code></td><td>removes a module by specifying the module name.</td></tr>
+<tr><td><code>modprobe -r</code></td><td>the modprobe command can also remove modules for us, so you don’t need to memorize another command Instead, just use the –r option with the modprobe command</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1012-boot-the-system"><a class="header" href="#1012-boot-the-system">101.2 Boot the System</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system"><a class="header" href="#1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system">101.3 Change runlevels/boot targets and shutdown or reboot system</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="102-linux-installation-and-package-management"><a class="header" href="#102-linux-installation-and-package-management">102 Linux Installation and Package Management</a></h2>
+<h3 id="1021-design-hard-disk-layout"><a class="header" href="#1021-design-hard-disk-layout">102.1 Design hard disk layout</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1022-install-a-boot-manager"><a class="header" href="#1022-install-a-boot-manager">102.2 Install a boot manager</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1023-manage-shared-libraries"><a class="header" href="#1023-manage-shared-libraries">102.3 Manage shared libraries</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1024-use-debian-package-management"><a class="header" href="#1024-use-debian-package-management">102.4 Use Debian package management</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1025-use-rpm-and-yum-package-management"><a class="header" href="#1025-use-rpm-and-yum-package-management">102.5 Use RPM and YUM package management</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1026-linux-as-a-virtualization-guest"><a class="header" href="#1026-linux-as-a-virtualization-guest">102.6 Linux as a virtualization guest</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="103-gnu-and-unix-commands"><a class="header" href="#103-gnu-and-unix-commands">103 GNU and Unix Commands</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Special characters</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>*?[]'"\$;&amp;()|^&lt;&gt; </code></td><td>these are the special characters in Linux shell.</td><td>if you want to use them exactly as they are you should add a \ before them. SPACE is also a special character. Also there is possible to put the word containing a special character or the whole sentence inside two double quotation.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>echo [OPTION]… [STRING]…</code></td><td>In the echo command’s syntax structure, [OPTION] means there are various options (also called switches) you can add to modify the display. The [STRING] argument allows you to designate a string to display.</td><td>The brackets indicate that switches are optional.</td></tr>
+<tr><td><code>type NAME_OF_COMMAND</code></td><td>this command shows that the command written in front of it is a builtin shell command or it is a /usr/bin/NAME_OF_COMMAND</td><td></td></tr>
+<tr><td><code>cd PATH</code></td><td>jumps to the directory that we need.</td><td></td></tr>
+<tr><td><code>uname [OPTION]...</code></td><td>give data about the system.</td><td>it has many options (use –help to see the options). most practical one is -a which shows the whole information about the system.</td></tr>
+<tr><td><code>man NAME_OF_COMMAND</code></td><td>man is the system’s manual pager</td><td>you can see what that command does and different options and how to use it…x</td></tr>
+<tr><td><code>VARIABLE_NAME="VALUE"</code></td><td>we can set variables with a = and then the value for it</td><td>example: <code>PS1="INSERT NEW PROMPT: "</code> then we can see what each variable value is using the echo command.</td></tr>
+<tr><td><code>history</code></td><td>keeps track of the history of the prompts we have recently used in command shell. It assignes a number to each of these prompts we used.</td><td>using the number assigned to each word, we can reexecute them like this: <code>!954</code></td></tr>
+<tr><td>‍‍‍‍<code>which</code></td><td></td><td></td></tr>
+<tr><td><code>cat NAME_OF_FILE</code> OR <code>batcat NAME_OF_FILE</code></td><td>view file.</td><td></td></tr>
+<tr><td><code>paste FILE_1 FILE_2</code></td><td>view two files side by side.</td><td></td></tr>
+<tr><td><code>od [OPTION]... FILE</code></td><td>The od utility can help you to display a file’s contents in octal (base 8), hexadecimal (base 16), decimal (base 10), and ASCII.</td><td>By default od displays a fi le’s text in octal.</td></tr>
+<tr><td><code>split [OPTION]... [INPUT [PREFIX]]</code></td><td>This utility allows you to divide a large file into smaller chunks, which is handy when you want to quickly create a smaller text fi le for testing purposes.</td><td>You can divide up a file using size, bytes, lines, and so on. The original file ( INPUT) remains unchanged, and additional new files are created, depending on the command options chosen.</td></tr>
+<tr><td><code>sort [OPTION]... [FILE]...</code></td><td>it sorts the file alphabetically but doesn’t change the input file</td><td>use -n option for sorting files containing numbers.</td></tr>
+<tr><td><code>nl [OPTION]... [FILE]...</code></td><td>This little command allows you to number lines in a text file in powerful ways.</td><td>If you do not use any options with the nl utility, it will number only non-blank text lines. If you would like all file’s lines to be numbered, including blank ones, then you’ll need to employ the -ba switch.</td></tr>
+<tr><td><code>more [OPTION] FILE [...]</code></td><td>One way to read through a large text fi le is by using a pager. a pager option is more.</td><td>With more, you can move forward through a text file by pressing the spacebar (one page down) or the Enter key (one line down). However, you cannot move backward through a file.</td></tr>
+<tr><td><code>more [OPTION] FILE [...]</code></td><td>A more flexible pager is the less utility.</td><td>you can move backward and it has more options than more command.</td></tr>
+<tr><td><code>head [OPTION]... [FILE]...</code></td><td>By default, the head command displays the fi rst 10 lines of a text file.</td><td></td></tr>
+<tr><td><code>tail [OPTION]... [FILE]...</code></td><td>By default, the tail command will show a file’s last 10 text lines.</td><td></td></tr>
+<tr><td><code>wc [OPTION]... [FILE]...</code></td><td>When you issue the wc command with no options and pass it a filename, the utility will display the file’s number of lines, words, and bytes in that order.</td><td></td></tr>
+<tr><td><code>md5sum FILE</code></td><td>The md5sum utility is based on the MD5 message-digest algorithm. it is  excellent for checking a file’s integrity.</td><td></td></tr>
+<tr><td><code>ls -1 /usr/bin/sha???sum</code></td><td>shows several utilities thatn implement The Secure Hash Algorithms (SHA) on Linux. These utilities are used in a similar manner to the md5sum command.</td><td>for example, <code>sha256sum FILE</code></td></tr>
+<tr><td><code>grep</code></td><td>A wonderful tool for sifting text</td><td></td></tr>
+<tr><td><code>tee</code></td><td>In cases where you want to keep a copy of the command pipeline’s output as well as view it, the tee command will help. The tee command allows you to both save the output to a file and display it to STDOUT.</td><td>Similar to a tee pipe fitting in plumbing, where the water flow is sent in multiple directions.</td></tr>
+<tr><td><code>sed [OPTIONS] [SCRIPT]… [FILENAME]</code></td><td>The command to invoke the stream editor is sed.</td><td>more describtion below.</td></tr>
+<tr><td><code>$()</code></td><td>to run a command on mutiple files</td><td>for example, <code>rm -i $(ls EmptyFile?.txt)</code> removes all files that have EmptyFile as the name followed by a single character. asks permission before each deletion because of the -i option.</td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<ul>
+<li><strong>echo TIP</strong>: if you put $ behind a variable you can see the value of that. for example echo $SHELL shows what shell we have in our Linux distro. <br></li>
+</ul>
+<pre><code class="language-bash">echo $SHELL
+</code></pre>
+<ul>
+<li>
+<p><strong>cd TIP</strong>: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br> <br> <br></p>
+</li>
+<li>
+<p><strong>man TIP</strong>: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Basic regular expressions (BREs)</strong>: include characters, such as a dot followed by an asterisk (.*) to represent multiple characters and a single dot (.) to represent one character. They also may use brackets to represent multiple characters, such as [a,e,i,o,u] (you do not have to include the commas) or a range of characters, such as [A-z]. When brackets are employed, it is called a bracket expression. To find text file records that begin with particular characters, you can precede them with a caret (^) symbol. For finding text file records where particular characters are at the record’s end, append them with a dollar sign ($) symbol. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Extended regular expressions (EREs)</strong>: allow more complex patterns. For example, a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. Use the -E option to indicate the pattern is an extended regular expression. <br> a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. <br> Use the <strong>-E option</strong> to indicate the pattern is an extended regular expression. If you did not employ the -E option, unpredictable results would occur. for example, <code>grep -E "^root|^dbus" /etc/passwd</code> command greps those expressions starting with root OR dbus in /etc/passwd. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDOUT</strong> and <strong>&gt;</strong> and <strong>&gt;&gt;</strong>: The file descriptor that identifies output from a command or script file is 1. It is also identified by the abbreviation STDOUT, which describes standard output. By default, STDOUT directs output to your current terminal. Your process’s current terminal is represented by the /dev/tty file. <br> A redirection operator allows you to change the default behavior of where input and output are sent. For STDOUT, you redirect the output using the &gt; redirection operator. <br> For example, <code>grep nologin$ /etc/passwd &gt; NologinAccts.txt</code> command puts the output of the grep to a file named NologinAccts.txt. <br>To append data to a preexisting file, you need to use a slightly different redirection operator. The &gt;&gt; operator will append data to a preexisting file. If the file does not exist, it is created, and the outputted data is added to it. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDERR</strong> and <strong>2&gt;</strong> and <strong>2&gt;&gt;</strong>: Another handy item to redirect is standard error. The fi le descriptor that identifies a command or script file error is 2. It is also identified by the abbreviation STDERR, which describes standard error. STDERR, like STDOUT, is by default sent to your terminal (/dev/tty).
+The basic redirection operator to send STDERR to a file is the 2&gt; operator. If you need to append the file, use the 2&gt;&gt; operator. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>/dev/null</strong>: If you don’t care to keep a copy of the error messages, you can always throw them away. This is done by redirecting STDERR to the /dev/null file. The /dev/null file is sometimes called the black hole. This name comes from the fact that anything you put into it, you cannot retrieve. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDIN</strong> and <strong>&lt;</strong> and <strong>tr</strong>: Standard input, by default, comes into your Linux system via the keyboard and/or other input devices. The file descriptor that identifies an input into a command or script file is 0. It is also identified by the abbreviation STDIN, which describes standard input. <br> As with STDOUT and STDERR, you can redirect STDIN. The basic redirection operator is the &lt; symbol. The tr command is one of the few utilities that require you to redirect standard input. For example: <br></p>
+</li>
+</ul>
+<pre><code class="language-bash">$ cat Grades.txt
+89 76 100 92 68 84 73
+$
+$ tr " " "," &lt; Grades.txt
+89,76,100,92,68,84,73
+$
+</code></pre>
+<ul>
+<li>
+<p><strong>&amp;&gt;</strong> and <strong>&amp;&gt;&gt;</strong>: &amp;&gt; Redirect STDOUT and STDERR to specified file. If file exists, overwrite it. If it does not exist, create it. &amp;&gt;&gt; Redirect STDOUT and STDERR to specified file. If file exists, append to it. If it does not exist, create it. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Piping Data</strong>:The pipe is a simple redirection operator represented by the ASCII character 124 (|), which is called the vertical bar, vertical slash, or vertical line. <code>COMMAND1 | COMMAND2 [| COMMANDN]…</code> <br> The syntax for pipe redirection shows that the first command, COMMAND1, is executed. Its STDOUT is redirected as STDIN into the second command, COMMAND2. And so on. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>sed</strong>: A stream editor modifies text that is passed to it via a file or output from a pipeline. The command to invoke the stream editor is sed. The sed utility edits a stream of text data based on a set of commands you supply ahead of time. <br> The process the editor goes through is as follows:</p>
+<ol>
+<li>Reads one text line at a time from the input stream</li>
+<li>Matches that text with the supplied editor commands</li>
+<li>Modifies the text as specified in the commands</li>
+<li>Displays the modified text</li>
+<li>After the sed editor matches all the specified commands against a text line, it reads the next text line and repeats the editorial process.</li>
+<li>Once sed reaches the end of the text lines, it stops.</li>
+</ol>
+<p>The stream editor only displays the modified text to STDOUT. You could save the modified text to another fi le name via a STDOUT redirection operator, if desired.</p>
+</li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="104-devices-linux-filesystems-filesystem-hierarchy-standard"><a class="header" href="#104-devices-linux-filesystems-filesystem-hierarchy-standard">104 Devices, Linux Filesystems, Filesystem Hierarchy Standard</a></h2>
+<h3 id="1041-create-partitions-and-filesystems"><a class="header" href="#1041-create-partitions-and-filesystems">104.1 Create partitions and filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1042-maintain-the-integrity-of-filesystems"><a class="header" href="#1042-maintain-the-integrity-of-filesystems">104.2 Maintain the integrity of filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1043-control-mounting-and-unmounting-of-filesystems"><a class="header" href="#1043-control-mounting-and-unmounting-of-filesystems">104.3 Control mounting and unmounting of filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1034-removed"><a class="header" href="#1034-removed">103.4 Removed</a></h3>
+<h3 id="1045-manage-file-permissions-and-ownership"><a class="header" href="#1045-manage-file-permissions-and-ownership">104.5 Manage file permissions and ownership</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1046-create-and-change-hard-and-symbolic-links"><a class="header" href="#1046-create-and-change-hard-and-symbolic-links">104.6 Create and change hard and symbolic links</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1047-find-system-files-and-place-files-in-the-correct-location"><a class="header" href="#1047-find-system-files-and-place-files-in-the-correct-location">104.7 Find system files and place files in the correct location</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="LearningGo_AnIdiomaticApproachToRealWorldGoProgramming.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="PythonProgrammingAnIntroductionToComputerScience.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="LearningGo_AnIdiomaticApproachToRealWorldGoProgramming.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="PythonProgrammingAnIntroductionToComputerScience.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

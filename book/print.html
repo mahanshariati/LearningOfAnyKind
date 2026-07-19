@@ -1,0 +1,1710 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Learning of Any Kind</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-24f5cce7.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d154ffda.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-afc71aae.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Learning of Any Kind</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/atrovan/LearningOfAnyKind" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="fundamental-of-software-engineering---mark-richard--neal-ford"><a class="header" href="#fundamental-of-software-engineering---mark-richard--neal-ford">Fundamental Of Software Engineering - Mark Richard &amp; Neal Ford</a></h1>
+<p><code>Architecture is about the important stuff…whatever that is.</code> - Ralph Johnson <br></p>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Some architects refer to software architecture as the blueprint of the system, while others define it as the roadmap for developing a system. <br></p>
+<p>The <strong>architecture characteristics</strong> define the success criteria of a system, which is generally orthogonal to the functionality of the system. <br></p>
+<p><strong>Architecture decisions</strong> define the rules for how a system should be constructed. If a particular architecture decision cannot be implemented in one part of the system due to some condition or other constraint, that decision (or rule) can be broken through something called a variance. <br></p>
+<p>The last factor in the definition of architecture is <strong>design principles</strong>. A design principle differs from an architecture decision in that a design principle is a guideline rather than a hard-and-fast rule. <br><br></p>
+<p>There are eight core expectations placed on a software architect, irrespective of any given role, title, or job description:</p>
+<ul>
+<li>Make architecture decisions</li>
+<li>Continually analyze the architecture</li>
+<li>Keep current with latest trends</li>
+<li>Ensure compliance with decisions</li>
+<li>Diverse exposure and experience</li>
+<li>Have business domain knowledge</li>
+<li>Possess interpersonal skills</li>
+<li>Understand and navigate politics</li>
+</ul>
+<br>
+<h4 id="make-architecture-decisions"><a class="header" href="#make-architecture-decisions">Make architecture decisions</a></h4>
+<p>An architect is expected to <strong>define the architecture decisions and design principles</strong> used to <strong>guide</strong> technology decisions within the team, the department, or across the enterprise. Guide is the key operative word in this first expectation. An architect should guide rather than specify technology choices. The <strong>key</strong> to making effective architectural decisions is asking whether the architecture decision is helping to guide teams in making the right technical choice or whether the architecture decision makes the technical choice for themselves.</p>
+<h4 id="continually-analyze-the-architecture"><a class="header" href="#continually-analyze-the-architecture">Continually analyze the architecture</a></h4>
+<p>An architect is expected to continually analyze the architecture and current technology environment and then recommend solutions for improvement. This expectation of an architect refers to architecture vitality, which assesses how viable the architecture that was defined three or more years ago is today, given changes in both business and technology.</p>
+<h4 id="keep-current-with-latest-trends"><a class="header" href="#keep-current-with-latest-trends">Keep current with latest trends</a></h4>
+<p>An architect is expected to keep current with the latest technology and industry trends. Developers must keep up to date on the latest technologies they use on a daily basis to remain relevant.</p>
+<h4 id="ensure-compliance-with-decisions"><a class="header" href="#ensure-compliance-with-decisions">Ensure compliance with decisions</a></h4>
+<p>An architect is expected to ensure compliance with architecture decisions and design principles. Ensuring compliance means that the architect is continually verifying that development teams are following the architecture decisions and design principles defined, documented, and communicated by the architect.</p>
+<h4 id="diverse-exposure-and-experience"><a class="header" href="#diverse-exposure-and-experience">Diverse exposure and experience</a></h4>
+<p>An architect is expected to have exposure to multiple and diverse technologies, frameworks, platforms, and environments. This expectation does not mean an architect must be an expert in every framework, platform, and language, but rather that an architect must at least be familiar with a variety of technologies. An effective software architect should be aggressive in seeking out opportunities to gain experience in multiple languages, platforms, and technologies. A good way of mastering this expectation is to focus on technical breadth rather than technical depth. Technical breadth includes the stuff you know about, but not at a detailed level, combined with the stuff you know a lot about.</p>
+<h4 id="have-business-domain-knowledge"><a class="header" href="#have-business-domain-knowledge">Have business domain knowledge</a></h4>
+<p>An architect is expected to have a certain level of business domain expertise.</p>
+<h4 id="possess-interpersonal-skills"><a class="header" href="#possess-interpersonal-skills">Possess interpersonal skills</a></h4>
+<p>An architect is expected to possess exceptional interpersonal skills, including teamwork, facilitation, and leadership.</p>
+<h4 id="understand-and-navigate-politics"><a class="header" href="#understand-and-navigate-politics">Understand and navigate politics</a></h4>
+<p>An architect is expected to understand the political climate of the enterprise and be able to navigate the politics. <br><br></p>
+<h3 id="intersection-of-software-architecture-and-"><a class="header" href="#intersection-of-software-architecture-and-">Intersection of software architecture and …</a></h3>
+<p>The following sections delve into some of the newer intersections between the role of architect and other parts of an organization, highlighting new capabilities and responsibilities for architects. <br></p>
+<h4 id="engineering-practices"><a class="header" href="#engineering-practices">Engineering practices</a></h4>
+<p>Focusing on engineering practices is important. First, software development lacks many of the features of more mature engineering disciplines. Second, one of the Achilles heels of software development is estimation—how much time, how many resources, how much money? Part of this difficulty lies with antiquated accounting practices that cannot accommodate the exploratory nature of software development, but another part is because we’re traditionally bad at estimation, at least in part because of unknown unknowns. <br> Building Evolutionary Architectures co-opts this idea to create architectural fitness
+functions: an objective integrity assessment of some architectural characteristic(s). This assessment may include a variety of mechanisms, such as metrics, unit tests, monitors, and chaos engineering. For example, an architect may identify page load time as an importance characteristic of the architecture. To allow the system to change without degrading performance, the architecture builds a fitness function as a test that measures page load time for each page and then runs the test as part of the continuous integration for the project.</p>
+<h4 id="operationsdevops"><a class="header" href="#operationsdevops">Operations/DevOps</a></h4>
+<p>The builders of the microservices style of architecture realized that these operational concerns are better handled by operations. By creating a liaison between architecture and operations, the architects can simplify the design and rely on operations for the things they handle best.</p>
+<h4 id="process"><a class="header" href="#process">Process</a></h4>
+<p>the way that you build software (process) has little impact on the software architecture (structure).</p>
+<h4 id="data"><a class="header" href="#data">Data</a></h4>
+<p>A large percentage of serious application development includes external data storage, often in the form of a relational (or, increasingly, NoSQL) database. Code and data have a symbiotic relationship: <strong>one isn’t useful without the other.</strong></p>
+<h3 id="laws-of-software-architecture"><a class="header" href="#laws-of-software-architecture">Laws of Software Architecture</a></h3>
+<ul>
+<li>Everything in software architecture is a trade-off.
+<ul>
+<li>If an architect thinks they have discovered something that isn’t a trade-off, more likely they just haven’t identified the trade-off yet.</li>
+</ul>
+</li>
+<li>Why is more important than how.</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h2 id="architectural-thinking"><a class="header" href="#architectural-thinking">Architectural Thinking</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hands-on-software-engineering-with-golang---achilleas-anagnostopoulos"><a class="header" href="#hands-on-software-engineering-with-golang---achilleas-anagnostopoulos">Hands-On Software Engineering With Golang - Achilleas Anagnostopoulos</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<h2 id="chapter-13-metrics-collection-and-visualization"><a class="header" href="#chapter-13-metrics-collection-and-visualization">Chapter 13: Metrics Collection and Visualization</a></h2>
+<p>Converting monolithic applications into a set of microservices requires monitoring the health of each individual service and being notified when problems arise.</p>
+<ul>
+<li>Prometheus: a popular metrics collection system written entirely in Go.</li>
+</ul>
+<p>covered topics:</p>
+<ul>
+<li>Explaining the differences between essential SRE terms such as SLIs, SLOs, and SLAs</li>
+<li>Comparison of push- and pull-based systems for metrics collection and an analysis of the pros and cons of each approach</li>
+<li>Setting up Prometheus and learning how to instrument your Go applications for
+collecting and exporting metrics</li>
+<li>Running Grafana as the visualization frontend for our metrics</li>
+<li>Using the Prometheus ecosystem tools to define and handle alerts</li>
+</ul>
+<h3 id="monitoring-from-the-perspective-of-a-site-reliability-engineer"><a class="header" href="#monitoring-from-the-perspective-of-a-site-reliability-engineer">Monitoring from the perspective of a site reliability engineer</a></h3>
+<p>monitoring the state and performance of software systems is one of the key responsibilities associated with the role of a site reliability engineer (SRE). <br> <br>
+<strong>Service-level indicators (SLIs)</strong>: An SLI is a type of metric that allows us to quantify the perceived quality of a service from the perspective of the end user. <br>
+some common types of SLIs:</p>
+<ul>
+<li>Availability</li>
+<li>Throughput</li>
+<li>Latency</li>
+</ul>
+<p><strong>Service-level objectives (SLOs)</strong>: An SLO is defined as the range of values for an SLI that allows us to deliver a particular level of service to an end user or customer. <br>
+SLO definitions generally consist of three parts:</p>
+<ul>
+<li>a description of the thing that we are measuring (the SLI)</li>
+<li>the expected service level expressed as a percentage</li>
+<li>the period where the measurement takes place</li>
+</ul>
+<p>Service-level agreements (SLAs): An SLA is an implicit or explicit contract between a service provider and one or more
+service consumers. The SLA outlines a set of SLOs that have to be met and the
+consequences for both meeting and failing to meet them.</p>
+<h3 id="exploring-options-for-collecting-and-aggregating-metrics"><a class="header" href="#exploring-options-for-collecting-and-aggregating-metrics">Exploring options for collecting and aggregating metrics</a></h3>
+<p>Monitoring and metrics aggregation systems can be classified into two broad categories based on the entity that initiates the data collection:</p>
+<ul>
+<li>In a push-based system, the client (for example, the application or a data collection service running on a node) is responsible for transmitting the metrics data to the metrics aggregation system.</li>
+<li>In a pull-based system, metrics collection is the responsibility of the metrics aggregation system. In an operation commonly referred to as scraping the metrics system initiates a connection to the metrics producers and retrieves the set of available metrics.</li>
+</ul>
+<p>In a pull-based system, the ingestion rate for metrics is under the control of the collector. Collectors can react to sudden spikes in metric production rates by adjusting their scrape rates to compensate. Pull-based systems are generally considered to be more scalable than their push-based counterparts. <br></p>
+<p>pull-based metrics system assumes that the collector can always establish a connection to the
+various endpoints. However, this may not always be possible! Consider a scenario where
+we want to scrape a service that has been deployed to a private subnet. That particular
+subnet is pretty much locked down and does not allow ingress traffic from the subnet that
+the collector is deployed to. In such a case, our only option would be to use a push-based
+mechanism to get the metrics out (while ingress traffic is blocked, egress traffic is typically
+allowed). <br></p>
+<h3 id="the-prometheus-architecture"><a class="header" href="#the-prometheus-architecture">The Prometheus architecture</a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="images/image.png" alt="alt text"><span class="img-wrapper"><img src="images/image.png" alt="alt text"></span></label></p>
+<ul>
+<li>The <strong>Prometheus server</strong> is the core component of Prometheus. Its primary responsibility is to periodically scrape the configured set of targets and persist any collected metrics into a time-series database. As a secondary task, the server evaluates an operator-defined list of alert rules and emits alert events each time any of those rules are satisfied.</li>
+<li>The <strong>Alertmanager component</strong> ingests any alerts emitted by the Prometheus server and sends notifications through one or more communication channels (for example, email, Slack, or a third-party pager service).</li>
+<li>The <strong>service discovery layer</strong> enables Prometheus to dynamically update the list of endpoints to scrape.</li>
+<li>The <strong>Pushgateway component</strong> emulates a push-based system for collecting metrics from sources that cannot be scraped.</li>
+<li>Clients retrieve data from Prometheus by submitting queries written in a
+bespoke query language referred to as <strong>PromQL</strong>.</li>
+</ul>
+<h3 id="metric-types"><a class="header" href="#metric-types">metric types</a></h3>
+<ul>
+<li><strong>Counters</strong>: A counter is a cumulative metric whose value increases monotonically over time. Counters can be used to track the number of requests to a service, the number of downloads for an application, and so on.</li>
+<li><strong>Gauges</strong>: A gauge tracks a single value that can go up or down. A common use case for gauges is to record usage (for example, CPU, memory, and load) stats about a server node and metrics such as the total number of users currently connected to a particular service.</li>
+<li><strong>Histograms</strong>: A histogram samples observations and assigns them to a preconfigured number of buckets.</li>
+<li><strong>Summaries</strong>: Summaries perform quantile calculations directly on the client and can be used as an alternative for reducing the query load on the server.</li>
+</ul>
+<h3 id="automating-the-detection-of-scrape-targets"><a class="header" href="#automating-the-detection-of-scrape-targets">automating the detection of scrape targets</a></h3>
+<p>A <strong>static scrape configuration</strong> is considered the canonical way of providing scrape targets to
+Prometheus. The operator includes one or more static configuration blocks in the
+Prometheus configuration file that define the list of target hosts to be scraped and the set of
+labels to apply to the scraped metrics. <br></p>
+<pre><code class="language-bash">static_configs:
+    - targets:
+    - "host1"
+    - "host2"
+labels:
+    service: "my-service"
+</code></pre>
+<p>An issue with the static config approach is that after updating the Prometheus configuration files, we need to restart Prometheus so it can pick up the changes.
+<br></p>
+<p>A better alternative is to <strong>extract the static configuration blocks to an external file</strong> and then reference that file from within the Prometheus configuration. and then reference that file from within the Prometheus configuration via the file_sd_config option:</p>
+<pre><code class="language-bash">file_sd_configs:
+    - files:
+        - config.yaml
+    refresh_interval: "5m"
+</code></pre>
+<p>When file-based discovery is enabled, Prometheus will watch the specified set of files for changes and automatically reload their contents once a change has been detected.</p>
+<h3 id="instrumenting-go-code"><a class="header" href="#instrumenting-go-code">Instrumenting Go code</a></h3>
+<p>In order for Prometheus to be able to scrape metrics from our deployed services, we need to perform the following sequence of steps:</p>
+<ol>
+<li>Define the metrics that we are interested in tracking.</li>
+<li>Instrument our code base so that it updates the values of the aforementioned metrics at the appropriate locations.</li>
+<li>Collect the metric data and make it available for scraping over HTTP.</li>
+</ol>
+<p>the official Go client package for Prometheus:</p>
+<pre><code class="language-bash">go get github.com/prometheus/client_golang/prometheus
+go get github.com/prometheus/client_golang/prometheus/promauto
+go get github.com/prometheus/client_golang/prometheus/promhttp
+</code></pre>
+<p><strong>promauto</strong> is a subpackage of the Prometheus client that defines a set of convenience helpers for creating and registering metrics with the minimum possible amount of code. Each of the constructor functions from the promauto package returns a Prometheus metric instance that we can immediately use in our code.</p>
+<pre><code class="language-bash">numReqs := promauto.NewCounter(prometheus.CounterOpts{
+    Name: "app_reqs_total",
+    Help: "The total number of incoming requests",
+})
+// Increment the counter.
+numReqs.Inc()
+// Add a value to the counter.
+numReqs.Add(42)
+</code></pre>
+<p>Each Prometheus metric must be assigned a unique name. If we attempt to register a metric with the same name twice, we will get an <strong>error</strong>. What’s more, when registering a new metric, we can optionally specify a help message that provides additional information about the metric’s purpose.<br></p>
+<p>The next type of metric that we will be instantiating is a <strong>gauge</strong>. Gauges are quite similar to counters with the exception that their value can go either up or down.</p>
+<pre><code class="language-bash">queueLen := promauto.NewGauge(prometheus.GaugeOpts{
+    Name: "app_queue_len_total",
+    Help: "Total number of items in the queue.",
+})
+// Add items to the queue
+queueLen.Inc()
+queueLen.Add(42)
+// Remove items from the queue
+queueLen.Sub(42)
+queueLen.Dec()
+</code></pre>
+<p>The <strong>NewHistorgram</strong> constructor expects the caller to specify a strictly ascending list of float64 values that describe the width of each bucket that’s used by the histogram. <br></p>
+<pre><code class="language-bash">reqTimes := promauto.NewHistogram(prometheus.HistogramOpts{
+    Name: "app_response_times",
+    Help: "Distribution of application response times.",
+    Buckets: prometheus.LinearBuckets(0, 100, 20),
+})
+// Record a response time of 100ms
+reqTimes.Observe(100)
+</code></pre>
+<p>Adding values to a histogram instance is quite trivial. All we need to do is simply invoke its Observe method and pass the value we wish to track as an argument. <br></p>
+<p>One of the more interesting Prometheus features is its support for partitioning collected samples across one or more dimensions (labels, in Prometheus terminology). If we opt to use this feature, instead of having a single metric instance, we can work with a vector of metric values.</p>
+<pre><code class="language-bash">regCountVec := promauto.NewCounterVec(
+prometheus.CounterOpts{
+    Name: "app_registrations_total",
+    Help: "Total number of registrations by A/B test layout.",
+},
+[]string{"layout"},
+)
+regCountVec.WithLabelValues("a").Inc()
+</code></pre>
+<p>This time, instead of a single counter, we will be creating a vector of counters where every sampled value will be automatically tagged with a label named layout. To increment or add value to this metric, we need to obtain the correct counter by invoking the variadic WithLabelValues method on the regCountVec variable. his method expects a string value for each defined dimension and returns the counter instance that corresponds to the provided label values. <br></p>
+<p><strong>Exposing metrics for scraping</strong> <br>
+After registering our metrics with Prometheus and instrumenting our code to update them where needed, the only additional thing that we need to do is expose the collected values over HTTP so that Prometheus can scrape them. <br> The promhttp subpackage from the Prometheus client package provides a convenience helper function called Handler that returns an http.Handler instance that encapsulates all the required logic for exporting collected metrics in the format expected by Prometheus. <br>
+The exported data will not only include the metrics that have been registered by the developer but it will also contain an extensive list of metrics that pertain to the Go runtime. Some examples of such metrics are as follows:</p>
+<ul>
+<li>The number of active goroutines</li>
+<li>Information about stack and heap allocation</li>
+<li>Performance statistics for the Go garbage collector</li>
+</ul>
+<pre><code class="language-bash">func main() {
+    // Create a prometheus counter to keep track of ping requests.
+    numPings := promauto.NewCounter(prometheus.CounterOpts{
+        Name: "pingapp_pings_total",
+        Help: "The total number of incoming ping requests",
+    })
+    http.Handle("/metrics", promhttp.Handler())
+    http.Handle("/ping", http.HandlerFunc(func(w http.ResponseWriter, _
+  *http.Request) {
+        numPings.Inc()
+        w.Write([]byte("pong!\n"))
+    }))
+    log.Fatal(http.ListenAndServe(":8080", nil))
+}
+</code></pre>
+<h3 id="visualizing-collected-metrics-using-grafana"><a class="header" href="#visualizing-collected-metrics-using-grafana">Visualizing collected metrics using Grafana</a></h3>
+<p>Grafana offers a convenient, end-to-end solution that can be used to retrieve metrics from a variety of different data sources and construct dashboards for visualizingu them. <br>
+In terms of supported visualization widgets, the standard Grafana installation supports the following widget types:</p>
+<ul>
+<li><strong>Graph</strong>: A flexible visualization component that can plot single- and multi-series line charts or bar charts. Furthermore, graph widgets can be configured to display multiple series in overlapping or stacked mode.</li>
+<li><strong>Logs panel</strong>: A list of log entries that are obtained by a compatible data source (for example, Elasticsearch) whose contents are correlated with the information displayed by another widget.</li>
+<li><strong>Singlestat</strong>: A component that condenses a series into a single value by applying an aggregation function (for example, min, max, avg, and so on). This component may optionally be configured to display a sparkline chart or to be rendered as a gauge.</li>
+<li><strong>Heatmap</strong>: A specialized component that renders the changes in a histogram’s set of values over time. As shown in the following screenshot, heatmaps comprise a set of vertical slices where each slice depicts the histogram values at a particular point in time. Contrary to a typical histogram plot, where bar heights represent the count of items in a particular bucket, heatmaps apply a color map to visualize the frequency of items within each vertical slice.</li>
+<li><strong>Table</strong>: A component that is best suited for rendering series in tabular format.</li>
+</ul>
+<h3 id="using-prometheus-as-an-end-to-end-solution-for-alerting"><a class="header" href="#using-prometheus-as-an-end-to-end-solution-for-alerting">Using Prometheus as an end-to-end solution for alerting</a></h3>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="learning-go---an-idiomatic-approach-to-real-world-go-programming"><a class="header" href="#learning-go---an-idiomatic-approach-to-real-world-go-programming">Learning Go - An Idiomatic Approach To Real World Go Programming</a></h1>
+<ul>
+<li><a href="#learning-go---an-idiomatic-approach-to-real-world-go-programming">Learning Go - An Idiomatic Approach To Real World Go Programming</a>
+<ul>
+<li><a href="#chapter-1---setting-your-go-environment">Chapter 1 - Setting Your Go Environment</a></li>
+<li><a href="#chapter-2---predeclared-types-and-declerations">Chapter 2 - Predeclared Types and Declerations</a>
+<ul>
+<li><a href="#literals">Literals</a></li>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#numeric-types">Numeric Types</a>
+<ul>
+<li><a href="#integer-types">Integer types</a></li>
+<li><a href="#integer-operators">Integer operators</a></li>
+<li><a href="#floating-point-types">Floating-point types</a></li>
+<li><a href="#complex-numbers">Complex numbers</a></li>
+</ul>
+</li>
+<li><a href="#strings-and-runes">Strings and Runes</a></li>
+<li><a href="#explicit-type-conversions">Explicit Type Conversions</a></li>
+<li><a href="#var-versus-">var Versus :=</a></li>
+<li><a href="#using-const">Using const</a></li>
+<li><a href="#unused-variables">Unused Variables</a></li>
+<li><a href="#naming">Naming</a></li>
+</ul>
+</li>
+<li><a href="#chapter-3---composite-types">Chapter 3 - Composite Types</a>
+<ul>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#slices">Slices</a>
+<ul>
+<li><a href="#len">len</a></li>
+<li><a href="#append">append</a></li>
+<li><a href="#capacity">capacity</a></li>
+<li><a href="#make">make</a></li>
+<li><a href="#emptying-an-slice">Emptying an slice</a></li>
+<li><a href="#slicing-slices">Slicing Slices</a></li>
+<li><a href="#copy">copy</a></li>
+</ul>
+</li>
+<li><a href="#maps">Maps</a>
+<ul>
+<li><a href="#when-should-you-use-a-map-and-when-should-you-use-a-slice">When should you use a map, and when should you use a slice?</a></li>
+<li><a href="#the-comma-ok-idiom">The comma ok Idiom</a></li>
+<li><a href="#deleting-from-maps">Deleting from Maps</a></li>
+<li><a href="#emptying-a-map">Emptying a Map</a></li>
+<li><a href="#using-maps-as-sets">Using Maps as Sets</a></li>
+</ul>
+</li>
+<li><a href="#structs">Structs</a>
+<ul>
+<li><a href="#anonymous-structs">Anonymous Structs</a></li>
+<li><a href="#comparing-and-converting-structs">Comparing and Converting Structs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-4---blocks-shadows-and-control-structures">Chapter 4 - Blocks, Shadows, and Control Structures</a>
+<ul>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#shadowing-variables">Shadowing Variables</a></li>
+<li><a href="#if">if</a></li>
+<li><a href="#for-four-ways">for, Four Ways</a>
+<ul>
+<li><a href="#the-complete-for-statement">The Complete for Statement</a></li>
+<li><a href="#the-condition-only-for-statement">The Condition-Only for Statement</a></li>
+<li><a href="#the-infinite-for-statement">The Infinite for Statement</a></li>
+<li><a href="#break-and-continue">break and continue</a></li>
+<li><a href="#the-for-range-statement">The for-range Statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapter-1---setting-your-go-environment"><a class="header" href="#chapter-1---setting-your-go-environment">Chapter 1 - Setting Your Go Environment</a></h2>
+<p>The first thing you need to do is create a directory to hold your program. Call it Proj1.  On the command line, enter the new directory. Inside the directory, run the go mod init command to mark this directory as a Go module.</p>
+<pre><code class="language-bash">mkdir Proj1
+cd Proj1
+go mod init hello_world
+</code></pre>
+<p>The go.mod file declares the name of the module, the minimum supported version of Go for the module, and any other modules that your module depends on. You can think of it as being similar to the requirements.txt file used by Python or the Gemfile used by Ruby. You shouldn’t edit the go.mod file directly. Instead, use the go get and go mod tidy  commands to manage changes to the file. The main package in a Go module contains the code that starts a Go program. All Go programs start from the main function in the main package. You declare this function with func main() and a left brace. Like Java, JavaScript, and C, Go uses braces to mark the start and end of code blocks.</p>
+<pre><code class="language-bash">go build
+</code></pre>
+<p>This creates an executable called as the name of the module (here is hello_world. remember <code>go mod init hello_world</code>). then run it like this:</p>
+<pre><code class="language-bash">./hello_world
+</code></pre>
+<p>The Go development tools include a command, go fmt, which automatically fixes the whitespace in your code to match the standard format. Using ./… tells a Go tool to apply the command to all the files in the current directory and all subdirectories.</p>
+<pre><code class="language-bash">go fmt ./...
+</code></pre>
+<p>In one class of bugs, the code is syntactically valid but quite likely incorrect. The go tool includes a command called go vet to detect these kinds of errors. One of the things that go vet detects is whether a value exists for every placeholder in a formatting template.</p>
+<pre><code class="language-bash">go vet ./... 
+</code></pre>
+<p><br> <br> <br></p>
+<h2 id="chapter-2---predeclared-types-and-declerations"><a class="header" href="#chapter-2---predeclared-types-and-declerations">Chapter 2 - Predeclared Types and Declerations</a></h2>
+<p>Let’s start by looking at the types that are built into Go and how to declare variables of those types.</p>
+<h3 id="literals"><a class="header" href="#literals">Literals</a></h3>
+<p>literals in Go are untyped.<br>
+An <strong>integer</strong> literal is a sequence of numbers. Integer literals are base 10 by default, but different prefixes are used to indicate other bases: 0b for binary (base 2), 0o for octal (base 8), or 0x for hexadecimal (base 16). You can use either upper- or lowercase letters for the prefix.
+To make it easier to read longer integer literals, Go allows you to put underscores in the middle of your literal. This allows you to, for example, group by thousands in base 10 (1_234). <br></p>
+<p>A <strong>floating-point</strong> literal has a decimal point to indicate the fractional portion of the value. They can also have an exponent specified with the letter e and a positive or negative number (such as 6.03e23). As integer literals, you can use underscores to format your floating-point literals. <br></p>
+<p>A <strong>rune</strong> literal represents a character and is surrounded by single quotes. Unlike many other languages, in Go single quotes and double quotes are not interchangeable. Rune literals can be written as single Unicode characters (‘a’), 8-bit octal numbers (‘\141’), 8-bit hexadecimal numbers (‘\x61’), 16-bit hexadecimal numbers (‘\u0061’), or 32-bit Unicode numbers (‘\U00000061’). There are also several backslash-escaped rune literals, with the most useful ones being newline (‘\n’), tab (‘\t’), single quote (‘\'’), and backslash (‘\\’).<br></p>
+<p>There are two ways to indicate <strong>string</strong> literals. Most of the time, you should use double quotes to create an interpreted string literal (e.g., type “Greetings and Salutations”). These contain zero or more rune literals. They are called “interpreted” because they interpret rune literals (both numeric and backslash escaped) into single characters. The only characters that cannot appear in an interpreted string literal are <strong>unescaped backslashes, unescaped newlines, and unescaped double quotes.</strong></p>
+<h3 id="booleans"><a class="header" href="#booleans">Booleans</a></h3>
+<p>The bool type represents Boolean variables. Variables of bool type can have one of two values: true or false. The zero value for a bool is false.</p>
+<h3 id="numeric-types"><a class="header" href="#numeric-types">Numeric Types</a></h3>
+<p>Go has a large number of numeric types: 12 types (and a few special names) that are grouped into three categories.</p>
+<h4 id="integer-types"><a class="header" href="#integer-types">Integer types</a></h4>
+<p>Go provides both signed and unsigned integers in a variety of sizes, from one to eight bytes. the zero value for all of the integer types is 0. <br> A <strong>byte</strong> is an alias for uint8; The second special name is <strong>int</strong>. On a 32-bit CPU, int is a 32-bit signed integer like an int32. On most 64-bit CPUs, int is a 64-bit signed integer, just like an int64. Because int isn’t consistent from platform to platform, it is a compile-time error to assign, compare, or perform mathematical operations between an int and an int32 or int64 without a type conversion. The third special name is <strong>uint</strong>. It follows the same rules as int, only it is unsigned (the values are always 0 or positive).</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Value Range</th></tr>
+</thead>
+<tbody>
+<tr><td>int8</td><td>–128 to 127</td></tr>
+<tr><td>int16</td><td>–32768 to 32767</td></tr>
+<tr><td>int32</td><td>–2147483648 to 2147483647</td></tr>
+<tr><td>int64</td><td>–9223372036854775808 to 9223372036854775807</td></tr>
+<tr><td>uint8</td><td>0 to 255</td></tr>
+<tr><td>uint16</td><td>0 to 65535</td></tr>
+<tr><td>uint32</td><td>0 to 4294967295</td></tr>
+<tr><td>uint64</td><td>0 to 18446744073709551615</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="integer-operators"><a class="header" href="#integer-operators">Integer operators</a></h4>
+<p>Go integers support the usual arithmetic operators: *<em>+, -, <em>, /, with %</em></em> for modulus. The result of an integer division is an <strong>integer</strong>; if you want to get a floating-point result, you need to use a type conversion to make your integers into floating-point numbers. You can combine any of the arithmetic operators with = to modify a variable: +=, -=, *=, /=, and %=. <br>
+You can compare integers with ==, !=, &gt;, &gt;=, &lt;, and &lt;=. <br>
+Go also has bit-manipulation operators for integers. You can bit shift left and right with &lt;&lt; and &gt;&gt;, or do bit masks with &amp; (bitwise AND), | (bitwise OR), ^ (bitwise XOR), and &amp;^ (bitwise AND NOT). As with the arithmetic operators, you can also combine all the bitwise operators with = to modify a variable: &amp;=, |=, ^=, &amp;^=, &lt;&lt;=, and &gt;&gt;=.</p>
+<h4 id="floating-point-types"><a class="header" href="#floating-point-types">Floating-point types</a></h4>
+<p>Go has two floating-point types. <strong>float32</strong> and <strong>float64</strong>. Like the integer types, the zero value for the floating-point types is 0. unless you have to be compatible with an existing format, use float64. Floating-point literals have a default type of float64, so always using float64 is the simplest option. <br>
+Just like other languages, Go floating-point numbers have a huge range, but they cannot store every value in that range; <strong>they store the nearest approximation.</strong> Because floats aren’t exact, they can be used only in situations where inexact values are acceptable or the rules of floating point are well understood. <br>
+You can use all the standard mathematical and comparison operators with floats, <strong>except %.</strong> <br>
+While Go lets you use == and != to compare floats, <strong>don’t do it</strong>. Because of the inexact nature of floats, two floating-point values might not be equal when you think they should be. Instead, define a maximum allowed variance and see if the difference between two floats is less than that (the epsilon technique).</p>
+<h4 id="complex-numbers"><a class="header" href="#complex-numbers">Complex numbers</a></h4>
+<p>Go defines two complex number types. <strong>complex64</strong> uses float32 values to represent the real and imaginary part, and <strong>complex128</strong> uses float64 values. Both are declared with the complex built-in function. All the standard floating-point arithmetic operators work on complex numbers. Just as with floats, you can use == or != to compare them, but they have the same precision limitations, so it’s best to use the epsilon technique. You can extract the real and imaginary portions of a complex number with the <strong>real</strong> and <strong>imag</strong> built-in functions, respectively. The math/cmplx package has additional functions for manipulating complex128 values.</p>
+<pre><code class="language-Go">var complexNum = complex(20.3, 10.2)
+</code></pre>
+<h3 id="strings-and-runes"><a class="header" href="#strings-and-runes">Strings and Runes</a></h3>
+<p>Like integers and floats, strings are compared for equality using ==, difference with !=, or ordering with &gt;, &gt;=, &lt;, or &lt;=. They are concatenated by using the + operator. Strings in Go are <strong>immutable</strong>; you can reassign the value of a string variable, but you cannot change the value of the string that is assigned to it (for example you can’t change the variable s value from hello to Hello by <code>s[0] = 'H'</code>).
+Go also has a type that represents a single code point. The <strong>rune</strong> type is an alias for the int32 type, just as byte is an alias for uint8. If you are referring to a character, use the rune type, not the int32 type. They might be the same to the compiler, but you want to use the type that clarifies the intent of your code.</p>
+<h3 id="explicit-type-conversions"><a class="header" href="#explicit-type-conversions">Explicit Type Conversions</a></h3>
+<p>Go doesn’t allow automatic type promotion between variables. You must use <strong>a type conversion</strong> when variable types do not match. Even different-sized integers and floats must be converted to the same type to interact. Also , <strong>no other type can be converted to a bool, implicitly or explicitly.</strong></p>
+<pre><code class="language-Go">var x int = 10
+var y float64 = 30.2
+var sum1 float64 = float64(x) + y # sum1 is now 40.2 
+</code></pre>
+<h3 id="var-versus-"><a class="header" href="#var-versus-">var Versus :=</a></h3>
+<p>The most verbose way to declare a variable in Go uses the var keyword, an explicit type, and an assignment. if you want to declare a variable and <strong>assign it the zero value</strong>, you can keep the type and drop the = on the righthand side.</p>
+<pre><code class="language-Go">var x int8 = 10
+var x, y int32
+var (
+    x int
+    y = 20
+    z int = 30
+    d, e = 40, "hello"
+    f, g string
+)
+</code></pre>
+<p>When you are within a function, you can use the <strong>:=</strong> operator to replace a var declaration that uses type inference. The := operator can do one trick that you cannot do with var: it allows you to assign values to existing variables too. As long as at least one new variable is on the lefthand side of the :=, any of the other variables can already exist. <br>
+Using := has one limitation. If you are declaring a variable at the package level, you must use var because := is not legal outside of functions.
+While it is legal to use a type conversion to specify the type of the value and use := to write <code>x := byte(20)</code>, it is idiomatic to write <code>var x byte = 20</code>.    <br></p>
+<p><strong>Package-level variables</strong> whose values change are a bad idea. When you have a variable outside of a function, it can be difficult to track the changes made to it, which makes it hard to understand how data is flowing through your program.</p>
+<h3 id="using-const"><a class="header" href="#using-const">Using const</a></h3>
+<p>Many languages have a way to declare a value as immutable. In Go, this is done with the const keyword. Be aware that const in Go is very limited. Constants in Go are a way to give names to literals.</p>
+<h3 id="unused-variables"><a class="header" href="#unused-variables">Unused Variables</a></h3>
+<p>Another Go requirement is that every declared local variable <strong>must be read</strong>. It is a compile-time error to declare a local variable and to not read its value. As long as a variable is read once, the compiler won’t complain, even if there are writes to the variable that are never read.</p>
+<h3 id="naming"><a class="header" href="#naming">Naming</a></h3>
+<p><strong>idiomatic Go uses camel case (names like indexCounter or numberTries) when an identifier name consists of multiple words.</strong> Also, don’t use unknown names or names start with numbers or underscore for regular variables you declare. An underscore by itself (_) is a special identifier name in Go (will discuss in future).  <br>
+The smaller the scope for a variable, the shorter the name that’s used for it. For example, it is common in Go to see single-letter variable names used with for loops.  <br>
+These short names serve two purposes. The first is that they eliminate repetitive typing, keeping your code shorter. Second, they serve as a check on how complicated your code is. If you find it hard to keep track of your short-named variables, your block of code is likely doing too much. <br> <br> <br></p>
+<h2 id="chapter-3---composite-types"><a class="header" href="#chapter-3---composite-types">Chapter 3 - Composite Types</a></h2>
+<h3 id="arrays"><a class="header" href="#arrays">Arrays</a></h3>
+<p>arrays are rarely used directly in Go. All elements in the array must be of the type that’s specified. because they come with an unusual limitation: Go considers the size of the array to be part of the type of the array. This makes an array that’s declared to be [3]int a different type from an array that’s declared to be [4]int.
+declaration styles:
+In the first, you specify the size of the array and the type of the elements in the array. If you have initial values for the array, you can also specify them with an array literal:</p>
+<pre><code class="language-Go">var x [3]int
+var x = [3]int{10, 20, 30}
+</code></pre>
+<p>When using an array literal to initialize an array, you can replace the number that specifies the number of elements in the array with …:</p>
+<pre><code class="language-Go">var x = [...]int{10, 20, 30}
+</code></pre>
+<p>Go has only one-dimensional arrays, but you can simulate multidimensional arrays. This declares x to be an array of length 2 whose type is an array of ints of length 3.</p>
+<pre><code class="language-Go">var x [2][3]int
+</code></pre>
+<p>An out-of-bounds read or write with a variable index compiles but fails at runtime with a panic.</p>
+<h3 id="slices"><a class="header" href="#slices">Slices</a></h3>
+<p>Most of the time, when you want a data structure that holds a sequence of values, a slice is what you should use. What makes slices so useful is that you can grow slices as needed. This is because the length of a slice is not part of its type.</p>
+<pre><code class="language-Go">var x []int
+var x = []int{10, 20, 30}
+</code></pre>
+<p>When no value is assigned, x is assigned the zero value for a slice, which is something you haven’t seen before: <strong>nil</strong>. In Go, nil is an identifier that represents the lack of a value for some types. Like the untyped numeric constants you saw in the previous chapter, nil has no type, so it can be assigned or compared against values of different types. A nil slice contains nothing.
+You can simulate multidimensional slices and make a slice of slices:</p>
+<pre><code class="language-Go">var x [][]int
+</code></pre>
+<p>A slice is the first type you’ve seen that isn’t comparable. The only thing you can compare a slice with using == is nil. The <strong>slices.Equal</strong> function takes in two slices and returns true if the slices are the same length, and all of the elements are equal.</p>
+<h4 id="len"><a class="header" href="#len">len</a></h4>
+<p>Go provides several built-in functions to work with slices. You’ve already seen the built-in len function when looking at arrays. It works for slices too. Passing a nil slice to len returns 0.</p>
+<h4 id="append"><a class="header" href="#append">append</a></h4>
+<p>The built-in append function is used to grow slices. One slice is appended onto another by using the … operator to expand the source slice into individual values</p>
+<pre><code class="language-Go">var x []int
+x = append(x, 10)
+x = append(x, 5, 6, 7)
+y := []int{20, 30, 40}
+x = append(x, y...)
+</code></pre>
+<h4 id="capacity"><a class="header" href="#capacity">capacity</a></h4>
+<p>Every slice also has a <strong>capacity</strong>, which is the number of consecutive memory locations reserved. This can be larger than the length. Each time you append to a slice, one or more values is added to the end of the slice. Each value added increases the length by one. When the length reaches the capacity, there’s no more room to put values. If you try to add additional values when the length equals the capacity, the append function uses the Go runtime to allocate a new backing array for the slice with a larger capacity (the capacity doubles). The values in the original backing array are copied to the new one, the new values are added to the end of the new backing array, and the slice is updated to refer to the new backing array. Finally, the updated slice is returned.</p>
+<pre><code class="language-Go">var x []int
+fmt.Println(x, len(x), cap(x))
+</code></pre>
+<h4 id="make"><a class="header" href="#make">make</a></h4>
+<p>the built-in make function allows you to specify the type, length, and, optionally, the capacity. Let’s take a look (In the last case, you have a non-nil slice with a length of 0 but a capacity of 10.):</p>
+<pre><code class="language-Go">x := make([]int, 5)
+x := make([]int, 5, 10)
+x := make([]int, 0, 10)
+</code></pre>
+<p>One common beginner mistake is to try to populate those initial elements using append:</p>
+<pre><code class="language-Go">x := make([]int, 5)
+x = append(x, 10)
+</code></pre>
+<p>The 10 is placed at the end of the slice, after the zero values in elements 0–4 because append always increases the length of a slice. The value of x is now [0 0 0 0 0 10].</p>
+<h4 id="emptying-an-slice"><a class="header" href="#emptying-an-slice">Emptying an slice</a></h4>
+<p>Go 1.21 added a <code>clear</code> function that takes in a slice and sets all of the slice’s elements to their zero value. **The length of the slice remains **unchanged.</p>
+<h4 id="slicing-slices"><a class="header" href="#slicing-slices">Slicing Slices</a></h4>
+<p>A slice expression creates a slice from a slice. It’s written inside brackets and consists of a starting offset and an ending offset, separated by a colon (:). The starting offset is the first position in the slice that is included in the new slice, and the ending offset is one past the last position to include. If you leave off the starting offset, 0 is assumed. Likewise, if you leave off the ending offset, the end of the slice is substituted.</p>
+<pre><code class="language-Go">x := []string{"a", "b", "c", "d"}
+y := x[:2]
+z := x[1:]
+d := x[1:3]
+e := x[:]
+</code></pre>
+<p>When you take a slice from a slice, you are not making a copy of the data. Instead, you now have two variables that are sharing memory. <strong>This means that changes to an element in a slice affect all slices that share that element.</strong></p>
+<h4 id="copy"><a class="header" href="#copy">copy</a></h4>
+<p>If you need to create a slice that’s independent of the original, use the built-in <code>copy</code> function.</p>
+<h3 id="maps"><a class="header" href="#maps">Maps</a></h3>
+<p>Like most languages, Go provides a built-in data type for situations where you want to associate one value to another. The zero value for a map is nil. A nil map has a length of 0. In the code below, nilMap is declared to be a map with string keys and int values:</p>
+<pre><code class="language-Go">var nilMap map[string]int
+</code></pre>
+<p><strong>NOTE</strong>: Attempting to read a nil map always returns the zero value for the map’s value type. However, attempting to write to a nil map variable causes a panic. <br>
+<strong>NOTE</strong>: The key for a map can be <strong>any comparable type</strong>. This means you cannot use a slice or a map as the key for a map.
+<strong>NOTE</strong>: you cannot have duplicate key in maps.</p>
+<p>You can use a := declaration to create a map variable by assigning it a map literal:</p>
+<pre><code class="language-Go">totalWins := map[string]int{}
+</code></pre>
+<p>In this case, you are using an empty map literal. This is not the same as a nil map. It has a length of 0, but you can read and write to a map assigned an empty map literal. <br></p>
+<p>A map literal’s body is written as the key, followed by a colon (:), then the value. A comma separates each key-value pair in the map, even on the last line. Here’s what a nonempty map literal looks like:</p>
+<pre><code class="language-Go">teams := map[string][]string {
+    "Orcas": []string{"Fred", "Ralph", "Bijou"},
+    "Lions": []string{"Sarah", "Peter", "Billie"},
+    "Kittens": []string{"Waldo", "Raul", "Ze"},
+}
+</code></pre>
+<p>If you know how many key-value pairs you intend to put in the map but don’t know the exact values, you can use make to create a map with a default size. Maps created with make still have a length of 0, and they can grow past the initially specified size:</p>
+<pre><code class="language-go">ages := make(map[int][]string, 10)
+</code></pre>
+<p>Maps are like slices in several ways:</p>
+<ul>
+<li>Maps automatically grow as you add key-value pairs to them.</li>
+<li>If you know how many key-value pairs you plan to insert into a map, you can use make to create a map with a specific initial size.</li>
+<li>Passing a map to the len function tells you the number of key-value pairs in a map.</li>
+<li>The zero value for a map is nil.</li>
+<li>Maps are not comparable. You can check if they are equal to nil, but you cannot check if two maps have identical keys and values using == or differ using !=.</li>
+</ul>
+<h4 id="when-should-you-use-a-map-and-when-should-you-use-a-slice"><a class="header" href="#when-should-you-use-a-map-and-when-should-you-use-a-slice">When should you use a map, and when should you use a slice?</a></h4>
+<p>You should use slices for lists of data when the data should be processed sequentially or the order of the elements is important.  <br>
+Maps are useful when you need to organize values using something other than an increasing integer value, such as a name. <br>
+You assign a value to a map key by putting the key within brackets and using = to specify the value, and you read the value assigned to a map key by putting the key within brackets. <br>
+<strong>Note</strong>: you cannot use := to assign a value to a map key.</p>
+<pre><code class="language-go">totalWins := map[string]int{}
+totalWins["Orcas"] = 1
+totalWins["Lions"] = 2
+fmt.Println(totalWins["Orcas"])   // Prints 1
+fmt.Println(totalWins["Kittens"]) // Prints 0
+fmt.Printf("%v\n", totalWins)     // Prints map[Lions:2 Orcas:1]
+totalWins["Kittens"]++
+totalWins["Lions"] = 3
+fmt.Printf("%v\n", totalWins) // Prints map[Kittens:1 Lions:3 Orcas:1]
+</code></pre>
+<p>Because a map returns its zero value by default, this works even when there’s no existing value associated with the key.</p>
+<h4 id="the-comma-ok-idiom"><a class="header" href="#the-comma-ok-idiom">The comma ok Idiom</a></h4>
+<p>Go provides the comma ok idiom to tell the difference between a key that’s associated with a zero value and a key that’s not in the map. If ok is false, the key is not present in the map.</p>
+<pre><code class="language-go">m := map[string]int{
+	"hello": 5,
+	"world": 0,
+}
+v, ok := m["hello"]
+fmt.Println(v, ok) // 5 true
+v, ok = m["world"]
+fmt.Println(v, ok) // 0 true
+v, ok = m["goodbye"]
+fmt.Println(v, ok) // 0 false
+</code></pre>
+<h4 id="deleting-from-maps"><a class="header" href="#deleting-from-maps">Deleting from Maps</a></h4>
+<p>Key-value pairs are removed from a map via the built-in delete function. The delete function takes a map and a key and then removes the key-value pair with the specified key. If the key isn’t present in the map or if the map is nil, <strong>nothing happens</strong>. The delete function doesn’t return a value.</p>
+<pre><code class="language-go">m := map[string]int{
+"hello": 5,
+"world": 10,
+}
+delete(m, "hello")
+</code></pre>
+<h4 id="emptying-a-map"><a class="header" href="#emptying-a-map">Emptying a Map</a></h4>
+<p>The clear function that you saw in “Emptying an slice” works on maps also. A cleared map has its length set to zero, unlike a cleared slice:</p>
+<pre><code class="language-go">m := map[string]int{
+    "hello": 5,
+    "world": 10,
+}
+fmt.Println(m, len(m)) // map[hello:5 world:10] 2
+clear(m)
+fmt.Println(m, len(m)) // map[] 0
+</code></pre>
+<h4 id="using-maps-as-sets"><a class="header" href="#using-maps-as-sets">Using Maps as Sets</a></h4>
+<p>Many languages include a set in their standard library. A set is a data type that ensures there is at most one of a value, but doesn’t guarantee that the values are in any particular order. <br>
+Go doesn’t include a set, but you can use a map to simulate some of its features. Use the key of the map for the type that you want to put into the set and use a bool for the value.</p>
+<pre><code class="language-go">intSet := map[int]bool{}
+vals := []int{5, 10, 2, 5, 8, 7, 3, 9, 1, 2, 10}
+for _, v := range vals {
+    intSet[v] = true
+}
+fmt.Println(len(vals), len(intSet)) // 11 8
+fmt.Println(intSet[5]) // true
+fmt.Println(intSet[500]) // false
+if intSet[100] {
+    fmt.Println("100 is in the set")
+}
+</code></pre>
+<h3 id="structs"><a class="header" href="#structs">Structs</a></h3>
+<p>When you have related data that you want to group together, you should define a struct. A struct type is defined with the keyword type, the name of the struct type, the keyword struct, and a pair of braces ({}). Within the braces, you list the fields in the struct. Also note that unlike in map literals, no commas separate the fields in a struct declaration.</p>
+<pre><code class="language-go">type person struct {
+    name string
+    age int 
+    pet string
+}
+</code></pre>
+<p>Once a struct type is declared, you can define variables of that type. A zero value struct has every field set to the field’s zero value. Unlike maps, there is no difference between assigning an empty struct literal and not assigning a value at all. Both initialize all fields in the struct to their zero values.</p>
+<pre><code class="language-go">var fred person
+bob := person{}
+</code></pre>
+<p>here are two styles for a nonempty struct literal. You cannot mix the two struct literal styles: either all fields are specified with names, or none of them are.</p>
+<pre><code class="language-go">julia := person{
+    "Julia",
+    40,
+    "cat",
+}
+beth := person{
+    age: 30,
+    Name: "Ann",
+}
+</code></pre>
+<p>In the second style, you use the names of the fields in the struct to specify the values. This style has some advantages. It allows you to specify the fields in any order, and you don’t need to provide a value for all fields. Any field not specified is set to its zero value.</p>
+<h4 id="anonymous-structs"><a class="header" href="#anonymous-structs">Anonymous Structs</a></h4>
+<p>You can also declare that a variable implements a struct type without first giving the struct type a name. This is called an anonymous struct. In this example, the types of the variables person and pet are anonymous structs:</p>
+<pre><code class="language-go">var person struct {
+    name string
+    age int
+    pet string
+}
+
+person.name = "bob"
+person.age = 50
+person.pet = "dog"
+
+pet := struct {
+    name string
+    kind string
+}{
+    name: "Fido",
+    kind: "dog",
+}
+</code></pre>
+<p>Anonymous structs are handy in two common situations. The first is when you translate external data into a struct or a struct into external data (like JSON or Protocol Buffers). This is called unmarshaling and marshaling data, respectively.</p>
+<h4 id="comparing-and-converting-structs"><a class="header" href="#comparing-and-converting-structs">Comparing and Converting Structs</a></h4>
+<p>Structs that are entirely composed of comparable types are comparable; those with slice or map fields are not.</p>
+<p>Go doesn’t allow comparisons between variables that represent structs of different types. Go does allow you to perform a type conversion from one struct type to another if the fields of both structs have the same names, order, and types.</p>
+<p><br><br><br></p>
+<h2 id="chapter-4---blocks-shadows-and-control-structures"><a class="header" href="#chapter-4---blocks-shadows-and-control-structures">Chapter 4 - Blocks, Shadows, and Control Structures</a></h2>
+<h3 id="blocks"><a class="header" href="#blocks">Blocks</a></h3>
+<p>Each place where a declaration occurs is called a block. Variables, constants, types, and functions declared outside of any functions are placed in the package block.</p>
+<h3 id="shadowing-variables"><a class="header" href="#shadowing-variables">Shadowing Variables</a></h3>
+<p>A shadowing variable is a variable that has the same name as a variable in a containing block. For as long as the shadowing variable exists, you cannot access a shadowed variable.</p>
+<h3 id="if"><a class="header" href="#if">if</a></h3>
+<pre><code class="language-go">n := rand.Intn(10)
+if n == 0 {
+    fmt.Println("That's too low")
+} else if n &gt; 5 {
+    fmt.Println("That's too big:", n)
+} else {
+    fmt.Println("That's a good number:", n)
+}
+</code></pre>
+<p>Scoping a variable to the if statement:</p>
+<pre><code class="language-go">if n := rand.Intn(10); n == 0 {
+    fmt.Println("That's too low")
+} else if n &gt; 5 {
+    fmt.Println("That's too big:", n)
+} else {
+f   mt.Println("That's a good number:", n)
+}
+</code></pre>
+<h3 id="for-four-ways"><a class="header" href="#for-four-ways">for, Four Ways</a></h3>
+<ul>
+<li>A complete, C-style for</li>
+<li>A condition-only for</li>
+<li>An infinite for</li>
+<li>for-range</li>
+</ul>
+<h4 id="the-complete-for-statement"><a class="header" href="#the-complete-for-statement">The Complete for Statement</a></h4>
+<pre><code class="language-go">for i := 0; i &lt; 10; i++ {
+    fmt.Println(i)
+}
+
+i := 0
+for ; i &lt; 10; i++ {
+    fmt.Println(i)
+}
+
+for i := 0; i &lt; 10; {
+    fmt.Println(i)
+    if i % 2 == 0 {
+        i++
+    } else {
+        i+=2
+    }
+}
+</code></pre>
+<h4 id="the-condition-only-for-statement"><a class="header" href="#the-condition-only-for-statement">The Condition-Only for Statement</a></h4>
+<pre><code class="language-go">i := 1
+for i &lt; 100 {
+    fmt.Println(i)
+    i = i * 2
+}
+</code></pre>
+<h4 id="the-infinite-for-statement"><a class="header" href="#the-infinite-for-statement">The Infinite for Statement</a></h4>
+<pre><code class="language-go">for {
+    fmt.Println("Hello")
+}
+</code></pre>
+<h4 id="break-and-continue"><a class="header" href="#break-and-continue">break and continue</a></h4>
+<p>How do you get out of an infinite for loop without using the keyboard or turning off your computer? That’s the job of the <strong>break</strong> statement. It exits the loop immediately, just like the break statement in other languages.</p>
+<p>If you want to iterate at least once, the cleanest way is to use an infinite for loop that ends with an if statement:</p>
+<pre><code class="language-go">for {
+// things to do in the loop
+    if !CONDITION {
+        break
+    }
+}   
+</code></pre>
+<p>Go also includes the <strong>continue</strong> keyword, which skips over the rest of the for loop’s body and proceeds directly to the next iteration.</p>
+<p>Go encourages short if statement bodies, as left-aligned as possible. Nested code is more difficult to follow. Using a continue statement makes it easier to understand what’s going on:</p>
+<pre><code class="language-go">for i := 1; i &lt;= 100; i++ {
+    if i%3 == 0 &amp;&amp; i%5 == 0 {
+        fmt.Println("FizzBuzz")
+        continue
+    }
+    if i%3 == 0 {
+        fmt.Println("Fizz")
+        continue
+    }
+    if i%5 == 0 {
+        fmt.Println("Buzz")
+        continue
+    }
+    fmt.Println(i)
+}
+</code></pre>
+<h4 id="the-for-range-statement"><a class="header" href="#the-for-range-statement">The for-range Statement</a></h4>
+<p>The fourth for statement format is for iterating over elements in some of Go’s built-in types. It is called a for-range loop and resembles the iterators found in other languages. The first variable is the position in the data structure being iterated, while the second is the value at that position.</p>
+<pre><code class="language-go">evenVals := []int{2, 4, 6, 8, 10, 12}
+for i, v := range evenVals {
+    fmt.Println(i, v)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="lpic-1"><a class="header" href="#lpic-1">LPIC 1</a></h1>
+<ul>
+<li><a href="#lpic-1">LPIC 1</a>
+<ul>
+<li><a href="#useful-tips">useful tips</a></li>
+<li><a href="#vim-editor">vim Editor</a>
+<ul>
+<li><a href="#command-mode">Command Mode</a></li>
+<li><a href="#insert-mode">Insert Mode</a></li>
+<li><a href="#ex-mode">Ex Mode</a></li>
+<li><a href="#vim-tips">vim TIPS</a></li>
+</ul>
+</li>
+<li><a href="#sed-tips">Sed Tips</a></li>
+<li><a href="#101-system-architecture">101 System Architecture</a>
+<ul>
+<li><a href="#1011-determine-and-configure-hardware-settings">101.1 Determine and configure hardware settings</a></li>
+<li><a href="#1012-boot-the-system">101.2 Boot the System</a></li>
+<li><a href="#1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system">101.3 Change runlevels/boot targets and shutdown or reboot system</a></li>
+</ul>
+</li>
+<li><a href="#102-linux-installation-and-package-management">102 Linux Installation and Package Management</a>
+<ul>
+<li><a href="#1021-design-hard-disk-layout">102.1 Design hard disk layout</a></li>
+<li><a href="#1022-install-a-boot-manager">102.2 Install a boot manager</a></li>
+<li><a href="#1023-manage-shared-libraries">102.3 Manage shared libraries</a></li>
+<li><a href="#1024-use-debian-package-management">102.4 Use Debian package management</a></li>
+<li><a href="#1025-use-rpm-and-yum-package-management">102.5 Use RPM and YUM package management</a></li>
+<li><a href="#1026-linux-as-a-virtualization-guest">102.6 Linux as a virtualization guest</a></li>
+</ul>
+</li>
+<li><a href="#103-gnu-and-unix-commands">103 GNU and Unix Commands</a></li>
+<li><a href="#104-devices-linux-filesystems-filesystem-hierarchy-standard">104 Devices, Linux Filesystems, Filesystem Hierarchy Standard</a>
+<ul>
+<li><a href="#1041-create-partitions-and-filesystems">104.1 Create partitions and filesystems</a></li>
+<li><a href="#1042-maintain-the-integrity-of-filesystems">104.2 Maintain the integrity of filesystems</a></li>
+<li><a href="#1043-control-mounting-and-unmounting-of-filesystems">104.3 Control mounting and unmounting of filesystems</a></li>
+<li><a href="#1034-removed">103.4 Removed</a></li>
+<li><a href="#1045-manage-file-permissions-and-ownership">104.5 Manage file permissions and ownership</a></li>
+<li><a href="#1046-create-and-change-hard-and-symbolic-links">104.6 Create and change hard and symbolic links</a></li>
+<li><a href="#1047-find-system-files-and-place-files-in-the-correct-location">104.7 Find system files and place files in the correct location</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-tips"><a class="header" href="#useful-tips">useful tips</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Terminal Shortcuts</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>CTRL + C</td><td>Kill command</td></tr>
+<tr><td>CTRL + L</td><td>Clear screen</td></tr>
+<tr><td>CTRL + A</td><td>Start of line</td></tr>
+<tr><td>CTRL + E</td><td>End of line</td></tr>
+<tr><td>!!</td><td>Previous command</td></tr>
+<tr><td>!git</td><td>Last command starting with git</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command / Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/tmp</code></td><td>Temporary files</td><td></td></tr>
+<tr><td><code>/etc</code></td><td>System configs</td><td></td></tr>
+<tr><td><code>pwd</code></td><td>shows current directory</td><td></td></tr>
+<tr><td><code>cd -</code></td><td>jumps to previous directory.</td><td></td></tr>
+<tr><td><code>mkdir myproject</code></td><td>create folder</td><td></td></tr>
+<tr><td><code>mkdir -p project/new/v1</code></td><td>create nested folder</td><td></td></tr>
+<tr><td><code>touch main.go</code></td><td>create file</td><td></td></tr>
+<tr><td><code>cat file.txt</code> OR <code>batcat file.txt</code></td><td>view file</td><td></td></tr>
+<tr><td><code>vim file.txt </code></td><td>edit file</td><td>i → insert mode <br> ESC → command mode <br> :wq → save and quit <br> :q! → quit without save</td></tr>
+<tr><td><code>xdg-open file.pdf</code></td><td>open PDF files</td><td></td></tr>
+<tr><td><code>rm file.txt</code></td><td>remove file</td><td></td></tr>
+<tr><td><code>rm -r project</code></td><td>delete folder recursively</td><td></td></tr>
+<tr><td><code>rm -rf project</code></td><td>force delete</td><td></td></tr>
+<tr><td><code>tmux</code></td><td>run tmux</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<h2 id="vim-editor"><a class="header" href="#vim-editor">vim Editor</a></h2>
+<p>editing files with vim can make you much much faster.<br></p>
+<h3 id="command-mode"><a class="header" href="#command-mode">Command Mode</a></h3>
+<p>This is the mode vim uses when you first enter the buffer area; it is sometimes called normal mode. Here you enter keystrokes to enact commands. For example, pressing the J key will move your cursor down one line. Command is the best mode to use for quickly moving around the buffer area.<br></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>h</code></td><td>Move cursor left one character.</td><td></td></tr>
+<tr><td><code>l</code></td><td>Move cursor right one character.</td><td></td></tr>
+<tr><td><code>j</code></td><td>Move cursor down one line (the next line in the text).</td><td></td></tr>
+<tr><td><code>k</code></td><td>Move cursor up one line (the previous line in the text).</td><td></td></tr>
+<tr><td><code>w</code></td><td>Move cursor forward one word to front of next word.</td><td></td></tr>
+<tr><td><code>e</code></td><td>Move cursor to end of current word.</td><td></td></tr>
+<tr><td><code>b</code></td><td>Move cursor backward one word.</td><td></td></tr>
+<tr><td><code>^</code></td><td>Move cursor to beginning of line.</td><td></td></tr>
+<tr><td><code>$</code></td><td>Move cursor to end of line.</td><td></td></tr>
+<tr><td><code>gg</code></td><td>Move cursor to the file’s first line.</td><td></td></tr>
+<tr><td><code>G</code></td><td>Move cursor to the file’s last line.</td><td></td></tr>
+<tr><td><code>ctrl + B</code></td><td>Scroll up almost one full screen.</td><td></td></tr>
+<tr><td><code>ctrl + F</code></td><td>Scroll down almost one full screen.</td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td><code>a</code></td><td>Insert text after cursor.</td><td></td></tr>
+<tr><td><code>A</code></td><td>Insert text at end of text line.</td><td></td></tr>
+<tr><td><code>dd</code></td><td>Delete current line.</td><td></td></tr>
+<tr><td><code>dw</code></td><td>Delete current word.</td><td></td></tr>
+<tr><td><code>o</code></td><td>Open a new text line below cursor, and move to insert mode.</td><td></td></tr>
+<tr><td><code>p</code></td><td>Paste copied text after cursor.</td><td></td></tr>
+<tr><td><code>yw</code></td><td>Yank (copy) current word.</td><td></td></tr>
+<tr><td><code>yy</code></td><td>Yank (copy) current line.</td><td></td></tr>
+<tr><td><code>x</code></td><td>to delete the character under the cursor.</td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<h3 id="insert-mode"><a class="header" href="#insert-mode">Insert Mode</a></h3>
+<p>Insert Mode Insert mode is also called edit or entry mode. This is the mode where you can perform simple editing. There are not many commands or special mode keystrokes. You enter this mode from command mode by pressing the I key. At this point, the message –Insert– will display in the message area. You leave this mode by pressing the Esc key.</p>
+<br>
+<h3 id="ex-mode"><a class="header" href="#ex-mode">Ex Mode</a></h3>
+<p>This mode is sometimes also called colon commands because every command entered here is preceded with a colon (:). For example, to leave the vim editor and not save any changes you type :q and press the Enter key. <br></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>:wq</code></td><td>Write(Save) and Quit</td><td></td></tr>
+<tr><td><code>:q</code></td><td>Quit without Write(Save)</td><td></td></tr>
+<tr><td><code>:w</code></td><td>Write buffer to file and stay in editor.</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<h3 id="vim-tips"><a class="header" href="#vim-tips">vim TIPS</a></h3>
+<ul>
+<li><strong>Search in vim editor</strong>: If you have a large text file and need to search for something, there are keystrokes in command mode to do that as well. Type ? to start a forward search or / to start a backward search. The keystroke will display at the vim editor’s bottom and allow you to type the text to find. If the first item found is not what you need, press Enter, and then keep pressing the n key to move to the next matching text pattern.</li>
+</ul>
+<br>
+<br>
+<h2 id="sed-tips"><a class="header" href="#sed-tips">Sed Tips</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Example</th><th>Output of the Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>s</code></td><td>subtitute word</td><td><code>echo "I love cake and more cake." | sed 's/cake/donuts/'</code></td><td>I love donuts and more cake.</td></tr>
+<tr><td><code>g</code></td><td>global</td><td><code>echo "I love cake and more cake." | sed 's/cake/donuts/g'</code></td><td>I love donuts and more donuts.</td></tr>
+<tr><td><code>s</code></td><td>delete line</td><td><code>sed '/Christine/d' cake.txt</code></td><td>removes the line containing the word Christine.</td></tr>
+<tr><td><code>'ADDRESScNEWTEXT'</code></td><td>replace a line with a new text</td><td><code>sed '4cI am a new line' cake.txt</code></td><td>this would replace the fourth line with “I am a new line”</td></tr>
+<tr><td><code>-e option</code> and <code>;</code></td><td>multiple scripts</td><td><code>sed -e 's/cake/donuts/ ; s/like/love/' cake.txt</code></td><td>replaces the cake with donuuts and the like with love</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="101-system-architecture"><a class="header" href="#101-system-architecture">101 System Architecture</a></h2>
+<h3 id="1011-determine-and-configure-hardware-settings"><a class="header" href="#1011-determine-and-configure-hardware-settings">101.1 Determine and configure hardware settings</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/dev</code></td><td>Devices</td><td>After the Linux kernel communicates with a device on an interface, it must be able to transfer data to and from the device. This is done using device files. Device files are files that the Linux kernel creates in the special /dev directory to interface with hardware devices. <br> As you add hardware devices such as USB drives, network cards, or hard drives to your system, Linux creates a fi le in the /dev directory representing that hardware device.</td></tr>
+<tr><td><code>/proc</code></td><td>Kernel/process info</td><td>The /proc directory is one of the most important tools you can use when troubleshooting hardware issues on a Linux system. It’s not a physical directory on the fi lesystem, but instead a virtual directory that the kernel dynamically populates to provide access to information about the system hardware settings and status.</td></tr>
+<tr><td><code>/sys</code></td><td>similer to proc</td><td>The /sys directory is another virtual directory, similar to the /proc directory. It is created by the kernel in the sysfs filesystem format, and it provides additional information about hardware devices that any user on the system can access.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>lsblk</code></td><td>The lsblk command displays information about the block devices installed on the Linux system. By default, the lsblk command displays all block devices.</td></tr>
+<tr><td><code>lspci</code></td><td>The lspci command allows you to view the currently installed and recognized PCI and PCIe cards on the Linux system.</td></tr>
+<tr><td><code>lsusb</code></td><td>You can view the basic information about USB devices connected to your Linux system by using the lsusb command.</td></tr>
+<tr><td><code>lsmod</code></td><td>lists all modules installed on your system. <br> The Linux kernel needs device drivers to communicate with the hardware devices installed on your Linux system. However, compiling device drivers for all known hardware devices into the kernel would make for an extremely large kernel binary file. To avoid that situation, the Linux kernel uses kernel modules, which are individual hardware driver fi les that can be linked into the kernel at runtime</td></tr>
+<tr><td><code>insmod</code></td><td>The insmod command is the most basic install command, requiring you to specify the exact module file to load. As you’ve seen, the kernel module files are stored in the /lib/modules directory structure, with each kernel version having its own directory. <br> Each file with the .ko extension is a separate module file for each device driver that you can install. To install the module, specify the filename on the insmod command line.</td></tr>
+<tr><td><code>modprobe</code></td><td>The downside to using the insmod program is that you may run into modules that depend on other modules.The modprobe command helps resolve module dependencies for you. it also understands module names and there is no need for exact nested path to the module. I has many command option. Check it out (<code>modprobe --help</code>)</td></tr>
+<tr><td><code>rmmode</code></td><td>removes a module by specifying the module name.</td></tr>
+<tr><td><code>modprobe -r</code></td><td>the modprobe command can also remove modules for us, so you don’t need to memorize another command Instead, just use the –r option with the modprobe command</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1012-boot-the-system"><a class="header" href="#1012-boot-the-system">101.2 Boot the System</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system"><a class="header" href="#1013-change-runlevelsboot-targets-and-shutdown-or-reboot-system">101.3 Change runlevels/boot targets and shutdown or reboot system</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="102-linux-installation-and-package-management"><a class="header" href="#102-linux-installation-and-package-management">102 Linux Installation and Package Management</a></h2>
+<h3 id="1021-design-hard-disk-layout"><a class="header" href="#1021-design-hard-disk-layout">102.1 Design hard disk layout</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1022-install-a-boot-manager"><a class="header" href="#1022-install-a-boot-manager">102.2 Install a boot manager</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1023-manage-shared-libraries"><a class="header" href="#1023-manage-shared-libraries">102.3 Manage shared libraries</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1024-use-debian-package-management"><a class="header" href="#1024-use-debian-package-management">102.4 Use Debian package management</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1025-use-rpm-and-yum-package-management"><a class="header" href="#1025-use-rpm-and-yum-package-management">102.5 Use RPM and YUM package management</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1026-linux-as-a-virtualization-guest"><a class="header" href="#1026-linux-as-a-virtualization-guest">102.6 Linux as a virtualization guest</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="103-gnu-and-unix-commands"><a class="header" href="#103-gnu-and-unix-commands">103 GNU and Unix Commands</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Special characters</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>*?[]'"\$;&amp;()|^&lt;&gt; </code></td><td>these are the special characters in Linux shell.</td><td>if you want to use them exactly as they are you should add a \ before them. SPACE is also a special character. Also there is possible to put the word containing a special character or the whole sentence inside two double quotation.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td><code>echo [OPTION]… [STRING]…</code></td><td>In the echo command’s syntax structure, [OPTION] means there are various options (also called switches) you can add to modify the display. The [STRING] argument allows you to designate a string to display.</td><td>The brackets indicate that switches are optional.</td></tr>
+<tr><td><code>type NAME_OF_COMMAND</code></td><td>this command shows that the command written in front of it is a builtin shell command or it is a /usr/bin/NAME_OF_COMMAND</td><td></td></tr>
+<tr><td><code>cd PATH</code></td><td>jumps to the directory that we need.</td><td></td></tr>
+<tr><td><code>uname [OPTION]...</code></td><td>give data about the system.</td><td>it has many options (use –help to see the options). most practical one is -a which shows the whole information about the system.</td></tr>
+<tr><td><code>man NAME_OF_COMMAND</code></td><td>man is the system’s manual pager</td><td>you can see what that command does and different options and how to use it…x</td></tr>
+<tr><td><code>VARIABLE_NAME="VALUE"</code></td><td>we can set variables with a = and then the value for it</td><td>example: <code>PS1="INSERT NEW PROMPT: "</code> then we can see what each variable value is using the echo command.</td></tr>
+<tr><td><code>history</code></td><td>keeps track of the history of the prompts we have recently used in command shell. It assignes a number to each of these prompts we used.</td><td>using the number assigned to each word, we can reexecute them like this: <code>!954</code></td></tr>
+<tr><td>‍‍‍‍<code>which</code></td><td></td><td></td></tr>
+<tr><td><code>cat NAME_OF_FILE</code> OR <code>batcat NAME_OF_FILE</code></td><td>view file.</td><td></td></tr>
+<tr><td><code>paste FILE_1 FILE_2</code></td><td>view two files side by side.</td><td></td></tr>
+<tr><td><code>od [OPTION]... FILE</code></td><td>The od utility can help you to display a file’s contents in octal (base 8), hexadecimal (base 16), decimal (base 10), and ASCII.</td><td>By default od displays a fi le’s text in octal.</td></tr>
+<tr><td><code>split [OPTION]... [INPUT [PREFIX]]</code></td><td>This utility allows you to divide a large file into smaller chunks, which is handy when you want to quickly create a smaller text fi le for testing purposes.</td><td>You can divide up a file using size, bytes, lines, and so on. The original file ( INPUT) remains unchanged, and additional new files are created, depending on the command options chosen.</td></tr>
+<tr><td><code>sort [OPTION]... [FILE]...</code></td><td>it sorts the file alphabetically but doesn’t change the input file</td><td>use -n option for sorting files containing numbers.</td></tr>
+<tr><td><code>nl [OPTION]... [FILE]...</code></td><td>This little command allows you to number lines in a text file in powerful ways.</td><td>If you do not use any options with the nl utility, it will number only non-blank text lines. If you would like all file’s lines to be numbered, including blank ones, then you’ll need to employ the -ba switch.</td></tr>
+<tr><td><code>more [OPTION] FILE [...]</code></td><td>One way to read through a large text fi le is by using a pager. a pager option is more.</td><td>With more, you can move forward through a text file by pressing the spacebar (one page down) or the Enter key (one line down). However, you cannot move backward through a file.</td></tr>
+<tr><td><code>more [OPTION] FILE [...]</code></td><td>A more flexible pager is the less utility.</td><td>you can move backward and it has more options than more command.</td></tr>
+<tr><td><code>head [OPTION]... [FILE]...</code></td><td>By default, the head command displays the fi rst 10 lines of a text file.</td><td></td></tr>
+<tr><td><code>tail [OPTION]... [FILE]...</code></td><td>By default, the tail command will show a file’s last 10 text lines.</td><td></td></tr>
+<tr><td><code>wc [OPTION]... [FILE]...</code></td><td>When you issue the wc command with no options and pass it a filename, the utility will display the file’s number of lines, words, and bytes in that order.</td><td></td></tr>
+<tr><td><code>md5sum FILE</code></td><td>The md5sum utility is based on the MD5 message-digest algorithm. it is  excellent for checking a file’s integrity.</td><td></td></tr>
+<tr><td><code>ls -1 /usr/bin/sha???sum</code></td><td>shows several utilities thatn implement The Secure Hash Algorithms (SHA) on Linux. These utilities are used in a similar manner to the md5sum command.</td><td>for example, <code>sha256sum FILE</code></td></tr>
+<tr><td><code>grep</code></td><td>A wonderful tool for sifting text</td><td></td></tr>
+<tr><td><code>tee</code></td><td>In cases where you want to keep a copy of the command pipeline’s output as well as view it, the tee command will help. The tee command allows you to both save the output to a file and display it to STDOUT.</td><td>Similar to a tee pipe fitting in plumbing, where the water flow is sent in multiple directions.</td></tr>
+<tr><td><code>sed [OPTIONS] [SCRIPT]… [FILENAME]</code></td><td>The command to invoke the stream editor is sed.</td><td>more describtion below.</td></tr>
+<tr><td><code>$()</code></td><td>to run a command on mutiple files</td><td>for example, <code>rm -i $(ls EmptyFile?.txt)</code> removes all files that have EmptyFile as the name followed by a single character. asks permission before each deletion because of the -i option.</td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<ul>
+<li><strong>echo TIP</strong>: if you put $ behind a variable you can see the value of that. for example echo $SHELL shows what shell we have in our Linux distro. <br></li>
+</ul>
+<pre><code class="language-bash">echo $SHELL
+</code></pre>
+<ul>
+<li>
+<p><strong>cd TIP</strong>: you can have both absolute path (/home/mahan/Books) or a relative path (for example when we are in /usr/bin then we use cd ip it goes to /usr/bin/ip) <br> <br> <br></p>
+</li>
+<li>
+<p><strong>man TIP</strong>: using / gives us the opportunity to search in the manual. clicking on the n goes to the found in the manual. if you witre a number before a NAME_OF_COMMAND, then you can see that command in another chanter of the manual. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Basic regular expressions (BREs)</strong>: include characters, such as a dot followed by an asterisk (.*) to represent multiple characters and a single dot (.) to represent one character. They also may use brackets to represent multiple characters, such as [a,e,i,o,u] (you do not have to include the commas) or a range of characters, such as [A-z]. When brackets are employed, it is called a bracket expression. To find text file records that begin with particular characters, you can precede them with a caret (^) symbol. For finding text file records where particular characters are at the record’s end, append them with a dollar sign ($) symbol. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Extended regular expressions (EREs)</strong>: allow more complex patterns. For example, a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. Use the -E option to indicate the pattern is an extended regular expression. <br> a vertical bar symbol (|) allows you to specify two possible words or character sets to match. You can also employ parentheses to designate additional subexpressions. <br> Use the <strong>-E option</strong> to indicate the pattern is an extended regular expression. If you did not employ the -E option, unpredictable results would occur. for example, <code>grep -E "^root|^dbus" /etc/passwd</code> command greps those expressions starting with root OR dbus in /etc/passwd. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDOUT</strong> and <strong>&gt;</strong> and <strong>&gt;&gt;</strong>: The file descriptor that identifies output from a command or script file is 1. It is also identified by the abbreviation STDOUT, which describes standard output. By default, STDOUT directs output to your current terminal. Your process’s current terminal is represented by the /dev/tty file. <br> A redirection operator allows you to change the default behavior of where input and output are sent. For STDOUT, you redirect the output using the &gt; redirection operator. <br> For example, <code>grep nologin$ /etc/passwd &gt; NologinAccts.txt</code> command puts the output of the grep to a file named NologinAccts.txt. <br>To append data to a preexisting file, you need to use a slightly different redirection operator. The &gt;&gt; operator will append data to a preexisting file. If the file does not exist, it is created, and the outputted data is added to it. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDERR</strong> and <strong>2&gt;</strong> and <strong>2&gt;&gt;</strong>: Another handy item to redirect is standard error. The fi le descriptor that identifies a command or script file error is 2. It is also identified by the abbreviation STDERR, which describes standard error. STDERR, like STDOUT, is by default sent to your terminal (/dev/tty).
+The basic redirection operator to send STDERR to a file is the 2&gt; operator. If you need to append the file, use the 2&gt;&gt; operator. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>/dev/null</strong>: If you don’t care to keep a copy of the error messages, you can always throw them away. This is done by redirecting STDERR to the /dev/null file. The /dev/null file is sometimes called the black hole. This name comes from the fact that anything you put into it, you cannot retrieve. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>STDIN</strong> and <strong>&lt;</strong> and <strong>tr</strong>: Standard input, by default, comes into your Linux system via the keyboard and/or other input devices. The file descriptor that identifies an input into a command or script file is 0. It is also identified by the abbreviation STDIN, which describes standard input. <br> As with STDOUT and STDERR, you can redirect STDIN. The basic redirection operator is the &lt; symbol. The tr command is one of the few utilities that require you to redirect standard input. For example: <br></p>
+</li>
+</ul>
+<pre><code class="language-bash">$ cat Grades.txt
+89 76 100 92 68 84 73
+$
+$ tr " " "," &lt; Grades.txt
+89,76,100,92,68,84,73
+$
+</code></pre>
+<ul>
+<li>
+<p><strong>&amp;&gt;</strong> and <strong>&amp;&gt;&gt;</strong>: &amp;&gt; Redirect STDOUT and STDERR to specified file. If file exists, overwrite it. If it does not exist, create it. &amp;&gt;&gt; Redirect STDOUT and STDERR to specified file. If file exists, append to it. If it does not exist, create it. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>Piping Data</strong>:The pipe is a simple redirection operator represented by the ASCII character 124 (|), which is called the vertical bar, vertical slash, or vertical line. <code>COMMAND1 | COMMAND2 [| COMMANDN]…</code> <br> The syntax for pipe redirection shows that the first command, COMMAND1, is executed. Its STDOUT is redirected as STDIN into the second command, COMMAND2. And so on. <br> <br> <br></p>
+</li>
+<li>
+<p><strong>sed</strong>: A stream editor modifies text that is passed to it via a file or output from a pipeline. The command to invoke the stream editor is sed. The sed utility edits a stream of text data based on a set of commands you supply ahead of time. <br> The process the editor goes through is as follows:</p>
+<ol>
+<li>Reads one text line at a time from the input stream</li>
+<li>Matches that text with the supplied editor commands</li>
+<li>Modifies the text as specified in the commands</li>
+<li>Displays the modified text</li>
+<li>After the sed editor matches all the specified commands against a text line, it reads the next text line and repeats the editorial process.</li>
+<li>Once sed reaches the end of the text lines, it stops.</li>
+</ol>
+<p>The stream editor only displays the modified text to STDOUT. You could save the modified text to another fi le name via a STDOUT redirection operator, if desired.</p>
+</li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="104-devices-linux-filesystems-filesystem-hierarchy-standard"><a class="header" href="#104-devices-linux-filesystems-filesystem-hierarchy-standard">104 Devices, Linux Filesystems, Filesystem Hierarchy Standard</a></h2>
+<h3 id="1041-create-partitions-and-filesystems"><a class="header" href="#1041-create-partitions-and-filesystems">104.1 Create partitions and filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1042-maintain-the-integrity-of-filesystems"><a class="header" href="#1042-maintain-the-integrity-of-filesystems">104.2 Maintain the integrity of filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1043-control-mounting-and-unmounting-of-filesystems"><a class="header" href="#1043-control-mounting-and-unmounting-of-filesystems">104.3 Control mounting and unmounting of filesystems</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1034-removed"><a class="header" href="#1034-removed">103.4 Removed</a></h3>
+<h3 id="1045-manage-file-permissions-and-ownership"><a class="header" href="#1045-manage-file-permissions-and-ownership">104.5 Manage file permissions and ownership</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1046-create-and-change-hard-and-symbolic-links"><a class="header" href="#1046-create-and-change-hard-and-symbolic-links">104.6 Create and change hard and symbolic links</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<h3 id="1047-find-system-files-and-place-files-in-the-correct-location"><a class="header" href="#1047-find-system-files-and-place-files-in-the-correct-location">104.7 Find system files and place files in the correct location</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Path</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Description</th><th>Note</th></tr>
+</thead>
+<tbody>
+<tr><td>``</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="python-programming-an-introduction-to-computer-science"><a class="header" href="#python-programming-an-introduction-to-computer-science">Python Programming: An Introduction To Computer Science</a></h1>
+<ul>
+<li><a href="#python-programming-an-introduction-to-computer-science">Python Programming: An Introduction To Computer Science</a>
+<ul>
+<li><a href="#chapter-1---computers-and-programs">Chapter 1 - Computers and Programs</a>
+<ul>
+<li><a href="#11-the-universal-machine">1.1 The Universal Machine</a></li>
+<li><a href="#12-program-power">1.2 Program Power</a></li>
+<li><a href="#13-what-is-computer-science">1.3 What Is Computer Science?</a></li>
+<li><a href="#14-computer-hardware">1.4 Computer Hardware</a></li>
+<li><a href="#15-programing-language">1.5 Programing Language</a></li>
+<li><a href="#16-the-magic-of-python">1.6 The Magic of Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapter-1---computers-and-programs"><a class="header" href="#chapter-1---computers-and-programs">Chapter 1 - Computers and Programs</a></h2>
+<h3 id="11-the-universal-machine"><a class="header" href="#11-the-universal-machine">1.1 The Universal Machine</a></h3>
+<p>A modern computer can be defined as “a machine that stores and <strong>manipu­lates information</strong> under the control of <strong>a changeable program</strong>.”</p>
+<p>A <strong>computer program</strong> is a detailed, step-by-step set of instructions telling a computer exactly what to do. If we change the program, then the computer performs a different sequence of actions, and hence, performs a different task (this is the difference between a computer and a simple calculator).</p>
+<p>One of the remarkable discoveries of computer science is the realization that all of these different com­puters have the same power; with suitable programming, each computer can basically do all the things that any other computer can do. In this sense, the PC that you might have sitting on your desk is really <strong>a universal machine</strong>.</p>
+<br>
+<h3 id="12-program-power"><a class="header" href="#12-program-power">1.2 Program Power</a></h3>
+<p>Software (pro­grams) rules the hardware (the physical machine). Without software, computers would just be expensive paperweights. Good programming re­quires an ability to see the big picture while paying attention to minute detail.</p>
+<h3 id="13-what-is-computer-science"><a class="header" href="#13-what-is-computer-science">1.3 What Is Computer Science?</a></h3>
+<p>The com­puter is an important tool in computer science, but it is not itself the object of study.</p>
+<p>The three main techniques of investigation to answer “What can be computed?” are <strong>design, analysis, and experimentation.</strong></p>
+<p><strong>Algorithm:</strong> One way to demonstrate that a particular problem can be solved is to actu­ally design a solution. That is, we develop a step-by-step process for achieving the desired result. Computer scientists call this an <strong>algorithm</strong>.</p>
+<p><strong>analysis:</strong> failing to find an algorithm does not mean that a problem is unsolvable. It may mean that I’m just not smart enough, or I haven’t hit upon the right idea yet. This is where <strong>analysis</strong> comes in.</p>
+<ul>
+<li>Analysis is the process of examining algorithms and problems mathemati­cally.</li>
+</ul>
+<p><strong>Experimentation:</strong> Some problems are too complex or ill-defined to lend themselves to anal­ysis. In such cases, computer scientists rely on experimentation; they actually implement systems and then study the resulting behavior.</p>
+<h3 id="14-computer-hardware"><a class="header" href="#14-computer-hardware">1.4 Computer Hardware</a></h3>
+<ul>
+<li>The central processing unit (CPU) is the “brain” of the machine. This is where all the basic operations of the computer are carried out.</li>
+<li>The memory stores programs and data. The CPU can directly access only information that is stored in main memory (called RAM for Random Access Mem­ory). Main memory is fast, but it is also volatile. That is, when the power is turned off, the information in the memory is lost. Thus, there must also be some secondary memory that provides more permanent storage.</li>
+<li>the principal secondary memory is typically an internal hard disk drive (HOD) or a solid state drive (SSD).
+<ul>
+<li>An HDD stores information as magnetic patterns on a spinning disk, while an SSD employs elec­ tronic circuits known as flash memory.</li>
+<li>Most computers also support removeable media for secondary memory such as USB memory “sticks” (also a form of flash memory) and DVDs (digital versatile discs), which store information as optical patterns that are read and written by a laser.</li>
+</ul>
+</li>
+<li>Information from input devices (a keyboard or a mouse) is processed by the CPU and may be shuffled off to the main or secondary memory. Similarly, when information needs to be displayed, the CPU sends it to one or more output devices (a monitor or a speaker).</li>
+<li>what happens when you fire up your favorite game or word processing program?
+<ul>
+<li>First, the instructions that comprise the program are copied from the (more) permanent secondary memory into the main memory of the computer.</li>
+<li>Once the instructions are loaded, the CPU starts executing the program.</li>
+<li>Technically the CPU follows a process called the <strong>fetch-execute cycle</strong>:
+<ul>
+<li>The first instruction is retrieved from memory, decoded to figure out what it represents, and the appropriate action carried out. Then the next instruction is fetched, decoded, and executed. The cycle continues, instruction after instruction (fetch, decode, execute).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="15-programing-language"><a class="header" href="#15-programing-language">1.5 Programing Language</a></h3>
+<p>we need to provide a sequence of instructions in a language that a computer can understand.</p>
+<p>Even if computers could understand us, human languages are not very well suited for describing complex algorithms.</p>
+<p>Every structure in a programming language has a precise form (<strong>its syntax</strong>) and a precise meaning (<strong>its semantics</strong>).</p>
+<p><strong>compiler or interpreter:</strong> computer hardware can understand only a very low-level language known as machine language. In a high-level language like Python, the addition of two numbers can be expressed more naturally: c = a + b. That’s a lot easier for us to understand, but we need some way to translate the high-level language into the machine language that the computer can execute.</p>
+<ul>
+<li>A <strong>compiler</strong> is a complex computer program that takes another program writ­ ten in a high-level language and translates it into an equivalent program in the machine language of some computer.</li>
+<li>An <strong>interpreter</strong> is a program that simulates a computer that understands a high-level language. Rather than translating the source program into a machine language equivalent, the interpreter analyzes and executes the source code in­ struction by instruction as necessary.</li>
+<li>The <strong>difference</strong> between interpreting and compiling is that compiling is a one­ shot translation; once a program is compiled, it may be run over and over again without further need for the compiler or the source code. In the interpreted case, the interpreter and the source are needed every time the program runs. Compiled programs tend to be faster, since the translation is done once and for all, but interpreted languages lend themselves to a more flexible programming environment as programs can be developed and run interactively.</li>
+<li>a program written in a high-level language can be run on many different kinds of computers as long as there is a suitable compiler or interpreter.</li>
+</ul>
+<h3 id="16-the-magic-of-python"><a class="header" href="#16-the-magic-of-python">1.6 The Magic of Python</a></h3>
+<p><strong>module or script:</strong> One problem with entering functions interactively into a Python shell as we did with the hello and greet examples is that the definitions are lost when we quit the shell. If we want to use them again the next time, we have to type them. all over again. Programs are usually created by typing definitions into a separate file called <strong>a module or script</strong>. This file is saved in secondary memory so that it can be used over and over again.</p>
+<ul>
+<li>A module file is just a file of text, and you can create one using any ap­plication for editing text, such as notepad or a word processor, provided you save your program as a “plain text” file.</li>
+<li>A special type of application known as an <strong>Integrated Development Environment (IDE)</strong> simplifies the process. An IDE is specifically designed to help programmers write programs and includes features such as automatic indenting, color highlighting, and interactive development.</li>
+<li>The . py extension indicates that this is a Python module.</li>
+<li>Our programs can be run in a number of different ways that depend on the actual operating system and programming environment that you are using. you can probably run a Python program by clicking (or double-clicking) on the module file’s icon. Also, in a command line situation, you might type a command like <code>python chaos.py</code>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="unit-testing---veladimir-khorikov"><a class="header" href="#unit-testing---veladimir-khorikov">Unit Testing - Veladimir Khorikov</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<h2 id="chapter-1-the-goal-of-unit-testing"><a class="header" href="#chapter-1-the-goal-of-unit-testing">Chapter 1: The Goal of Unit Testing</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
