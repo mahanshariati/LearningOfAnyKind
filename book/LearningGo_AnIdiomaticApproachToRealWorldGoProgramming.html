@@ -1,0 +1,729 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Learning Go - Learning of Any Kind</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-24f5cce7.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d154ffda.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-afc71aae.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Learning of Any Kind</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/atrovan/LearningOfAnyKind" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/atrovan/LearningOfAnyKind/edit/main/books/books/LearningGo_AnIdiomaticApproachToRealWorldGoProgramming.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="learning-go---an-idiomatic-approach-to-real-world-go-programming"><a class="header" href="#learning-go---an-idiomatic-approach-to-real-world-go-programming">Learning Go - An Idiomatic Approach To Real World Go Programming</a></h1>
+<ul>
+<li><a href="#learning-go---an-idiomatic-approach-to-real-world-go-programming">Learning Go - An Idiomatic Approach To Real World Go Programming</a>
+<ul>
+<li><a href="#chapter-1---setting-your-go-environment">Chapter 1 - Setting Your Go Environment</a></li>
+<li><a href="#chapter-2---predeclared-types-and-declerations">Chapter 2 - Predeclared Types and Declerations</a>
+<ul>
+<li><a href="#literals">Literals</a></li>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#numeric-types">Numeric Types</a>
+<ul>
+<li><a href="#integer-types">Integer types</a></li>
+<li><a href="#integer-operators">Integer operators</a></li>
+<li><a href="#floating-point-types">Floating-point types</a></li>
+<li><a href="#complex-numbers">Complex numbers</a></li>
+</ul>
+</li>
+<li><a href="#strings-and-runes">Strings and Runes</a></li>
+<li><a href="#explicit-type-conversions">Explicit Type Conversions</a></li>
+<li><a href="#var-versus-">var Versus :=</a></li>
+<li><a href="#using-const">Using const</a></li>
+<li><a href="#unused-variables">Unused Variables</a></li>
+<li><a href="#naming">Naming</a></li>
+</ul>
+</li>
+<li><a href="#chapter-3---composite-types">Chapter 3 - Composite Types</a>
+<ul>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#slices">Slices</a>
+<ul>
+<li><a href="#len">len</a></li>
+<li><a href="#append">append</a></li>
+<li><a href="#capacity">capacity</a></li>
+<li><a href="#make">make</a></li>
+<li><a href="#emptying-an-slice">Emptying an slice</a></li>
+<li><a href="#slicing-slices">Slicing Slices</a></li>
+<li><a href="#copy">copy</a></li>
+</ul>
+</li>
+<li><a href="#maps">Maps</a>
+<ul>
+<li><a href="#when-should-you-use-a-map-and-when-should-you-use-a-slice">When should you use a map, and when should you use a slice?</a></li>
+<li><a href="#the-comma-ok-idiom">The comma ok Idiom</a></li>
+<li><a href="#deleting-from-maps">Deleting from Maps</a></li>
+<li><a href="#emptying-a-map">Emptying a Map</a></li>
+<li><a href="#using-maps-as-sets">Using Maps as Sets</a></li>
+</ul>
+</li>
+<li><a href="#structs">Structs</a>
+<ul>
+<li><a href="#anonymous-structs">Anonymous Structs</a></li>
+<li><a href="#comparing-and-converting-structs">Comparing and Converting Structs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-4---blocks-shadows-and-control-structures">Chapter 4 - Blocks, Shadows, and Control Structures</a>
+<ul>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#shadowing-variables">Shadowing Variables</a></li>
+<li><a href="#if">if</a></li>
+<li><a href="#for-four-ways">for, Four Ways</a>
+<ul>
+<li><a href="#the-complete-for-statement">The Complete for Statement</a></li>
+<li><a href="#the-condition-only-for-statement">The Condition-Only for Statement</a></li>
+<li><a href="#the-infinite-for-statement">The Infinite for Statement</a></li>
+<li><a href="#break-and-continue">break and continue</a></li>
+<li><a href="#the-for-range-statement">The for-range Statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="chapter-1---setting-your-go-environment"><a class="header" href="#chapter-1---setting-your-go-environment">Chapter 1 - Setting Your Go Environment</a></h2>
+<p>The first thing you need to do is create a directory to hold your program. Call it Proj1.  On the command line, enter the new directory. Inside the directory, run the go mod init command to mark this directory as a Go module.</p>
+<pre><code class="language-bash">mkdir Proj1
+cd Proj1
+go mod init hello_world
+</code></pre>
+<p>The go.mod file declares the name of the module, the minimum supported version of Go for the module, and any other modules that your module depends on. You can think of it as being similar to the requirements.txt file used by Python or the Gemfile used by Ruby. You shouldn’t edit the go.mod file directly. Instead, use the go get and go mod tidy  commands to manage changes to the file. The main package in a Go module contains the code that starts a Go program. All Go programs start from the main function in the main package. You declare this function with func main() and a left brace. Like Java, JavaScript, and C, Go uses braces to mark the start and end of code blocks.</p>
+<pre><code class="language-bash">go build
+</code></pre>
+<p>This creates an executable called as the name of the module (here is hello_world. remember <code>go mod init hello_world</code>). then run it like this:</p>
+<pre><code class="language-bash">./hello_world
+</code></pre>
+<p>The Go development tools include a command, go fmt, which automatically fixes the whitespace in your code to match the standard format. Using ./… tells a Go tool to apply the command to all the files in the current directory and all subdirectories.</p>
+<pre><code class="language-bash">go fmt ./...
+</code></pre>
+<p>In one class of bugs, the code is syntactically valid but quite likely incorrect. The go tool includes a command called go vet to detect these kinds of errors. One of the things that go vet detects is whether a value exists for every placeholder in a formatting template.</p>
+<pre><code class="language-bash">go vet ./... 
+</code></pre>
+<p><br> <br> <br></p>
+<h2 id="chapter-2---predeclared-types-and-declerations"><a class="header" href="#chapter-2---predeclared-types-and-declerations">Chapter 2 - Predeclared Types and Declerations</a></h2>
+<p>Let’s start by looking at the types that are built into Go and how to declare variables of those types.</p>
+<h3 id="literals"><a class="header" href="#literals">Literals</a></h3>
+<p>literals in Go are untyped.<br>
+An <strong>integer</strong> literal is a sequence of numbers. Integer literals are base 10 by default, but different prefixes are used to indicate other bases: 0b for binary (base 2), 0o for octal (base 8), or 0x for hexadecimal (base 16). You can use either upper- or lowercase letters for the prefix.
+To make it easier to read longer integer literals, Go allows you to put underscores in the middle of your literal. This allows you to, for example, group by thousands in base 10 (1_234). <br></p>
+<p>A <strong>floating-point</strong> literal has a decimal point to indicate the fractional portion of the value. They can also have an exponent specified with the letter e and a positive or negative number (such as 6.03e23). As integer literals, you can use underscores to format your floating-point literals. <br></p>
+<p>A <strong>rune</strong> literal represents a character and is surrounded by single quotes. Unlike many other languages, in Go single quotes and double quotes are not interchangeable. Rune literals can be written as single Unicode characters (‘a’), 8-bit octal numbers (‘\141’), 8-bit hexadecimal numbers (‘\x61’), 16-bit hexadecimal numbers (‘\u0061’), or 32-bit Unicode numbers (‘\U00000061’). There are also several backslash-escaped rune literals, with the most useful ones being newline (‘\n’), tab (‘\t’), single quote (‘\'’), and backslash (‘\\’).<br></p>
+<p>There are two ways to indicate <strong>string</strong> literals. Most of the time, you should use double quotes to create an interpreted string literal (e.g., type “Greetings and Salutations”). These contain zero or more rune literals. They are called “interpreted” because they interpret rune literals (both numeric and backslash escaped) into single characters. The only characters that cannot appear in an interpreted string literal are <strong>unescaped backslashes, unescaped newlines, and unescaped double quotes.</strong></p>
+<h3 id="booleans"><a class="header" href="#booleans">Booleans</a></h3>
+<p>The bool type represents Boolean variables. Variables of bool type can have one of two values: true or false. The zero value for a bool is false.</p>
+<h3 id="numeric-types"><a class="header" href="#numeric-types">Numeric Types</a></h3>
+<p>Go has a large number of numeric types: 12 types (and a few special names) that are grouped into three categories.</p>
+<h4 id="integer-types"><a class="header" href="#integer-types">Integer types</a></h4>
+<p>Go provides both signed and unsigned integers in a variety of sizes, from one to eight bytes. the zero value for all of the integer types is 0. <br> A <strong>byte</strong> is an alias for uint8; The second special name is <strong>int</strong>. On a 32-bit CPU, int is a 32-bit signed integer like an int32. On most 64-bit CPUs, int is a 64-bit signed integer, just like an int64. Because int isn’t consistent from platform to platform, it is a compile-time error to assign, compare, or perform mathematical operations between an int and an int32 or int64 without a type conversion. The third special name is <strong>uint</strong>. It follows the same rules as int, only it is unsigned (the values are always 0 or positive).</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Value Range</th></tr>
+</thead>
+<tbody>
+<tr><td>int8</td><td>–128 to 127</td></tr>
+<tr><td>int16</td><td>–32768 to 32767</td></tr>
+<tr><td>int32</td><td>–2147483648 to 2147483647</td></tr>
+<tr><td>int64</td><td>–9223372036854775808 to 9223372036854775807</td></tr>
+<tr><td>uint8</td><td>0 to 255</td></tr>
+<tr><td>uint16</td><td>0 to 65535</td></tr>
+<tr><td>uint32</td><td>0 to 4294967295</td></tr>
+<tr><td>uint64</td><td>0 to 18446744073709551615</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="integer-operators"><a class="header" href="#integer-operators">Integer operators</a></h4>
+<p>Go integers support the usual arithmetic operators: *<em>+, -, <em>, /, with %</em></em> for modulus. The result of an integer division is an <strong>integer</strong>; if you want to get a floating-point result, you need to use a type conversion to make your integers into floating-point numbers. You can combine any of the arithmetic operators with = to modify a variable: +=, -=, *=, /=, and %=. <br>
+You can compare integers with ==, !=, &gt;, &gt;=, &lt;, and &lt;=. <br>
+Go also has bit-manipulation operators for integers. You can bit shift left and right with &lt;&lt; and &gt;&gt;, or do bit masks with &amp; (bitwise AND), | (bitwise OR), ^ (bitwise XOR), and &amp;^ (bitwise AND NOT). As with the arithmetic operators, you can also combine all the bitwise operators with = to modify a variable: &amp;=, |=, ^=, &amp;^=, &lt;&lt;=, and &gt;&gt;=.</p>
+<h4 id="floating-point-types"><a class="header" href="#floating-point-types">Floating-point types</a></h4>
+<p>Go has two floating-point types. <strong>float32</strong> and <strong>float64</strong>. Like the integer types, the zero value for the floating-point types is 0. unless you have to be compatible with an existing format, use float64. Floating-point literals have a default type of float64, so always using float64 is the simplest option. <br>
+Just like other languages, Go floating-point numbers have a huge range, but they cannot store every value in that range; <strong>they store the nearest approximation.</strong> Because floats aren’t exact, they can be used only in situations where inexact values are acceptable or the rules of floating point are well understood. <br>
+You can use all the standard mathematical and comparison operators with floats, <strong>except %.</strong> <br>
+While Go lets you use == and != to compare floats, <strong>don’t do it</strong>. Because of the inexact nature of floats, two floating-point values might not be equal when you think they should be. Instead, define a maximum allowed variance and see if the difference between two floats is less than that (the epsilon technique).</p>
+<h4 id="complex-numbers"><a class="header" href="#complex-numbers">Complex numbers</a></h4>
+<p>Go defines two complex number types. <strong>complex64</strong> uses float32 values to represent the real and imaginary part, and <strong>complex128</strong> uses float64 values. Both are declared with the complex built-in function. All the standard floating-point arithmetic operators work on complex numbers. Just as with floats, you can use == or != to compare them, but they have the same precision limitations, so it’s best to use the epsilon technique. You can extract the real and imaginary portions of a complex number with the <strong>real</strong> and <strong>imag</strong> built-in functions, respectively. The math/cmplx package has additional functions for manipulating complex128 values.</p>
+<pre><code class="language-Go">var complexNum = complex(20.3, 10.2)
+</code></pre>
+<h3 id="strings-and-runes"><a class="header" href="#strings-and-runes">Strings and Runes</a></h3>
+<p>Like integers and floats, strings are compared for equality using ==, difference with !=, or ordering with &gt;, &gt;=, &lt;, or &lt;=. They are concatenated by using the + operator. Strings in Go are <strong>immutable</strong>; you can reassign the value of a string variable, but you cannot change the value of the string that is assigned to it (for example you can’t change the variable s value from hello to Hello by <code>s[0] = 'H'</code>).
+Go also has a type that represents a single code point. The <strong>rune</strong> type is an alias for the int32 type, just as byte is an alias for uint8. If you are referring to a character, use the rune type, not the int32 type. They might be the same to the compiler, but you want to use the type that clarifies the intent of your code.</p>
+<h3 id="explicit-type-conversions"><a class="header" href="#explicit-type-conversions">Explicit Type Conversions</a></h3>
+<p>Go doesn’t allow automatic type promotion between variables. You must use <strong>a type conversion</strong> when variable types do not match. Even different-sized integers and floats must be converted to the same type to interact. Also , <strong>no other type can be converted to a bool, implicitly or explicitly.</strong></p>
+<pre><code class="language-Go">var x int = 10
+var y float64 = 30.2
+var sum1 float64 = float64(x) + y # sum1 is now 40.2 
+</code></pre>
+<h3 id="var-versus-"><a class="header" href="#var-versus-">var Versus :=</a></h3>
+<p>The most verbose way to declare a variable in Go uses the var keyword, an explicit type, and an assignment. if you want to declare a variable and <strong>assign it the zero value</strong>, you can keep the type and drop the = on the righthand side.</p>
+<pre><code class="language-Go">var x int8 = 10
+var x, y int32
+var (
+    x int
+    y = 20
+    z int = 30
+    d, e = 40, "hello"
+    f, g string
+)
+</code></pre>
+<p>When you are within a function, you can use the <strong>:=</strong> operator to replace a var declaration that uses type inference. The := operator can do one trick that you cannot do with var: it allows you to assign values to existing variables too. As long as at least one new variable is on the lefthand side of the :=, any of the other variables can already exist. <br>
+Using := has one limitation. If you are declaring a variable at the package level, you must use var because := is not legal outside of functions.
+While it is legal to use a type conversion to specify the type of the value and use := to write <code>x := byte(20)</code>, it is idiomatic to write <code>var x byte = 20</code>.    <br></p>
+<p><strong>Package-level variables</strong> whose values change are a bad idea. When you have a variable outside of a function, it can be difficult to track the changes made to it, which makes it hard to understand how data is flowing through your program.</p>
+<h3 id="using-const"><a class="header" href="#using-const">Using const</a></h3>
+<p>Many languages have a way to declare a value as immutable. In Go, this is done with the const keyword. Be aware that const in Go is very limited. Constants in Go are a way to give names to literals.</p>
+<h3 id="unused-variables"><a class="header" href="#unused-variables">Unused Variables</a></h3>
+<p>Another Go requirement is that every declared local variable <strong>must be read</strong>. It is a compile-time error to declare a local variable and to not read its value. As long as a variable is read once, the compiler won’t complain, even if there are writes to the variable that are never read.</p>
+<h3 id="naming"><a class="header" href="#naming">Naming</a></h3>
+<p><strong>idiomatic Go uses camel case (names like indexCounter or numberTries) when an identifier name consists of multiple words.</strong> Also, don’t use unknown names or names start with numbers or underscore for regular variables you declare. An underscore by itself (_) is a special identifier name in Go (will discuss in future).  <br>
+The smaller the scope for a variable, the shorter the name that’s used for it. For example, it is common in Go to see single-letter variable names used with for loops.  <br>
+These short names serve two purposes. The first is that they eliminate repetitive typing, keeping your code shorter. Second, they serve as a check on how complicated your code is. If you find it hard to keep track of your short-named variables, your block of code is likely doing too much. <br> <br> <br></p>
+<h2 id="chapter-3---composite-types"><a class="header" href="#chapter-3---composite-types">Chapter 3 - Composite Types</a></h2>
+<h3 id="arrays"><a class="header" href="#arrays">Arrays</a></h3>
+<p>arrays are rarely used directly in Go. All elements in the array must be of the type that’s specified. because they come with an unusual limitation: Go considers the size of the array to be part of the type of the array. This makes an array that’s declared to be [3]int a different type from an array that’s declared to be [4]int.
+declaration styles:
+In the first, you specify the size of the array and the type of the elements in the array. If you have initial values for the array, you can also specify them with an array literal:</p>
+<pre><code class="language-Go">var x [3]int
+var x = [3]int{10, 20, 30}
+</code></pre>
+<p>When using an array literal to initialize an array, you can replace the number that specifies the number of elements in the array with …:</p>
+<pre><code class="language-Go">var x = [...]int{10, 20, 30}
+</code></pre>
+<p>Go has only one-dimensional arrays, but you can simulate multidimensional arrays. This declares x to be an array of length 2 whose type is an array of ints of length 3.</p>
+<pre><code class="language-Go">var x [2][3]int
+</code></pre>
+<p>An out-of-bounds read or write with a variable index compiles but fails at runtime with a panic.</p>
+<h3 id="slices"><a class="header" href="#slices">Slices</a></h3>
+<p>Most of the time, when you want a data structure that holds a sequence of values, a slice is what you should use. What makes slices so useful is that you can grow slices as needed. This is because the length of a slice is not part of its type.</p>
+<pre><code class="language-Go">var x []int
+var x = []int{10, 20, 30}
+</code></pre>
+<p>When no value is assigned, x is assigned the zero value for a slice, which is something you haven’t seen before: <strong>nil</strong>. In Go, nil is an identifier that represents the lack of a value for some types. Like the untyped numeric constants you saw in the previous chapter, nil has no type, so it can be assigned or compared against values of different types. A nil slice contains nothing.
+You can simulate multidimensional slices and make a slice of slices:</p>
+<pre><code class="language-Go">var x [][]int
+</code></pre>
+<p>A slice is the first type you’ve seen that isn’t comparable. The only thing you can compare a slice with using == is nil. The <strong>slices.Equal</strong> function takes in two slices and returns true if the slices are the same length, and all of the elements are equal.</p>
+<h4 id="len"><a class="header" href="#len">len</a></h4>
+<p>Go provides several built-in functions to work with slices. You’ve already seen the built-in len function when looking at arrays. It works for slices too. Passing a nil slice to len returns 0.</p>
+<h4 id="append"><a class="header" href="#append">append</a></h4>
+<p>The built-in append function is used to grow slices. One slice is appended onto another by using the … operator to expand the source slice into individual values</p>
+<pre><code class="language-Go">var x []int
+x = append(x, 10)
+x = append(x, 5, 6, 7)
+y := []int{20, 30, 40}
+x = append(x, y...)
+</code></pre>
+<h4 id="capacity"><a class="header" href="#capacity">capacity</a></h4>
+<p>Every slice also has a <strong>capacity</strong>, which is the number of consecutive memory locations reserved. This can be larger than the length. Each time you append to a slice, one or more values is added to the end of the slice. Each value added increases the length by one. When the length reaches the capacity, there’s no more room to put values. If you try to add additional values when the length equals the capacity, the append function uses the Go runtime to allocate a new backing array for the slice with a larger capacity (the capacity doubles). The values in the original backing array are copied to the new one, the new values are added to the end of the new backing array, and the slice is updated to refer to the new backing array. Finally, the updated slice is returned.</p>
+<pre><code class="language-Go">var x []int
+fmt.Println(x, len(x), cap(x))
+</code></pre>
+<h4 id="make"><a class="header" href="#make">make</a></h4>
+<p>the built-in make function allows you to specify the type, length, and, optionally, the capacity. Let’s take a look (In the last case, you have a non-nil slice with a length of 0 but a capacity of 10.):</p>
+<pre><code class="language-Go">x := make([]int, 5)
+x := make([]int, 5, 10)
+x := make([]int, 0, 10)
+</code></pre>
+<p>One common beginner mistake is to try to populate those initial elements using append:</p>
+<pre><code class="language-Go">x := make([]int, 5)
+x = append(x, 10)
+</code></pre>
+<p>The 10 is placed at the end of the slice, after the zero values in elements 0–4 because append always increases the length of a slice. The value of x is now [0 0 0 0 0 10].</p>
+<h4 id="emptying-an-slice"><a class="header" href="#emptying-an-slice">Emptying an slice</a></h4>
+<p>Go 1.21 added a <code>clear</code> function that takes in a slice and sets all of the slice’s elements to their zero value. **The length of the slice remains **unchanged.</p>
+<h4 id="slicing-slices"><a class="header" href="#slicing-slices">Slicing Slices</a></h4>
+<p>A slice expression creates a slice from a slice. It’s written inside brackets and consists of a starting offset and an ending offset, separated by a colon (:). The starting offset is the first position in the slice that is included in the new slice, and the ending offset is one past the last position to include. If you leave off the starting offset, 0 is assumed. Likewise, if you leave off the ending offset, the end of the slice is substituted.</p>
+<pre><code class="language-Go">x := []string{"a", "b", "c", "d"}
+y := x[:2]
+z := x[1:]
+d := x[1:3]
+e := x[:]
+</code></pre>
+<p>When you take a slice from a slice, you are not making a copy of the data. Instead, you now have two variables that are sharing memory. <strong>This means that changes to an element in a slice affect all slices that share that element.</strong></p>
+<h4 id="copy"><a class="header" href="#copy">copy</a></h4>
+<p>If you need to create a slice that’s independent of the original, use the built-in <code>copy</code> function.</p>
+<h3 id="maps"><a class="header" href="#maps">Maps</a></h3>
+<p>Like most languages, Go provides a built-in data type for situations where you want to associate one value to another. The zero value for a map is nil. A nil map has a length of 0. In the code below, nilMap is declared to be a map with string keys and int values:</p>
+<pre><code class="language-Go">var nilMap map[string]int
+</code></pre>
+<p><strong>NOTE</strong>: Attempting to read a nil map always returns the zero value for the map’s value type. However, attempting to write to a nil map variable causes a panic. <br>
+<strong>NOTE</strong>: The key for a map can be <strong>any comparable type</strong>. This means you cannot use a slice or a map as the key for a map.
+<strong>NOTE</strong>: you cannot have duplicate key in maps.</p>
+<p>You can use a := declaration to create a map variable by assigning it a map literal:</p>
+<pre><code class="language-Go">totalWins := map[string]int{}
+</code></pre>
+<p>In this case, you are using an empty map literal. This is not the same as a nil map. It has a length of 0, but you can read and write to a map assigned an empty map literal. <br></p>
+<p>A map literal’s body is written as the key, followed by a colon (:), then the value. A comma separates each key-value pair in the map, even on the last line. Here’s what a nonempty map literal looks like:</p>
+<pre><code class="language-Go">teams := map[string][]string {
+    "Orcas": []string{"Fred", "Ralph", "Bijou"},
+    "Lions": []string{"Sarah", "Peter", "Billie"},
+    "Kittens": []string{"Waldo", "Raul", "Ze"},
+}
+</code></pre>
+<p>If you know how many key-value pairs you intend to put in the map but don’t know the exact values, you can use make to create a map with a default size. Maps created with make still have a length of 0, and they can grow past the initially specified size:</p>
+<pre><code class="language-go">ages := make(map[int][]string, 10)
+</code></pre>
+<p>Maps are like slices in several ways:</p>
+<ul>
+<li>Maps automatically grow as you add key-value pairs to them.</li>
+<li>If you know how many key-value pairs you plan to insert into a map, you can use make to create a map with a specific initial size.</li>
+<li>Passing a map to the len function tells you the number of key-value pairs in a map.</li>
+<li>The zero value for a map is nil.</li>
+<li>Maps are not comparable. You can check if they are equal to nil, but you cannot check if two maps have identical keys and values using == or differ using !=.</li>
+</ul>
+<h4 id="when-should-you-use-a-map-and-when-should-you-use-a-slice"><a class="header" href="#when-should-you-use-a-map-and-when-should-you-use-a-slice">When should you use a map, and when should you use a slice?</a></h4>
+<p>You should use slices for lists of data when the data should be processed sequentially or the order of the elements is important.  <br>
+Maps are useful when you need to organize values using something other than an increasing integer value, such as a name. <br>
+You assign a value to a map key by putting the key within brackets and using = to specify the value, and you read the value assigned to a map key by putting the key within brackets. <br>
+<strong>Note</strong>: you cannot use := to assign a value to a map key.</p>
+<pre><code class="language-go">totalWins := map[string]int{}
+totalWins["Orcas"] = 1
+totalWins["Lions"] = 2
+fmt.Println(totalWins["Orcas"])   // Prints 1
+fmt.Println(totalWins["Kittens"]) // Prints 0
+fmt.Printf("%v\n", totalWins)     // Prints map[Lions:2 Orcas:1]
+totalWins["Kittens"]++
+totalWins["Lions"] = 3
+fmt.Printf("%v\n", totalWins) // Prints map[Kittens:1 Lions:3 Orcas:1]
+</code></pre>
+<p>Because a map returns its zero value by default, this works even when there’s no existing value associated with the key.</p>
+<h4 id="the-comma-ok-idiom"><a class="header" href="#the-comma-ok-idiom">The comma ok Idiom</a></h4>
+<p>Go provides the comma ok idiom to tell the difference between a key that’s associated with a zero value and a key that’s not in the map. If ok is false, the key is not present in the map.</p>
+<pre><code class="language-go">m := map[string]int{
+	"hello": 5,
+	"world": 0,
+}
+v, ok := m["hello"]
+fmt.Println(v, ok) // 5 true
+v, ok = m["world"]
+fmt.Println(v, ok) // 0 true
+v, ok = m["goodbye"]
+fmt.Println(v, ok) // 0 false
+</code></pre>
+<h4 id="deleting-from-maps"><a class="header" href="#deleting-from-maps">Deleting from Maps</a></h4>
+<p>Key-value pairs are removed from a map via the built-in delete function. The delete function takes a map and a key and then removes the key-value pair with the specified key. If the key isn’t present in the map or if the map is nil, <strong>nothing happens</strong>. The delete function doesn’t return a value.</p>
+<pre><code class="language-go">m := map[string]int{
+"hello": 5,
+"world": 10,
+}
+delete(m, "hello")
+</code></pre>
+<h4 id="emptying-a-map"><a class="header" href="#emptying-a-map">Emptying a Map</a></h4>
+<p>The clear function that you saw in “Emptying an slice” works on maps also. A cleared map has its length set to zero, unlike a cleared slice:</p>
+<pre><code class="language-go">m := map[string]int{
+    "hello": 5,
+    "world": 10,
+}
+fmt.Println(m, len(m)) // map[hello:5 world:10] 2
+clear(m)
+fmt.Println(m, len(m)) // map[] 0
+</code></pre>
+<h4 id="using-maps-as-sets"><a class="header" href="#using-maps-as-sets">Using Maps as Sets</a></h4>
+<p>Many languages include a set in their standard library. A set is a data type that ensures there is at most one of a value, but doesn’t guarantee that the values are in any particular order. <br>
+Go doesn’t include a set, but you can use a map to simulate some of its features. Use the key of the map for the type that you want to put into the set and use a bool for the value.</p>
+<pre><code class="language-go">intSet := map[int]bool{}
+vals := []int{5, 10, 2, 5, 8, 7, 3, 9, 1, 2, 10}
+for _, v := range vals {
+    intSet[v] = true
+}
+fmt.Println(len(vals), len(intSet)) // 11 8
+fmt.Println(intSet[5]) // true
+fmt.Println(intSet[500]) // false
+if intSet[100] {
+    fmt.Println("100 is in the set")
+}
+</code></pre>
+<h3 id="structs"><a class="header" href="#structs">Structs</a></h3>
+<p>When you have related data that you want to group together, you should define a struct. A struct type is defined with the keyword type, the name of the struct type, the keyword struct, and a pair of braces ({}). Within the braces, you list the fields in the struct. Also note that unlike in map literals, no commas separate the fields in a struct declaration.</p>
+<pre><code class="language-go">type person struct {
+    name string
+    age int 
+    pet string
+}
+</code></pre>
+<p>Once a struct type is declared, you can define variables of that type. A zero value struct has every field set to the field’s zero value. Unlike maps, there is no difference between assigning an empty struct literal and not assigning a value at all. Both initialize all fields in the struct to their zero values.</p>
+<pre><code class="language-go">var fred person
+bob := person{}
+</code></pre>
+<p>here are two styles for a nonempty struct literal. You cannot mix the two struct literal styles: either all fields are specified with names, or none of them are.</p>
+<pre><code class="language-go">julia := person{
+    "Julia",
+    40,
+    "cat",
+}
+beth := person{
+    age: 30,
+    Name: "Ann",
+}
+</code></pre>
+<p>In the second style, you use the names of the fields in the struct to specify the values. This style has some advantages. It allows you to specify the fields in any order, and you don’t need to provide a value for all fields. Any field not specified is set to its zero value.</p>
+<h4 id="anonymous-structs"><a class="header" href="#anonymous-structs">Anonymous Structs</a></h4>
+<p>You can also declare that a variable implements a struct type without first giving the struct type a name. This is called an anonymous struct. In this example, the types of the variables person and pet are anonymous structs:</p>
+<pre><code class="language-go">var person struct {
+    name string
+    age int
+    pet string
+}
+
+person.name = "bob"
+person.age = 50
+person.pet = "dog"
+
+pet := struct {
+    name string
+    kind string
+}{
+    name: "Fido",
+    kind: "dog",
+}
+</code></pre>
+<p>Anonymous structs are handy in two common situations. The first is when you translate external data into a struct or a struct into external data (like JSON or Protocol Buffers). This is called unmarshaling and marshaling data, respectively.</p>
+<h4 id="comparing-and-converting-structs"><a class="header" href="#comparing-and-converting-structs">Comparing and Converting Structs</a></h4>
+<p>Structs that are entirely composed of comparable types are comparable; those with slice or map fields are not.</p>
+<p>Go doesn’t allow comparisons between variables that represent structs of different types. Go does allow you to perform a type conversion from one struct type to another if the fields of both structs have the same names, order, and types.</p>
+<p><br><br><br></p>
+<h2 id="chapter-4---blocks-shadows-and-control-structures"><a class="header" href="#chapter-4---blocks-shadows-and-control-structures">Chapter 4 - Blocks, Shadows, and Control Structures</a></h2>
+<h3 id="blocks"><a class="header" href="#blocks">Blocks</a></h3>
+<p>Each place where a declaration occurs is called a block. Variables, constants, types, and functions declared outside of any functions are placed in the package block.</p>
+<h3 id="shadowing-variables"><a class="header" href="#shadowing-variables">Shadowing Variables</a></h3>
+<p>A shadowing variable is a variable that has the same name as a variable in a containing block. For as long as the shadowing variable exists, you cannot access a shadowed variable.</p>
+<h3 id="if"><a class="header" href="#if">if</a></h3>
+<pre><code class="language-go">n := rand.Intn(10)
+if n == 0 {
+    fmt.Println("That's too low")
+} else if n &gt; 5 {
+    fmt.Println("That's too big:", n)
+} else {
+    fmt.Println("That's a good number:", n)
+}
+</code></pre>
+<p>Scoping a variable to the if statement:</p>
+<pre><code class="language-go">if n := rand.Intn(10); n == 0 {
+    fmt.Println("That's too low")
+} else if n &gt; 5 {
+    fmt.Println("That's too big:", n)
+} else {
+f   mt.Println("That's a good number:", n)
+}
+</code></pre>
+<h3 id="for-four-ways"><a class="header" href="#for-four-ways">for, Four Ways</a></h3>
+<ul>
+<li>A complete, C-style for</li>
+<li>A condition-only for</li>
+<li>An infinite for</li>
+<li>for-range</li>
+</ul>
+<h4 id="the-complete-for-statement"><a class="header" href="#the-complete-for-statement">The Complete for Statement</a></h4>
+<pre><code class="language-go">for i := 0; i &lt; 10; i++ {
+    fmt.Println(i)
+}
+
+i := 0
+for ; i &lt; 10; i++ {
+    fmt.Println(i)
+}
+
+for i := 0; i &lt; 10; {
+    fmt.Println(i)
+    if i % 2 == 0 {
+        i++
+    } else {
+        i+=2
+    }
+}
+</code></pre>
+<h4 id="the-condition-only-for-statement"><a class="header" href="#the-condition-only-for-statement">The Condition-Only for Statement</a></h4>
+<pre><code class="language-go">i := 1
+for i &lt; 100 {
+    fmt.Println(i)
+    i = i * 2
+}
+</code></pre>
+<h4 id="the-infinite-for-statement"><a class="header" href="#the-infinite-for-statement">The Infinite for Statement</a></h4>
+<pre><code class="language-go">for {
+    fmt.Println("Hello")
+}
+</code></pre>
+<h4 id="break-and-continue"><a class="header" href="#break-and-continue">break and continue</a></h4>
+<p>How do you get out of an infinite for loop without using the keyboard or turning off your computer? That’s the job of the <strong>break</strong> statement. It exits the loop immediately, just like the break statement in other languages.</p>
+<p>If you want to iterate at least once, the cleanest way is to use an infinite for loop that ends with an if statement:</p>
+<pre><code class="language-go">for {
+// things to do in the loop
+    if !CONDITION {
+        break
+    }
+}   
+</code></pre>
+<p>Go also includes the <strong>continue</strong> keyword, which skips over the rest of the for loop’s body and proceeds directly to the next iteration.</p>
+<p>Go encourages short if statement bodies, as left-aligned as possible. Nested code is more difficult to follow. Using a continue statement makes it easier to understand what’s going on:</p>
+<pre><code class="language-go">for i := 1; i &lt;= 100; i++ {
+    if i%3 == 0 &amp;&amp; i%5 == 0 {
+        fmt.Println("FizzBuzz")
+        continue
+    }
+    if i%3 == 0 {
+        fmt.Println("Fizz")
+        continue
+    }
+    if i%5 == 0 {
+        fmt.Println("Buzz")
+        continue
+    }
+    fmt.Println(i)
+}
+</code></pre>
+<h4 id="the-for-range-statement"><a class="header" href="#the-for-range-statement">The for-range Statement</a></h4>
+<p>The fourth for statement format is for iterating over elements in some of Go’s built-in types. It is called a for-range loop and resembles the iterators found in other languages. The first variable is the position in the data structure being iterated, while the second is the value at that position.</p>
+<pre><code class="language-go">evenVals := []int{2, 4, 6, 8, 10, 12}
+for i, v := range evenVals {
+    fmt.Println(i, v)
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="HandsOnSofwareEngineeringWithGolang.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="LPIC-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="HandsOnSofwareEngineeringWithGolang.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="LPIC-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
