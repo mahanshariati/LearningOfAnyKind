@@ -123,3 +123,19 @@ The basic assignment statement has this form:
 <variable> = <expr>
 ```
 Python assignment statements are actually slightly different from the "vari­able as a box" model. In Python, values may end up anywhere in memory, and variables are used to refer to them. Assigning a variable is like putting one of those little yellow sticky notes on the value and saying, "this is x."
+
+
+### 2.6 Assigning Input 
+The purpose of an input statement is to get some information from the user of a program and store it into a variable.
+
+`<variable> = input (<prompt>)`
+
+When Python encounters a call to input, it prints the prompt on the screen. Python then pauses and waits for the user to type some text and press the Enter key.
+
+When the user input is a number, we need a slightly more complicated form of input statement:
+
+`<variable> = eval(input(<prompt>))`
+
+The important thing to remember is that you need to eval the input when you want a number instead of some raw text (a string). what the user types in this case is just a numeric literal. a simple Python expression.
+
+
