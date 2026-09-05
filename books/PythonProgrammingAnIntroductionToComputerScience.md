@@ -70,3 +70,56 @@ Every structure in a programming language has a precise form (**its syntax**) an
 - A special type of application known as an **Integrated Development Environment (IDE)** simplifies the process. An IDE is specifically designed to help programmers write programs and includes features such as automatic indenting, color highlighting, and interactive development.
 - The . py extension indicates that this is a Python module.
 - Our programs can be run in a number of different ways that depend on the actual operating system and programming environment that you are using. you can probably run a Python program by clicking (or double-clicking) on the module file's icon. Also, in a command line situation, you might type a command like ` python chaos.py `.
+
+
+## Chapter 2 - Writing simple programs
+### 2.1 The Software Development Process
+The process of creating a program is often broken down into stages according to the information that is produced in each phase.
+- **Analyze the Problem**: Figure out exactly what the problem to be solved is.
+- **Determine Specifications**: Describe exactly what your program will do. At this point, you should not worry about how your program will work, but rather about deciding exactly what it will accomplish.
+- **Create a Design**: Formulate the overall structure of the program. This is where the how of the program gets worked out. The main task is to design the algorithm (s) that will meet the specifications.
+- **Implement the Design**: Translate the design into a computer language and put it into the computer.
+- **Test/Debug the Program**: Try out your program and see whether it works as expected. If there are any errors (often called bugs), then you should go back and fix them. The process of locating and fixing errors is called debugging a program.
+- **Maintain the Program**: Continue developing the program in response to the needs of your users. Most programs are never really finished; they keep evolving over years of use.
+
+### 2.3 Elements of Programs
+
+#### Names
+
+We give names to modules (e.g., convert) and to the functions within modules (e.g., main). Variables are used to give names to values (e.g., celsius and fahrenheit). Technically, all these names are called **identifiers**.' <br> Every identifier must **begin with a letter or underscore** (the "_" character) which may be followed by any sequence of letters, digits, or underscores. <br> Identifiers are **case-sensitive**. <br> **Good programmers always try to choose names that describe the thing being named.** <br>
+some identifiers are part of Python itself and are called reserved words or keywords and cannot be used as ordinary identifiers:
+
+| Column 1 | Column 2 | Column 3 | Column 4 | Column 5 | Column 6 |
+|----------|----------|----------|----------|----------|----------|
+| False    | break    | for      | is       | not      | try      |
+| None     | class    | from     | lambda   | or       | while    |
+| True     | continue | global   | nonlocal | pass     | with     |
+| and      | def      | if       | ra1se    | return   | yield    |
+| as       | del      | import   | 1n       | finally  | except   |
+| assert   | elif     | else     |          |          |          |
+
+Python also includes quite a number of built-in functions, such as the print function that we've already been using. <br> 
+While it's technically legal to (re)use the built-in function-name identifiers for other purposes, it's generally a very bad idea to do so. <br>
+
+---
+#### Expressions
+
+all data has to be stored on the computer in some digital format, and different types of data are stored in different ways.
+The fragments of program code that produce or calculate new data values are called **expressions**. <br>
+The simplest kind of expression is a **literal**. A literal is used to indicate a specific value. <br>
+The numbers 3.9 and 9 are all examples of **numeric literals.** <br>
+Com­puter scientists refer to textual data as **strings**. You can think of a string as just a sequence of printable characters. A string literal is indicated in Python by en­closing the characters in quotation marks (""). <br>
+The process of turning an expression into an underlying data type is called evaluation. <br>
+More complex and interesting expressions can be constructed by combin­ing simpler expressions with **operators**.
+- addition, subtraction, multiplication, divi­sion, and exponentiation (+, -, *, /, and **).
+- Python also provides operators for strings. For example, you can "add" strings. For example, "bat" + "man" becomes "batman". This is called **concatenation**. <br>
+- A template for the print statement including the **keyword** parameter to
+specify the ending text looks like this: <br> `print (<expr>, <e xpr>, . . . , <expr>, end="\n") ` <br>
+
+
+### 2.5 Assignment Statements
+The basic assignment statement has this form:
+```python
+<variable> = <expr>
+```
+Python assignment statements are actually slightly different from the "vari­able as a box" model. In Python, values may end up anywhere in memory, and variables are used to refer to them. Assigning a variable is like putting one of those little yellow sticky notes on the value and saying, "this is x."
