@@ -1711,7 +1711,20 @@ Nested functions are commonly used with closures and decorators.
 
 
 
-## Chapter 10 --- Classes and Objects
+## Chapter 10 -- Module and Classes
+
+### Module 
+
+A module is a file containing code. It defines a group of Python functions or other objects, and the name of the module is derived from the name of the file.
+
+Modules most often contain Python source code, but they can also be compiled C or C++ object files. Compiled modules and Python source modules are used the same way.
+ 
+A namespace is essentially a dictionary of the identifiers available to a block, function, class, module, and so on. Each module has its own namespace, which helps prevent naming conflicts.
+
+### Namespaces
+
+When an identifier is encountered during execution, Python first looks in the local namespace for it. If the identifier isn’t Global namespace found, the global namespace is checked. If the identifier still hasn’t been found, the Module built-in namespace is checked. If it doesn’t functions variables exist there, this situation is considered to be an error, and a NameError exception occurs.
+
 
 ### Classes and Objects
 
@@ -2137,6 +2150,8 @@ This allows code to behave differently depending on how the file is used.
 ---
 
 ### The `if __name__ == "__main__"` Pattern
+
+The most commonly used Python script structure has one more element, which is an if statement that surrounds the main code that we want executed when the file is run as the main script. This is useful because it protects code from being executed when a file is imported as a module.
 
 Common structure:
 
